@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>价格管理 - 大宗商品追踪系统</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f1419;color:#e7e9ea;min-height:100vh;padding:20px}
+.container{max-width:700px;margin:0 auto}
+.back{display:inline-flex;align-items:center;gap:6px;color:#8899a6;font-size:12px;text-decoration:none;padding:6px 0;margin-bottom:14px}
+.back:hover{color:#fff}
+h1{color:#fff;font-size:20px;margin-bottom:20px}
+.card{background:#1a1f26;border-radius:12px;overflow:hidden;margin-bottom:16px}
+.card-header{padding:12px 16px;background:#252a30;font-size:12px;font-weight:600;color:#fff;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between}
+.row{display:flex;align-items:center;padding:12px 16px;border-bottom:1px solid #1e242b;gap:16px}
+.row:last-child{border-bottom:none}
+.row-label{min-width:60px;font-size:13px;color:#8899a6;font-weight:600}
+.row-data{display:flex;gap:8px;flex:1;flex-wrap:wrap}
+.price-input{background:#252a30;border:1px solid #2f3336;color:#fff;padding:6px 10px;border-radius:6px;width:100px;font-size:13px;text-align:right}
+.change-input{background:#252a30;border:1px solid #2f3336;color:#fff;padding:6px 10px;border-radius:6px;width:75px;font-size:13px;text-align:right}
+.date-input{background:#252a30;border:1px solid #2f3336;color:#fff;padding:6px 10px;border-radius:6px;width:115px;font-size:13px}
+.btn{background:#6366f1;color:#fff;border:none;padding:14px 24px;border-radius:8px;font-size:14px;cursor:pointer;width:100%;margin-top:16px;font-weight:600}
+.btn:hover{background:#5558e3}
+.btn-logout{background:#ef5350;width:auto;padding:10px 20px;margin:0}
+.msg{padding:12px;border-radius:8px;margin-top:12px;font-size:13px;display:none}
+.success{background:rgba(52,211,153,0.15);color:#34d399;border:1px solid #34d399;display:block}
+.error{background:rgba(239,83,80,0.15);color:#ef5350;border:1px solid #ef5350;display:block}
+.info{margin-top:16px;padding:12px 16px;background:#1e242b;border-radius:8px;font-size:11px;color:#8899a6;line-height:1.8}
+.info strong{color:#fff}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="/" class="back">← 返回主页</a>
+<h1>📊 价格数据管理</h1>
+
+<div class="card">
+  <div class="card-header">
+    <span>品种</span>
+    <span>价格 · 涨跌幅% · 日期</span>
+  </div>
+  <form id="priceForm">
+    <div id="prices"></div>
+    <div style="padding:12px 16px">
+      <button type="submit" class="btn">💾 保存更新</button>
+    </div>
+  </form>
+  <div id="msg"></div>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+  <button onclick="location.href='/admin/logout'" class="btn btn-logout" style="width:auto">退出登录</button>
+  <a href="/" style="color:#818cf8;font-size:12px;text-decoration:none">← 预览主页</a>
+</div>
+
+<div class="info">
+  <strong>使用说明：</strong><br>
+  1. 修改各品种的「价格」「涨跌幅」「日期」<br>
+  2. 点击「保存更新」<br>
+  3. 回到主页点击 Reload 按钮（PythonAnywhere Web 页面）<br>
+  4. Ctrl+F5 强制刷新浏览器缓存
+</div>
+</div>
+
+<script>
+const prices = {{ prices|tojson }};
+const container = document.getElementById('prices');
+Object.keys(prices).sort().forEach(code => {
+  const p = prices[code];
+  const div = document.createElement('div');
+  div.className = 'row';
+  div.innerHTML = `
+    <span class="row-label">${code}</span>
+    <div class="row-data">
+      <input class="price-input" name="price_${code}" value="${p.price}" placeholder="价格">
+      <input class="change-input" name="change_${code}" value="${p.change}" placeholder="涨跌幅">
+      <input class="date-input" name="date_${code}" value="${p.date}" placeholder="日期">
+    </div>
+  `;
+  container.appendChild(div);
+});
+
+document.getElementById('priceForm').onsubmit = async function(e) {
+  e.preventDefault();
+  const form = new FormData(e.target);
+  const data = {};
+  Object.keys(prices).forEach(code => {
+    const priceVal = form.get('price_' + code);
+    const changeVal = form.get('change_' + code);
+    const dateVal = form.get('date_' + code);
+    data[code] = {
+      price: parseFloat(priceVal) || 0,
+      change: parseFloat(changeVal) || 0,
+      date: dateVal || ''
+    };
+  });
+  try {
+    const res = await fetch('/admin/update', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    const result = await res.json();
+    const msgEl = document.getElementById('msg');
+    if (res.ok && result.success) {
+      msgEl.innerHTML = '<div class="msg success">✅ 更新成功！共 ' + result.count + ' 个品种。请在 PythonAnywhere Web 页面点击 Reload，然后 Ctrl+F5 刷新主页。</div>';
+    } else {
+      msgEl.innerHTML = '<div class="msg error">❌ 失败: ' + (result.error || '未知错误') + '</div>';
+    }
+  } catch(e) {
+    document.getElementById('msg').innerHTML = '<div class="msg error">❌ 网络错误: ' + e.message + '</div>';
+  }
+};
+</script>
+</body>
+</html>
