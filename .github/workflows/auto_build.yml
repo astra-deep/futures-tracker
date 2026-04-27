@@ -1,0 +1,85 @@
+name: Auto Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Set up Git config
+        run: |
+          git config user.name 'GitHub Actions Bot'
+          git config user.email 'actions@github.com'
+
+      - name: Fetch latest news
+        run: |
+          python -c "
+import requests, re, json
+url = 'https://newsapi.eastmoney.com/kuaixun/v1/getlist_102_ajaxResult_20_1_.html'
+r = requests.get(url, timeout=15, headers={'User-Agent':'Mozilla/5.0','Referer':'https://finance.eastmoney.com/'})
+r.encoding = 'utf-8'
+m = re.search(r'ajaxResult=(\{.*\})', r.text, re.DOTALL)
+if m:
+    data = json.loads(m.group(1))
+    news = []
+    seen = set()
+    for item in data.get('LivesList', []):
+        title = re.sub(r'<[^>]+>', '', item.get('title',''))
+        t = item.get('showtime','')[11:16]
+        src = item.get('source','东方财富')
+        if len(title) > 8 and title[:25] not in seen:
+            seen.add(title[:25])
+            news.append({'title':title,'time':t,'source':src,'hot':False})
+    with open('news.json','w',encoding='utf-8') as f:
+        json.dump(news, f, ensure_ascii=False, indent=2)
+    print(f'Fetched {len(news)} news')
+"
+
+      - name: Upload static files to repo
+        run: |
+          python -c "
+import os, base64
+from datetime import datetime
+
+STATIC_DIR = '/home/runner/work/futures-tracker/futures-tracker'
+
+for fname in os.listdir(STATIC_DIR):
+    fpath = os.path.join(STATIC_DIR, fname)
+    if not os.path.isfile(fpath):
+        continue
+    with open(fpath, 'rb') as f:
+        content = base64.b64encode(f.read()).decode('ascii')
+    # Use GitHub API to upload
+    import requests, json
+    TOKEN = '${{ secrets.GITHUB_TOKEN }}'
+    h = {'Authorization': 'token ' + TOKEN, 'Accept': 'application/vnd.github.v3+json'}
+    # Get SHA of existing file
+    r = requests.get(f'https://api.github.com/repos/astra-deep/futures-tracker/contents/{fname}', params={'ref': 'main'}, headers=h, timeout=10)
+    sha = r.json().get('sha') if r.status_code == 200 else None
+    payload = {'message': f'Update {fname} - {datetime.now().strftime(\"%H:%M\")}', 'content': content, 'branch': 'main'}
+    if sha:
+        payload['sha'] = sha
+    r = requests.put(f'https://api.github.com/repos/astra-deep/futures-tracker/contents/{fname}', headers=h, json=payload, timeout=10)
+    print(f'{\"OK\" if r.status_code in (200,201) else \"FAIL\"} {fname} ({r.status_code})')
+"
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
