@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting...</title>
+</head>
+<body>
+<script>
+// Extract code from URL like /variety/IF -> redirect to variety-if.html
+var parts = window.location.pathname.split('/');
+var code = parts[parts.length - 1] || parts[parts.length - 2];
+if (code) {
+    code = code.toUpperCase();
+    var target = '/' + code.toLowerCase() + '.html';
+    // Try variety-CODE.html first
+    window.location.href = '../variety-' + code.toLowerCase() + '.html';
+} else {
+    window.location.href = '../index.html';
+}
+</script>
+<p>Redirecting...</p>
+</body>
+</html>
