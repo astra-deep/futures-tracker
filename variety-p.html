@@ -7,8 +7,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f1419;color:#e7e9ea;min-height:100vh;font-size:15px}
-a{color:#6366f1;text-decoration:none}
-a:hover{text-decoration:underline}
+a{color:#6366f1;text-decoration:none}a:hover{text-decoration:underline}
 .container{max-width:900px;margin:0 auto;padding:16px}
 .back{margin-bottom:16px}
 .hero{background:#1a1f26;border-radius:12px;padding:24px;margin-bottom:16px}
@@ -18,7 +17,8 @@ a:hover{text-decoration:underline}
 .hero-right{text-align:right}
 .hero-price{font-size:30px;font-weight:700;color:#fff}
 .hero-chg{font-size:16px;margin-top:4px}
-.hero-chg.up{color:#ef5350}.hero-chg.down{color:#26a69a}
+.hero-chg.up{color:#ef5350}
+.hero-chg.down{color:#26a69a}
 .dir-badge{display:inline-block;padding:6px 14px;border-radius:8px;font-size:13px;font-weight:600;margin:14px 0 6px}
 .dir-up{background:rgba(239,83,80,0.15);color:#ef5350}
 .dir-down{background:rgba(38,166,154,0.15);color:#26a69a}
@@ -36,8 +36,23 @@ a:hover{text-decoration:underline}
 .signal{background:#1a1f26;border-radius:10px;padding:16px}
 .signal-title{font-size:11px;color:#8899a6;font-weight:600;text-transform:uppercase;margin-bottom:6px}
 .signal-text{font-size:13px;line-height:1.5}
-.signal-long{color:#34d399}.signal-short{color:#ef5350}.signal-reversal{color:#f59e0b}
+.signal-long{color:#34d399}
+.signal-short{color:#ef5350}
+.signal-reversal{color:#f59e0b}
 .signal-full{grid-column:1/-1}
+.notes-section{background:#1a1f26;border-radius:10px;padding:18px;margin-top:16px}
+.notes-title{color:#8899a6;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:12px}
+.notes-empty{color:#4a5568;font-size:13px;text-align:center;padding:16px}
+.notes-input-row{display:flex;gap:8px;margin-top:12px}
+.note-textarea{flex:1;background:#252a30;border:1px solid #2f3336;border-radius:8px;color:#e7e9ea;padding:10px;font-size:13px;resize:vertical;min-height:60px;font-family:inherit}
+.note-save-btn{background:#6366f1;color:#fff;border:none;border-radius:8px;padding:10px 16px;font-size:13px;cursor:pointer;white-space:nowrap}
+.note-save-btn:hover{background:#4f46e5}
+.note-item{background:#252a30;border-radius:8px;padding:12px;margin-bottom:8px}
+.note-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.note-time{color:#8899a6;font-size:11px}
+.note-delete{color:#ef5350;font-size:11px;cursor:pointer}
+.note-delete:hover{text-decoration:underline}
+.note-text{color:#e7e9ea;font-size:13px;line-height:1.6}
 .back-btn{display:block;width:100%;text-align:center;background:#1e242b;color:#8899a6;border:none;border-radius:8px;padding:14px;cursor:pointer;font-size:13px;margin-top:20px;text-decoration:none}
 .back-btn:hover{background:#252a30}
 </style>
@@ -45,54 +60,12 @@ a:hover{text-decoration:underline}
 <body>
 <div class="container">
 <div class="back"><a href="index.html">← 返回首页</a></div>
-<div class="hero">
-  <div class="hero-top">
-    <div>
-      <div class="hero-name">棕榈油</div>
-      <div class="hero-sym">P · 元/吨 · 更新 20260424</div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-price">¥9,778</div>
-      <div class="hero-chg down">▼ 0.25%</div>
-    </div>
-  </div>
-  <div class="dir-badge dir-neutral">📊 关注 · 📊 农产品</div>
-</div>
-
-<div class="section">
-  <div class="section-title">🎯 关键价位</div>
-  <div class="levels"><div class="level-item neutral"><span class="level-price">¥11,000+</span><span class="level-desc">偏强</span></div><div class="level-item neutral"><span class="level-price">¥9,500-11,000</span><span class="level-desc">震荡</span></div><div class="level-item long"><span class="level-price">¥8,500以下</span><span class="level-desc">成本支撑区</span></div></div>
-</div>
-
-<div class="section">
-  <div class="section-title">📐 宏观分析</div>
-  <div class="analysis-row"><span class="analysis-label">核心指标：</span><span class="analysis-value">马棕产量·豆油价格</span></div>
-  <div class="analysis-row"><span class="analysis-label">当前判断：</span><span class="analysis-value">产区季节性低产</span></div>
-  <div class="analysis-row"><span class="analysis-label">观察点：</span><span class="analysis-value">马棕MPOB月报</span></div>
-</div>
-
-<div class="section">
-  <div class="section-title">⚡ 供需分析</div>
-  <div class="analysis-row"><span class="analysis-label">核心指标：</span><span class="analysis-value">马来/印尼产量·出口</span></div>
-  <div class="analysis-row"><span class="analysis-label">当前判断：</span><span class="analysis-value">库存下降</span></div>
-  <div class="analysis-row"><span class="analysis-label">观察点：</span><span class="analysis-value">马棕库存</span></div>
-</div>
-
-<div class="signals">
-  <div class="signal">
-    <div class="signal-title">✅ 做多信号</div>
-    <div class="signal-text signal-long">产区减产+出口增加</div>
-  </div>
-  <div class="signal">
-    <div class="signal-title">🔴 做空信号</div>
-    <div class="signal-text signal-short">丰产+累库</div>
-  </div>
-  <div class="signal signal-full">
-    <div class="signal-title">⚠️ 反转信号</div>
-    <div class="signal-text signal-reversal">马棕库存持续下降</div>
-  </div>
-</div>
-
+<div class="hero"><div class="hero-top"><div><div class="hero-name">棕榈油</div><div class="hero-sym">P · 元/吨 · 更新 20260424</div></div><div class="hero-right"><div class="hero-price">¥9,778</div><div class="hero-chg down">▼ 0.25%</div></div></div><div class="dir-badge dir-neutral">📊 关注 · 📊 农产品</div></div>
+<div class="section"><div class="section-title">🎯 关键价位</div><div class="levels"><div class="level-item neutral"><span class="level-price">¥11,000+</span><span class="level-desc">偏强</span></div><div class="level-item neutral"><span class="level-price">¥9,500-11,000</span><span class="level-desc">震荡</span></div><div class="level-item long"><span class="level-price">¥8,500以下</span><span class="level-desc">成本支撑区</span></div></div></div>
+<div class="section"><div class="section-title">📐 宏观分析</div><div class="analysis-row"><span class="analysis-label">核心指标：</span><span class="analysis-value">马棕产量·豆油价格</span></div><div class="analysis-row"><span class="analysis-label">当前判断：</span><span class="analysis-value">产区季节性低产</span></div><div class="analysis-row"><span class="analysis-label">观察点：</span><span class="analysis-value">马棕MPOB月报</span></div></div>
+<div class="section"><div class="section-title">⚡ 供需分析</div><div class="analysis-row"><span class="analysis-label">核心指标：</span><span class="analysis-value">马来/印尼产量·出口</span></div><div class="analysis-row"><span class="analysis-label">当前判断：</span><span class="analysis-value">库存下降</span></div><div class="analysis-row"><span class="analysis-label">观察点：</span><span class="analysis-value">马棕库存</span></div></div>
+<div class="signals"><div class="signal"><div class="signal-title">✅ 做多信号</div><div class="signal-text signal-long">产区减产+出口增加</div></div><div class="signal"><div class="signal-title">🔴 做空信号</div><div class="signal-text signal-short">丰产+累库</div></div><div class="signal signal-full"><div class="signal-title">⚠️ 反转信号</div><div class="signal-text signal-reversal">马棕库存持续下降</div></div></div>
+<div class="notes-section"><div class="notes-title">📝 我的笔记</div><div id="notesList"></div><div class="notes-input-row"><textarea id="noteInput" class="note-textarea" placeholder="写下你的想法..."></textarea><button class="note-save-btn" onclick="saveNote()">保存笔记</button></div></div><script>var CODE="P";var NOTES_KEY="notes_"+CODE;function loadNotes(){var n=JSON.parse(localStorage.getItem(NOTES_KEY)||"[]");var l=document.getElementById("notesList");if(n.length===0){l.innerHTML='<div class="notes-empty">暂无笔记，添加第一条吧</div>';return;}l.innerHTML=n.map(function(r,i){return"<div class='note-item'><div class='note-meta'><span class='note-time'>"+r.time+"</span><span class='note-delete' onclick='deleteNote("+i+")'>删除</span></div><div class='note-text'>"+r.text.replace(/</g,"&lt;").replace(/>/g,"&gt;")+"</div></div>"}).join("");}function saveNote(){var i=document.getElementById("noteInput");var t=i.value.trim();if(!t)return;var n=JSON.parse(localStorage.getItem(NOTES_KEY)||"[]");var d=new Date();var ts=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0");n.unshift({text:t,time:ts});localStorage.setItem(NOTES_KEY,JSON.stringify(n));i.value="";loadNotes();}function deleteNote(idx){var n=JSON.parse(localStorage.getItem(NOTES_KEY)||"[]");n.splice(idx,1);localStorage.setItem(NOTES_KEY,JSON.stringify(n));loadNotes();}loadNotes();</script>
 <a href="index.html" class="back-btn">← 返回品种列表</a>
 </div>
 </body>
