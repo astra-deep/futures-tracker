@@ -297,7 +297,7 @@ function renderSections() {
       const oiChange = p.oi_change || 0;
       const oiArrow = oiChange > 5 ? '▲' : oiChange < -5 ? '▼' : '';
       const oiClass = oiChange > 5 ? 'up' : oiChange < -5 ? 'down' : 'neu';
-      return `<a href="/variety/${code}" class="${cardClass}">
+      return `<a href="variety-${code.toLowerCase()}.html" class="${cardClass}">
         <div class="var-name">${f.name || code}</div>
         <div class="var-sym">${code}</div>
         <div class="var-price">${displayPrice}</div>
@@ -406,7 +406,7 @@ searchInput.addEventListener('input', function() {
   } else {
     searchDropdown.innerHTML = results.map(([code, f]) => {
       const dirClass = f.direction.includes('禁止') ? 'down' : f.direction.includes('聚焦') || f.direction.includes('偏多') ? 'up' : 'neu';
-      return `<a href="/variety/${code}" class="search-item">
+      return `<a href="variety-${code.toLowerCase()}.html" class="search-item">
         <div><div class="search-item-name">${f.name}</div><div class="search-item-code">${code}</div></div>
         <div class="search-item-dir ${dirClass}">${f.direction || ''}</div>
       </a>`;
