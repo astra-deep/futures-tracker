@@ -1,4 +1,4 @@
-name: Auto Build & Deploy
+name: Auto Build and Deploy
 
 on:
   push:
@@ -16,21 +16,20 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Set up Git config
+      - name: Fetch latest news from Eastmoney
         run: |
-          git config user.name 'GitHub Actions Bot'
-          git config user.email 'actions@github.com'
-
-      - name: Fetch latest news
-        run: |
+          pip install requests -q
           python -c "
 import requests, re, json
 url = 'https://newsapi.eastmoney.com/kuaixun/v1/getlist_102_ajaxResult_20_1_.html'
@@ -50,36 +49,25 @@ if m:
             news.append({'title':title,'time':t,'source':src,'hot':False})
     with open('news.json','w',encoding='utf-8') as f:
         json.dump(news, f, ensure_ascii=False, indent=2)
-    print(f'Fetched {len(news)} news')
+    print(f'Fetched {len(news)} news items')
 "
 
-      - name: Upload static files to repo
+      - name: Configure Git
         run: |
-          python -c "
-import os, base64
-from datetime import datetime
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
 
-STATIC_DIR = '/home/runner/work/futures-tracker/futures-tracker'
-
-for fname in os.listdir(STATIC_DIR):
-    fpath = os.path.join(STATIC_DIR, fname)
-    if not os.path.isfile(fpath):
-        continue
-    with open(fpath, 'rb') as f:
-        content = base64.b64encode(f.read()).decode('ascii')
-    # Use GitHub API to upload
-    import requests, json
-    TOKEN = '${{ secrets.GITHUB_TOKEN }}'
-    h = {'Authorization': 'token ' + TOKEN, 'Accept': 'application/vnd.github.v3+json'}
-    # Get SHA of existing file
-    r = requests.get(f'https://api.github.com/repos/astra-deep/futures-tracker/contents/{fname}', params={'ref': 'main'}, headers=h, timeout=10)
-    sha = r.json().get('sha') if r.status_code == 200 else None
-    payload = {'message': f'Update {fname} - {datetime.now().strftime(\"%H:%M\")}', 'content': content, 'branch': 'main'}
-    if sha:
-        payload['sha'] = sha
-    r = requests.put(f'https://api.github.com/repos/astra-deep/futures-tracker/contents/{fname}', headers=h, json=payload, timeout=10)
-    print(f'{\"OK\" if r.status_code in (200,201) else \"FAIL\"} {fname} ({r.status_code})')
-"
+      - name: Commit static files
+        run: |
+          # Only commit if there are changes
+          if git diff --quiet; then
+            echo "No changes to commit"
+          else
+            git add index.html variety-*.html news.json prices.json global.json reports.json
+            git commit -m "Update site - $(date +'%Y-%m-%d %H:%M')"
+            git push
+            echo "Committed and pushed successfully"
+          fi
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
