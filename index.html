@@ -324,6 +324,12 @@ var reportsExpanded = false;
 var REPORTS_SHOWN = 5;
 
 function renderReports() {
+  const container = document.getElementById('reportsContainer');
+  const countEl = document.getElementById('reportsCount');
+  if (!REPORTS || REPORTS.length === 0) { container.innerHTML = '<div style="color:#8899a6;font-size:12px;padding:8px">暂无研报数据</div>'; return; }
+  const total = REPORTS.length;
+  const shown = reportsExpanded ? total : Math.min(REPORTS_SHOWN, total);
+  const visibleReports = REPORTS.slice(0, shown);
   var container = document.getElementById('reportsContainer');
   var countEl = document.getElementById('reportsCount');
   if (!REPORTS || REPORTS.length === 0) {
@@ -351,8 +357,8 @@ function renderReports() {
   }).join('');
   container.innerHTML = html;
   if (countEl) countEl.textContent = '（' + total + '篇）';
-  var btnId = document.getElementById('reportsExpandBtn');
-  if (btnId) btnId.remove();
+  var oldBtn = document.getElementById('reportsExpandBtn');
+  if (oldBtn) oldBtn.remove();
   if (total > REPORTS_SHOWN) {
     var btn = document.createElement('div');
     btn.id = 'reportsExpandBtn';
@@ -372,3 +378,136 @@ function toggleReports() {
   reportsExpanded = !reportsExpanded;
   renderReports();
 }
+
+function openReportModal(idx) {
+  const r = REPORTS[idx];
+  if (!r) return;
+  const bullCls = r.bull && r.bull.toLowerCase().includes('bull') ? 'bull-bullish' : r.bull && r.bull.toLowerCase().includes('bear') ? 'bull-bearish' : 'bull-neutral';
+  const bc = r.instColor || '#6366f1';
+  const isDark = r.inst === 'GS' || r.inst === 'JPM';
+  const html = `
+    <div class="report-modal-hdr">
+      <div class="report-modal-title">${r.title}</div>
+      <span class="report-inst" style="background:${bc}${isDark ? ';color:#000' : ''};font-size:11px;padding:3px 8px;border-radius:3px;flex-shrink:0">${r.inst}</span>
+    </div>
+    <div style="color:#8899a6;font-size:12px;margin-bottom:12px">📅 ${r.date} &nbsp;|&nbsp; <span class="${bullCls}">${r.bull || 'Neutral'}</span></div>
+    ${r.summary ? `<div class="report-modal-section"><div class="report-modal-section-title">📌 核心观点</div><div class="report-modal-detail">${r.summary}</div></div>` : ''}
+    ${r.detail ? `<div class="report-modal-section"><div class="report-modal-section-title">📝 详细摘要</div><div class="report-modal-detail">${r.detail}</div></div>` : ''}
+    ${r.signal ? `<div class="report-modal-section"><div class="report-modal-section-title">🎯 投资信号</div><div class="report-modal-detail"><span class="${bullCls}" style="font-weight:600">${r.signal}</span></div></div>` : ''}
+    ${r.key ? `<div class="report-modal-key"><div class="report-modal-key-title">💡 关键数据 / 目标价</div><div class="report-modal-key-text">${r.key}</div></div>` : ''}
+    ${r.link ? `<div style="margin-top:14px;text-align:center"><a href="${r.link}" target="_blank" style="color:#6366f1;font-size:13px">📄 查看原文 →</a></div>` : ''}
+  `;
+  document.getElementById('modalReportContent').innerHTML = html;
+  document.getElementById('reportModal').style.display = 'flex';
+}
+
+function closeReportModal() {
+  document.getElementById('reportModal').style.display = 'none';
+}
+
+function toggleSection(hdr) {
+  hdr.classList.toggle('open');
+  hdr.nextElementSibling.classList.toggle('open');
+}
+
+// ========== 搜索 ==========
+const searchInput = document.getElementById('searchInput');
+const searchDropdown = document.getElementById('searchDropdown');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.trim().toLowerCase();
+  if (!q) { searchDropdown.classList.remove('active'); return; }
+  const results = Object.entries(FRAMES).filter(([code, f]) => {
+    if (!f || !f.name) return false;
+    return code.toLowerCase() === q ||
+           code.toLowerCase().includes(q) ||
+           f.name.toLowerCase().includes(q) ||
+           f.name.replace('沪','').replace('天然','').replace('碳酸','').toLowerCase().includes(q);
+  });
+  if (results.length === 0) {
+    searchDropdown.innerHTML = `<div class="search-empty">未找到「${searchInput.value}」</div>
+      <div class="search-hint">支持：中证1000(IM)、沪深300(IF)、铜(CU)、铝(AL)、镍(NI)、金(AU)、银(AG)、铁矿石(I)、螺纹钢(RB)、焦煤(JM)、焦炭(J)、热卷(HC)、锰硅(SM)、原油(SC)、甲醇(MA)、PTA、苯乙烯(EB)、橡胶(RU)、棕榈油(P)、豆粕(M)、生猪(LH)、棉花(CF)、白糖(SR)、纯碱(SA)、玻璃(FG)、碳酸锂(LC)</div>`;
+  } else {
+    searchDropdown.innerHTML = results.map(([code, f]) => {
+      const dirClass = f.direction.includes('禁止') ? 'down' : f.direction.includes('聚焦') || f.direction.includes('偏多') ? 'up' : 'neu';
+      return `<a href="variety-${code.toLowerCase()}.html" class="search-item">
+        <div><div class="search-item-name">${f.name}</div><div class="search-item-code">${code}</div></div>
+        <div class="search-item-dir ${dirClass}">${f.direction || ''}</div>
+      </a>`;
+    }).join('');
+  }
+  searchDropdown.classList.add('active');
+});
+searchInput.addEventListener('blur', () => setTimeout(() => searchDropdown.classList.remove('active'), 200));
+searchInput.addEventListener('focus', () => { if (searchInput.value.trim()) searchDropdown.classList.add('active'); });
+
+// ========== 财经日历 ==========
+function loadMacroCalendar() {
+  const container = document.getElementById('macroCalendar');
+  const items = [
+    {time:'08:30', name:'中国4月LPR利率', impact:'高'},
+    {time:'10:00', name:'中国一季度GDP', impact:'高'},
+    {time:'14:00', name:'英国3月CPI', impact:'中'},
+    {time:'20:30', name:'美国4月纽约联储制造业指数', impact:'中'},
+    {time:'22:00', name:'美联储褐皮书', impact:'高'},
+  ];
+  container.innerHTML = items.map(item => `
+    <div class="news-item">
+      <div class="news-item-title" style="color:#e7e9ea">
+        <span style="background:${item.impact==='高'?'rgba(239,83,80,0.15)':'rgba(251,191,36,0.15)'};color:${item.impact==='高'?'#ef5350':'#fbbf24'};font-size:10px;padding:1px 5px;border-radius:3px;margin-right:6px">${item.impact}</span>
+        ${item.time} ${item.name}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ========== 新闻 ==========
+let allNews = [];
+let newsExpanded = false;
+
+async function loadNews() {
+  const container = document.getElementById('newsList');
+  const countEl = document.getElementById('newsCount');
+
+  // 从NEWS变量加载（由fetch_prices.py每日更新）
+  allNews = (NEWS && NEWS.length > 0) ? NEWS : [];
+  countEl.textContent = `${allNews.length}条`;
+  renderNews(allNews.slice(0, 5));
+}
+
+function renderNews(news) {
+  const container = document.getElementById('newsList');
+  container.innerHTML = news.map(item => `
+    <div class="news-item">
+      <div class="news-item-title">
+        ${item.hot ? '<span class="tag-hot">HOT</span>' : ''}
+        ${item.title}
+      </div>
+      <div class="news-item-meta"><span>${item.source}</span><span>${item.time}</span></div>
+    </div>
+  `).join('');
+}
+
+function toggleNews() {
+  const btn = document.getElementById('newsMoreBtn');
+  if (!newsExpanded) {
+    renderNews(allNews);
+    btn.textContent = '收起 ▲';
+    newsExpanded = true;
+  } else {
+    renderNews(allNews.slice(0, 5));
+    btn.textContent = '展开更多 ▼';
+    newsExpanded = false;
+  }
+}
+
+// ========== 初始化 ==========
+renderTicker();
+renderGlobal();
+renderSections();
+renderReports();
+loadMacroCalendar();
+loadNews();
+</script>
+</body>
+</html>
