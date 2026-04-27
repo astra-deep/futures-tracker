@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ name }} ({{ code }}) - 投资框架</title>
+<title>白糖 (SR) - 投资框架</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f1419;color:#e7e9ea;min-height:100vh;font-size:15px}
@@ -134,64 +134,74 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="hero">
   <div class="hero-top">
     <div>
-      <div class="hero-name">{{ name }} <span style="font-size:14px;color:#8899a6">({{ code }})</span></div>
-      <div class="hero-code">单位：{{ frame.get('unit','') }} · 更新：{{ frame.get('update_date','') }}</div>
+      <div class="hero-name">白糖 <span style="font-size:14px;color:#8899a6">(SR)</span></div>
+      <div class="hero-code">单位：元/吨 · 更新：2026-04-24</div>
     </div>
-    <div class="hero-dir dir-{{ dir_class }}">{{ direction }}</div>
+    <div class="hero-dir dir-neu">📊 关注</div>
   </div>
 
-  <div class="hero-price">{{ "%.2f"|format(price.get('price',0)) if price.get('price') else '--' }}</div>
-  <div class="hero-chg {% if price.get('change',0) >= 0 %}up{% else %}down{% endif %}">
-    {% if price.get('change',0) >= 0 %}▲{% else %}▼{% endif %}
-    {{ "%.2f"|format((price.get('change',0) or 0)|float|abs) }}%
+  <div class="hero-price">5397.00</div>
+  <div class="hero-chg down">
+    ▼
+    0.04%
   </div>
-  <div class="hero-date">{{ price.get('date','') }}</div>
+  <div class="hero-date">20260424</div>
 
-  {% if price.get('oi') %}
+  
   <div class="hero-oi">
-    持仓量 <strong>{{ "%.1f"|format((price.get('oi',0)/10000)) }}万手</strong>
-    {% if price.get('oi_change') %}
-    <span class="oi-change {% if price.get('oi_change',0) > 0 %}up{% else %}down{% endif %}">
-      {{ '▲' if (price.get('oi_change',0) or 0)|float > 0 else '▼' }}{{ "%.1f"|format((price.get('oi_change',0) or 0)|float|abs) }}%
+    持仓量 <strong>58.9万手</strong>
+    
+    <span class="oi-change down">
+      ▼0.5%
     </span>
-    {% endif %}
+    
   </div>
-  {% endif %}
+  
 
-  {% if frame.get('key_levels') %}
+  
   <div class="key-levels">
     <div class="key-levels-title">📌 关键价位</div>
     <div class="levels-grid">
-      {% for level_price, level_label, level_type in frame.get('key_levels', []) %}
-      <div class="level-item {{ level_type }}">
-        <div class="level-price">{{ level_price }}</div>
-        <div class="level-label">{{ level_label }}</div>
+      
+      <div class="level-item neutral">
+        <div class="level-price">¥6,500+</div>
+        <div class="level-label">偏强</div>
       </div>
-      {% endfor %}
+      
+      <div class="level-item neutral">
+        <div class="level-price">¥5,800-6,500</div>
+        <div class="level-label">震荡</div>
+      </div>
+      
+      <div class="level-item long">
+        <div class="level-price">¥5,000以下</div>
+        <div class="level-label">成本支撑区</div>
+      </div>
+      
     </div>
   </div>
-  {% endif %}
+  
 </div>
 
-{% if frame.get('reversal') %}
+
 <div class="reversal">
-  <strong>⚠️ 反转信号：</strong>{{ frame.get('reversal','') }}
+  <strong>⚠️ 反转信号：</strong>进口大量到港
 </div>
-{% endif %}
+
 
 <div class="signal-section">
   <div class="section-hdr2">✅ 做多信号</div>
   <div class="card">
     <div class="card-body">
       <ul class="signal-list">
-        {% set sigs = frame.get('signal_long', '') %}
-        {% if sigs is string %}
-          {% for sig in sigs.split('+') %}
-            {% if sig.strip() %}<li class="signal-long">{{ sig.strip() }}</li>{% endif %}
-          {% endfor %}
-        {% else %}
-          {% for sig in sigs %}<li class="signal-long">{{ sig }}</li>{% endfor %}
-        {% endif %}
+        
+        
+          
+            <li class="signal-long">原糖大涨</li>
+          
+            <li class="signal-long">进口利润倒挂</li>
+          
+        
       </ul>
     </div>
   </div>
@@ -202,140 +212,218 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <div class="card">
     <div class="card-body">
       <ul class="signal-list">
-        {% set sigs = frame.get('signal_short', '') %}
-        {% if sigs is string %}
-          {% for sig in sigs.split('+') %}
-            {% if sig.strip() %}<li class="signal-short">{{ sig.strip() }}</li>{% endif %}
-          {% endfor %}
-        {% else %}
-          {% for sig in sigs %}<li class="signal-short">{{ sig }}</li>{% endfor %}
-        {% endif %}
+        
+        
+          
+            <li class="signal-short">原糖大跌</li>
+          
+            <li class="signal-short">抛储</li>
+          
+        
       </ul>
     </div>
   </div>
 </div>
 
-{% if frame.get('macro') %}
+
 <div class="signal-section">
   <div class="section-hdr2">📊 三层框架</div>
   <div class="card">
     <div class="card-hdr">宏观层</div>
     <div class="card-body" style="font-size:12px;color:#b0b8c1;line-height:1.8">
-      <div>核心指标：{{ frame.macro.核心指标 }}</div>
-      <div>当前判断：<strong style="color:#fff">{{ frame.macro.当前判断 }}</strong></div>
-      <div>观察点：{{ frame.macro.观察点 | join(' · ') }}</div>
+      <div>核心指标：原糖价格 · 进口成本</div>
+      <div>当前判断：<strong style="color:#fff">原糖偏强，进口窗口收窄</strong></div>
+      <div>观察点：原糖走势 · 进口利润</div>
     </div>
   </div>
-  {% if frame.get('supply') %}
+  
   <div class="card">
     <div class="card-hdr">供需层</div>
     <div class="card-body" style="font-size:12px;color:#b0b8c1;line-height:1.8">
-      <div>核心指标：{{ frame.supply.核心指标 }}</div>
-      <div>当前判断：<strong style="color:#fff">{{ frame.supply.当前判断 }}</strong></div>
-      <div>观察点：{{ frame.supply.观察点 | join(' · ') }}</div>
+      <div>核心指标：国产糖产量 · 库存</div>
+      <div>当前判断：<strong style="color:#fff">本榨季产量下降，库存偏紧</strong></div>
+      <div>观察点：国产糖产量 · 糖厂库存</div>
     </div>
   </div>
-  {% endif %}
+  
 </div>
-{% endif %}
 
-{% if frame.get('news') and frame.news | length > 0 %}
+
+
 <div class="signal-section">
   <div class="section-hdr2">📰 最新消息</div>
   <div class="card">
     <div class="card-body">
-      {% for item in frame.news %}
+      
       <div class="news-item">
-        <div class="news-item-title">• {{ item }}</div>
+        <div class="news-item-title">• 原糖偏强运行</div>
       </div>
-      {% endfor %}
+      
     </div>
   </div>
 </div>
-{% endif %}
 
-{% if frame.get('reports') and frame.reports | length > 0 %}
-<div class="signal-section">
-  <div class="section-hdr2">📝 外资研报</div>
-  {% for rpt in frame.reports %}
-  <div class="report-item">
-    <div class="report-hdr">
-      <span class="report-inst">{{ rpt.inst }}</span>
-      <span class="report-date">{{ rpt.date }}</span>
-    </div>
-    <div class="report-title">{{ rpt.title }}</div>
-    <div class="report-summary">{{ rpt.summary }}</div>
-    <div class="report-bull {% if 'Bull' in rpt.bull %}bull-bullish{% elif 'Bear' in rpt.bull %}bull-bearish{% else %}bull-neutral{% endif %}">{{ rpt.bull }}</div>
-  </div>
-  {% endfor %}
-</div>
-{% endif %}
+
+
 
 <!-- VIX 波动率 + 期权策略推荐 -->
-{% if vix_data %}
+
 <div class="vix-section">
   <div class="vix-hdr">
     <span>🌊 波动率 & 期权策略</span>
-    <span style="font-weight:normal;color:#6b7280">HV更新: {{ vix_data.get('update_time', '')[:16] }}</span>
+    <span style="font-weight:normal;color:#6b7280">HV更新: </span>
   </div>
   <div class="vix-body">
     <div class="vix-gauge">
       <div>
-        <div class="vix-value" style="color:{{ vix_data.get('level_color', '#fbbf24') }}">{{ vix_data.get('hv_display', 'N/A') }}</div>
-        <div class="vix-label">{{ vix_data.get('level', '中等波动率') }}</div>
+        <div class="vix-value" style="color:#8899a6">N/A</div>
+        <div class="vix-label">暂无数据</div>
       </div>
       <div style="flex:1">
         <div class="vix-bar-wrap">
-          <div class="vix-bar" style="width:{{ (vix_data.get('hv', 25) / 50 * 100) if vix_data.get('hv') else 50 }}%;background:{{ vix_data.get('level_color', '#fbbf24') }}"></div>
+          <div class="vix-bar" style="width:50%;background:#8899a6"></div>
         </div>
         <div class="vix-scale"><span>0%</span><span>低波</span><span>20%</span><span>中波</span><span>35%</span><span>高波</span><span>50%+</span></div>
       </div>
     </div>
 
-    {% if vix_data.get('warnings') %}
-    <div class="warnings-section">
-      {% for w in vix_data.get('warnings', []) %}
-      <div class="warning-item {{ w.level }}">{{ w.text }}</div>
-      {% endfor %}
-    </div>
-    {% endif %}
+    
 
     <div style="font-size:11px;color:#8899a6;margin:12px 0 8px 0">📋 推荐策略（根据VIX水平筛选）</div>
     <div class="strategy-grid">
-      {% for s in vix_data.get('strategies', [])[:6] %}
-      <div class="strategy-card {{ s.type_raw }}">
-        <div class="strategy-num">策略 #{{ s.id }} {{ s.type }}</div>
-        <div class="strategy-name">{{ s.name }}</div>
-        <div class="strategy-desc">{{ s.desc if s.desc else '' }}</div>
-        <div class="strategy-meta">
-          <span class="strategy-risk {{ s.risk }}">{{ s.risk_icon }} {{ s.risk }}风险</span>
-          <span class="strategy-greeks">{{ s.greeks if s.greeks else '' }}</span>
-          <span class="strategy-score">{{ s.score_stars }}</span>
-        </div>
-      </div>
-      {% endfor %}
+      
     </div>
     <div class="vix-footer">数据基于20日历史波动率计算 · Tushare · 策略来源: CBOE 25条期权策略</div>
   </div>
 </div>
-{% endif %}
+
 
 <!-- 笔记 + 快速跳转 -->
 <div class="note-section">
   <div class="note-main">
     <div class="all-cats">
-      {% for c in all_codes %}
-      {% if c != code %}
-      <a href="/variety/{{ c }}" class="cat-link">{{ c }}</a>
-      {% endif %}
-      {% endfor %}
+      
+      
+      <a href="/variety/IM" class="cat-link">IM</a>
+      
+      
+      
+      <a href="/variety/IF" class="cat-link">IF</a>
+      
+      
+      
+      <a href="/variety/CU" class="cat-link">CU</a>
+      
+      
+      
+      <a href="/variety/AL" class="cat-link">AL</a>
+      
+      
+      
+      <a href="/variety/NI" class="cat-link">NI</a>
+      
+      
+      
+      <a href="/variety/AU" class="cat-link">AU</a>
+      
+      
+      
+      <a href="/variety/AG" class="cat-link">AG</a>
+      
+      
+      
+      <a href="/variety/AO" class="cat-link">AO</a>
+      
+      
+      
+      <a href="/variety/I" class="cat-link">I</a>
+      
+      
+      
+      <a href="/variety/RB" class="cat-link">RB</a>
+      
+      
+      
+      <a href="/variety/JM" class="cat-link">JM</a>
+      
+      
+      
+      <a href="/variety/SM" class="cat-link">SM</a>
+      
+      
+      
+      <a href="/variety/SF" class="cat-link">SF</a>
+      
+      
+      
+      <a href="/variety/SC" class="cat-link">SC</a>
+      
+      
+      
+      <a href="/variety/MA" class="cat-link">MA</a>
+      
+      
+      
+      <a href="/variety/TA" class="cat-link">TA</a>
+      
+      
+      
+      <a href="/variety/EB" class="cat-link">EB</a>
+      
+      
+      
+      <a href="/variety/RU" class="cat-link">RU</a>
+      
+      
+      
+      <a href="/variety/P" class="cat-link">P</a>
+      
+      
+      
+      <a href="/variety/M" class="cat-link">M</a>
+      
+      
+      
+      <a href="/variety/LH" class="cat-link">LH</a>
+      
+      
+      
+      <a href="/variety/CF" class="cat-link">CF</a>
+      
+      
+      
+      
+      
+      <a href="/variety/SA" class="cat-link">SA</a>
+      
+      
+      
+      <a href="/variety/FG" class="cat-link">FG</a>
+      
+      
+      
+      <a href="/variety/LC" class="cat-link">LC</a>
+      
+      
+      
+      <a href="/variety/ZN" class="cat-link">ZN</a>
+      
+      
+      
+      <a href="/variety/Y" class="cat-link">Y</a>
+      
+      
+      
+      <a href="/variety/PX" class="cat-link">PX</a>
+      
+      
     </div>
   </div>
   <div class="note-sidebar">
     <div class="note-card">
       <div class="note-card-hdr">📝 投资笔记</div>
       <div class="card-body">
-        <textarea class="note-textarea" id="noteInput" placeholder="记录你的投资观点、想法、分析结论...">{{ note }}</textarea>
+        <textarea class="note-textarea" id="noteInput" placeholder="记录你的投资观点、想法、分析结论..."></textarea>
         <div class="note-hint">笔记仅保存在本地服务器</div>
         <button class="note-btn" onclick="saveNote()">保存笔记</button>
         <div class="note-saved" id="noteSaved">✅ 已保存</div>
@@ -346,7 +434,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <script>
-const CODE = '{{ code }}';
+const CODE = 'SR';
 
 async function loadNote() {
   try {
