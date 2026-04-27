@@ -1,0 +1,57 @@
+name: Auto Deploy
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests -q
+      - run: |
+          python -c "
+import requests, re, json, os, base64
+from datetime import datetime
+
+# Fetch news
+url = 'https://newsapi.eastmoney.com/kuaixun/v1/getlist_102_ajaxResult_20_1_.html'
+r = requests.get(url, timeout=15, headers={'User-Agent':'Mozilla/5.0','Referer':'https://finance.eastmoney.com/'})
+r.encoding = 'utf-8'
+m = re.search(r'ajaxResult=(\{.*\})', r.text, re.DOTALL)
+if m:
+    data = json.loads(m.group(1))
+    news = []
+    seen = set()
+    for item in data.get('LivesList', []):
+        title = re.sub(r'<[^>]+>', '', item.get('title',''))
+        t = item.get('showtime','')[11:16]
+        src = item.get('source','东方财富')
+        if len(title) > 8 and title[:25] not in seen:
+            seen.add(title[:25])
+            news.append({'title':title,'time':t,'source':src,'hot':False})
+    with open('news.json','w',encoding='utf-8') as f:
+        json.dump(news, f, ensure_ascii=False, indent=2)
+    print(f'Fetched {len(news)} news')
+"
+      - name: Commit
+        run: |
+          git config --global user.email "ci@github.com"
+          git config --global user.name "CI"
+          if ! git diff --quiet --cached || ! git diff --quiet; then
+            git add -A
+            git commit -m "Update $(date +%Y-%m-%d\ %H:%M)"
+            git push
+          else
+            echo "No changes"
+          fi
+      - uses: actions/deploy-pages@v4
