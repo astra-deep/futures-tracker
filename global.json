@@ -16,21 +16,21 @@
   },
   "SPX": {
     "name": "标普500",
-    "price": 5300,
+    "price": 5300.0,
     "change": 0.0
   },
   "NDX": {
     "name": "纳斯达克",
-    "price": 18500,
-    "change": 0.0
+    "price": 24887.1,
+    "change": 0.2
   },
   "DJI": {
     "name": "道琼斯",
-    "price": 39000,
-    "change": 0.0
+    "price": 49167.79,
+    "change": -0.13
   },
   "VIX": {
-    "name": "恐慌指数VIX",
+    "name": "恐慌指数",
     "price": 18.0,
     "change": 0.0
   },
@@ -40,28 +40,28 @@
     "change": 0.0
   },
   "XAU": {
-    "name": "黄金现货",
-    "price": 2320,
+    "name": "黄金(美元)",
+    "price": 4646.64,
     "change": 0.0
   },
   "XAG": {
-    "name": "白银现货",
-    "price": 27.5,
+    "name": "白银(美元)",
+    "price": 73.94,
     "change": 0.0
   },
   "CL": {
     "name": "WTI原油",
-    "price": 78,
+    "price": 78.0,
     "change": 0.0
   },
   "HSI": {
     "name": "恒生指数",
-    "price": 22000,
+    "price": 22000.0,
     "change": 0.0
   },
   "NKY": {
     "name": "日经225",
-    "price": 38000,
+    "price": 38000.0,
     "change": 0.0
   },
   "CNH": {
