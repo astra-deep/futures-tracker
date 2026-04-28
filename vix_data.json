@@ -1,0 +1,314 @@
+{
+  "varieties": {
+    "IO": {
+      "pcr": 0.8229,
+      "pcr_vol": 0.8229,
+      "pcr_oi": 0.733,
+      "pcr_signal": "偏看跌",
+      "recommendation": "偏看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "MO": {
+      "pcr": 0.8793,
+      "pcr_vol": 0.8793,
+      "pcr_oi": 0.9396,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "I": {
+      "pcr": 1.0498,
+      "pcr_vol": 1.0498,
+      "pcr_oi": 1.2293,
+      "pcr_signal": "略看涨",
+      "recommendation": "略看涨",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "J": {
+      "pcr": 0.8716,
+      "pcr_vol": 0.8716,
+      "pcr_oi": 0.5902,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "JM": {
+      "pcr": 0.6572,
+      "pcr_vol": 0.6572,
+      "pcr_oi": 0.4267,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "M": {
+      "pcr": 0.8967,
+      "pcr_vol": 0.8967,
+      "pcr_oi": 0.6066,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "Y": {
+      "pcr": 1.0296,
+      "pcr_vol": 1.0296,
+      "pcr_oi": 0.6064,
+      "pcr_signal": "略看涨",
+      "recommendation": "略看涨",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "P": {
+      "pcr": 0.8717,
+      "pcr_vol": 0.8717,
+      "pcr_oi": 0.6515,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "LH": {
+      "pcr": 1.4579,
+      "pcr_vol": 1.4579,
+      "pcr_oi": 0.5091,
+      "pcr_signal": "极度看涨（逃顶信号）",
+      "recommendation": "极度看涨（逃顶信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "V": {
+      "pcr": 0.8979,
+      "pcr_vol": 0.8979,
+      "pcr_oi": 0.4556,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "PP": {
+      "pcr": 0.4227,
+      "pcr_vol": 0.4227,
+      "pcr_oi": 1.3931,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "L": {
+      "pcr": 1.3831,
+      "pcr_vol": 1.3831,
+      "pcr_oi": 0.5353,
+      "pcr_signal": "极度看涨（逃顶信号）",
+      "recommendation": "极度看涨（逃顶信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "EG": {
+      "pcr": 0.636,
+      "pcr_vol": 0.636,
+      "pcr_oi": 0.9605,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "MA": {
+      "pcr": 0.6918,
+      "pcr_vol": 0.6918,
+      "pcr_oi": 1.1466,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "SR": {
+      "pcr": 1.0152,
+      "pcr_vol": 1.0152,
+      "pcr_oi": 0.4935,
+      "pcr_signal": "略看涨",
+      "recommendation": "略看涨",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "CF": {
+      "pcr": 0.4464,
+      "pcr_vol": 0.4464,
+      "pcr_oi": 0.7781,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "RM": {
+      "pcr": 0.9564,
+      "pcr_vol": 0.9564,
+      "pcr_oi": 0.6725,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "TA": {
+      "pcr": 0.6392,
+      "pcr_vol": 0.6392,
+      "pcr_oi": 0.9512,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "SA": {
+      "pcr": 0.9865,
+      "pcr_vol": 0.9865,
+      "pcr_oi": 0.4473,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "AP": {
+      "pcr": 1.7134,
+      "pcr_vol": 1.7134,
+      "pcr_oi": 0.4821,
+      "pcr_signal": "极度看涨（逃顶信号）",
+      "recommendation": "极度看涨（逃顶信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "LC": {
+      "pcr": 0.6069,
+      "pcr_vol": 0.6069,
+      "pcr_oi": 1.1044,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "CU": {
+      "pcr": 0.9074,
+      "pcr_vol": 0.9074,
+      "pcr_oi": 0.8244,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "AL": {
+      "pcr": 1.0233,
+      "pcr_vol": 1.0233,
+      "pcr_oi": 0.4695,
+      "pcr_signal": "略看涨",
+      "recommendation": "略看涨",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "NI": {
+      "pcr": 0.4532,
+      "pcr_vol": 0.4532,
+      "pcr_oi": 0.6515,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "AU": {
+      "pcr": 1.0716,
+      "pcr_vol": 1.0716,
+      "pcr_oi": 0.5699,
+      "pcr_signal": "略看涨",
+      "recommendation": "略看涨",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "AG": {
+      "pcr": 0.8507,
+      "pcr_vol": 0.8507,
+      "pcr_oi": 0.8112,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "RU": {
+      "pcr": 0.9224,
+      "pcr_vol": 0.9224,
+      "pcr_oi": 0.3723,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "RB": {
+      "pcr": 0.7154,
+      "pcr_vol": 0.7154,
+      "pcr_oi": 0.8684,
+      "pcr_signal": "偏看跌",
+      "recommendation": "偏看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "SC": {
+      "pcr": 0.6771,
+      "pcr_vol": 0.6771,
+      "pcr_oi": 0.7756,
+      "pcr_signal": "极度看跌（抄底信号）",
+      "recommendation": "极度看跌（抄底信号）",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "ZN": {
+      "pcr": 0.8818,
+      "pcr_vol": 0.8818,
+      "pcr_oi": 0.7827,
+      "pcr_signal": "略看跌",
+      "recommendation": "略看跌",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    },
+    "PB": {
+      "pcr": 1.0676,
+      "pcr_vol": 1.0676,
+      "pcr_oi": 0.5927,
+      "pcr_signal": "略看涨",
+      "recommendation": "略看涨",
+      "update_time": "2026-04-28",
+      "hv": null,
+      "level": "中等"
+    }
+  }
+}
