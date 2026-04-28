@@ -125,7 +125,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .cat-link:hover,.cat-link.active{background:#6366f1;color:#fff}
 
 @media(max-width:700px){.note-section{grid-template-columns:1fr}}
-</style>
+
+/* PCR 看跌/看涨比率区域 */
+.pcr-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:16px}
+.pcr-hdr{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between;align-items:center}
+.pcr-body{padding:14px}
+.pcr-main{display:flex;gap:20px;align-items:flex-start;margin-bottom:14px;flex-wrap:wrap}
+.pcr-value-block{text-align:center;min-width:100px}
+.pcr-big{font-size:36px;font-weight:700;font-family:monospace}
+.pcr-label{font-size:11px;color:#8899a6;margin-top:4px}
+.pcr-meta{flex:1}
+.pcr-signal{font-size:14px;font-weight:600;margin-bottom:8px;padding:6px 12px;border-radius:6px;display:inline-block}
+.pcr-signal.bearish{background:rgba(239,83,80,0.15);color:#ef5350}
+.pcr-signal.neutral{background:rgba(251,191,36,0.15);color:#fbbf24}
+.pcr-signal.bullish{background:rgba(52,211,153,0.15);color:#34d399}
+.pcr-stats{display:flex;gap:16px;margin-top:8px;flex-wrap:wrap}
+.pcr-stat{font-size:12px}
+.pcr-stat-val{font-weight:700;color:#fff;font-family:monospace}
+.pcr-stat-call{color:#34d399}
+.pcr-stat-put{color:#ef5350}
+.pcr-divider{border:none;border-top:1px solid #2f3336;margin:14px 0}
+.pcr-recommend-title{font-size:11px;color:#8899a6;margin-bottom:8px}
+.pcr-rec-item{font-size:12px;color:#b0b8c1;padding:4px 0;border-bottom:1px solid #1e242b;line-height:1.6}
+.pcr-rec-item:last-child{border-bottom:none}
+.pcr-rec-item::before{content:'→ '}
+.pcr-table{margin-top:12px}
+.pcr-table-title{font-size:11px;color:#8899a6;margin-bottom:8px}
+.pcr-table-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px}
+.pcr-range{background:#1e242b;border-radius:6px;padding:8px 10px;font-size:11px}
+.pcr-range-val{font-weight:700;font-family:monospace;margin-bottom:2px}
+.pcr-range-bear{color:#ef5350}
+.pcr-range-bull{color:#34d399}
+.pcr-range-neu{color:#fbbf24}
+.pcr-range-label{color:#8899a6}
+.pcr-footer{font-size:10px;color:#6b7280;margin-top:10px}
+.pcr-no-data{font-size:13px;color:#8899a6;padding:20px;text-align:center}
+
 </head>
 <body>
 <div class="container">
@@ -293,6 +328,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="vix-footer">数据基于20日历史波动率计算 · Tushare · 策略来源: CBOE 25条期权策略</div>
   </div>
+</div>
+
+
+<!-- PCR 看跌/看涨比率 -->
+
+<div class="pcr-section">
+  <div class="pcr-hdr"><span>📊 PCR 成交比率</span></div>
+  <div class="pcr-no-data">暂无期权数据（该品种当前无上市期权或数据更新中）</div>
 </div>
 
 
