@@ -141,9 +141,9 @@
       "level": "中等"
     },
     "SR": {
-      "pcr": 1.0152,
-      "pcr_vol": 1.0152,
-      "pcr_oi": 0.4935,
+      "pcr": 1.0234,
+      "pcr_vol": 1.0234,
+      "pcr_oi": 0.5061,
       "pcr_signal": "略看涨",
       "recommendation": "略看涨",
       "update_time": "2026-04-28",
