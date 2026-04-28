@@ -8,7 +8,8 @@
       "recommendation": "偏看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma"
     },
     "MO": {
       "pcr": 0.8793,
@@ -18,7 +19,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma"
     },
     "I": {
       "pcr": 1.0498,
@@ -28,7 +30,8 @@
       "recommendation": "略看涨",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "J": {
       "pcr": 0.8716,
@@ -38,7 +41,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做多gamma（买看跌期权对冲）"
     },
     "JM": {
       "pcr": 0.6572,
@@ -48,7 +52,8 @@
       "recommendation": "极度看跌（抄底信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "M": {
       "pcr": 0.8967,
@@ -58,7 +63,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "Y": {
       "pcr": 1.0296,
@@ -68,7 +74,8 @@
       "recommendation": "略看涨",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "P": {
       "pcr": 0.8717,
@@ -78,7 +85,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "LH": {
       "pcr": 1.4579,
@@ -88,7 +96,8 @@
       "recommendation": "极度看涨（逃顶信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "V": {
       "pcr": 0.8979,
@@ -98,7 +107,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "PP": {
       "pcr": 0.4227,
@@ -108,7 +118,8 @@
       "recommendation": "极度看跌（抄底信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "L": {
       "pcr": 1.3831,
@@ -118,7 +129,8 @@
       "recommendation": "极度看涨（逃顶信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做多gamma（买看跌期权对冲）"
     },
     "EG": {
       "pcr": 0.636,
@@ -128,7 +140,8 @@
       "recommendation": "极度看跌（抄底信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "MA": {
       "pcr": 0.6918,
@@ -138,7 +151,8 @@
       "recommendation": "极度看跌（抄底信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "SR": {
       "pcr": 1.0234,
@@ -148,7 +162,8 @@
       "recommendation": "略看涨",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "CF": {
       "pcr": 0.4464,
@@ -168,7 +183,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "TA": {
       "pcr": 0.6392,
@@ -178,7 +194,8 @@
       "recommendation": "极度看跌（抄底信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "SA": {
       "pcr": 0.9865,
@@ -188,7 +205,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "AP": {
       "pcr": 1.7134,
@@ -208,7 +226,8 @@
       "recommendation": "极度看跌（抄底信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做多gamma（买看跌期权对冲）"
     },
     "CU": {
       "pcr": 0.9074,
@@ -228,7 +247,8 @@
       "recommendation": "略看涨",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "NI": {
       "pcr": 0.4532,
@@ -238,7 +258,8 @@
       "recommendation": "极度看跌（抄底信号）",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "AU": {
       "pcr": 1.0716,
@@ -248,7 +269,8 @@
       "recommendation": "略看涨",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "AG": {
       "pcr": 0.8507,
@@ -258,7 +280,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "RU": {
       "pcr": 0.9224,
@@ -268,7 +291,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "RB": {
       "pcr": 0.7154,
@@ -278,7 +302,8 @@
       "recommendation": "偏看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "SC": {
       "pcr": 0.6771,
@@ -298,7 +323,8 @@
       "recommendation": "略看跌",
       "update_time": "2026-04-28",
       "hv": null,
-      "level": "中等"
+      "level": "中等",
+      "gamma": "做空gamma（卖看跌期权对冲）"
     },
     "PB": {
       "pcr": 1.0676,
