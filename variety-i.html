@@ -1,55 +1,39 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>铁矿石(I)</title><style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system;background:#0f1419;color:#e7e9ea;min-height:100vh}
-.c{max-width:1100px;margin:0 auto;padding:12px 16px}.bl{color:#6366f1;text-decoration:none;font-size:13px}
+.c{max-width:1100px;margin:0 auto;padding:12px 16px}.bl{color:#6366f1;text-decoration:none}
 .h{background:#1a1f26;border-radius:12px;padding:24px;margin-bottom:16px}
 .hd{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .hn{font-size:22px;font-weight:700}.hs{color:#8899a6;font-size:13px;margin-top:4px}
-.hc{color:#a5b4fc;font-size:12px;background:#1e242b;padding:4px 8px;border-radius:4px;display:inline-block}
-.hp{font-size:32px;font-weight:700}.hcng{font-size:16px;margin-top:4px}.up{color:#ef5350}.dn{color:#26a69a}.neu{color:#8899a6}
+.hc{color:#a5b4fc;font-size:12px;background:#1e242b;padding:4px 8px;display:inline-block}
+.hp{font-size:32px;font-weight:700}.hcng{font-size:16px}.up{color:#ef5350}.dn{color:#26a69a}.neu{color:#8899a6}
 .oi{font-size:12px;color:#8899a6;margin-top:8px}.oi strong{color:#fff}
-.pcr-box{background:#1a1f26;border-radius:10px;margin-bottom:16px;overflow:hidden}
-.pcr-title{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
-.pcr-desc{padding:12px 14px;font-size:12px;line-height:1.8}
-.pcr-label{color:#8899a6;font-weight:600;margin-right:8px}
-.pcr-val{color:#e7e9ea}
-.pcr-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-.pcr-item{padding:14px;border-right:1px solid #2f3336;text-align:center}.pcr-item:last-child{border-right:none}
-.pcr-num{font-size:18px;font-weight:700}
-.pcr-lab{font-size:11px;color:#8899a6;margin-top:4px}
-.pcr-upd{padding:8px 14px;font-size:11px;color:#6b7280;border-top:1px solid #2f3336}
 .ti{background:#1a1f26;border-radius:10px;padding:18px;margin-bottom:12px}
 .tt{color:#8899a6;font-size:11px;font-weight:600;text-transform:uppercase;margin-bottom:10px}
 .tc{font-size:13px;line-height:1.7}.tc strong{color:#fff}.tc em{color:#8899a6;font-style:normal}
-.tc-items{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.tc-tag{background:#1e242b;padding:3px 8px;border-radius:4px;font-size:11px}
-.lg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.li{background:#1e242b;border-radius:8px;padding:12px;text-align:center}.lp{font-size:15px;font-weight:700}.ld{font-size:11px;color:#8899a6;margin-top:4px}
-.sg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.sc{background:#1a1f26;border-radius:10px;padding:16px}.st{font-size:11px;color:#8899a6;text-transform:uppercase;margin-bottom:8px}.sl{color:#34d399}.ss{color:#ef5350}.sr{color:#f59e0b}.stx{font-size:13px;line-height:1.5}
+.tg{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.ttag{background:#1e242b;padding:3px 8px;border-radius:4px;font-size:11px}
+.lg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.lv{background:#1e242b;border-radius:8px;padding:12px;text-align:center}
+.lp{font-size:15px;font-weight:700}.ld{font-size:11px;color:#8899a6;margin-top:4px}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.sc{background:#1a1f26;border-radius:10px;padding:16px}
+.st{font-size:11px;color:#8899a6;text-transform:uppercase;margin-bottom:8px}.sl{color:#34d399}.ss{color:#ef5350}.sr{color:#f59e0b}.stx{font-size:13px;line-height:1.5}
+.pcr-box{background:#1a1f26;border-radius:10px;margin:16px 0;overflow:hidden}
+.pcr-title{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
+.pcr-desc{padding:12px 14px;font-size:12px;line-height:1.8}.pl{color:#8899a6;font-weight:600;margin-right:8px}
+.pcr-grid{display:grid;grid-template-columns:repeat(3,1fr)}.pi{padding:14px;border-right:1px solid #2f3336;text-align:center}.pi:last-child{border-right:none}
+.pn{font-size:18px;font-weight:700}.plb{font-size:11px;color:#8899a6;margin-top:4px}
+.pupd{padding:8px 14px;font-size:11px;color:#6b7280;border-top:1px solid #2f3336}
 .bt{display:block;width:100%;text-align:center;background:#1e242b;color:#8899a6;padding:12px;border-radius:8px;margin-top:20px;text-decoration:none}
+@media(max-width:600px){.hd{flex-direction:column}.lg{grid-template-columns:1fr}}
 </style></head><body><div class="c">
 <a href="index.html" class="bl">← 返回品种列表</a>
 <div class="h">
 <div class="hd"><div><div class="hn">铁矿石(I)</div><div class="hs">单位:元/吨 更新:20260428</div><div class="hc">I2609.DCE·2609月主力</div></div>
 <div><div class="hp">¥780.5</div><div class="hcng dn">↓ 0.90%</div></div></div>
 <div class="oi">持仓量 <strong>58.3万手</strong></div></div>
-<div class="pcr-box">
-<div class="pcr-title">PCR 看跌/看涨比率</div>
-<div class="pcr-desc">
-<div><span class="pcr-label">定义</span><span class="pcr-val">PCR = 认沽期权成交量 ÷ 认购期权成交量</span></div>
-<div><span class="pcr-label">计算</span><span class="pcr-val">Σ(认沽成交量) / Σ(认购成交量)，成交量加权</span></div>
-<div><span class="pcr-label">合约</span><span class="pcr-val">I2609.DCE (2609月主力)</span></div>
-<div><span class="pcr-label">来源</span><span class="pcr-val">Tushare期權(opt_daily)</span></div>
-<div><span class="pcr-label">解读</span><span class="pcr-val">• PCR&lt;0.8 极度看跌(抄底) • 0.8-1.0 略看跌 • 1.0-1.2 中性 • 1.2-1.5 略看涨 • >1.5 极度看涨(逃顶)</span></div>
-</div>
-<div class="pcr-grid">
-<div class="pcr-item"><div class="pcr-num">1.0498</div><div class="pcr-lab">PCR</div></div>
-<div class="pcr-item"><div class="pcr-num" style="color:#a5b4fc">略看涨</div><div class="pcr-lab">信号</div></div>
-<div class="pcr-item"><div class="pcr-num" style="font-size:12px">做空gamma（卖看跌期权对冲）</div><div class="pcr-lab">Gamma</div></div>
-</div>
-<div class="pcr-upd">更新: 2026-04-28</div>
-</div>
-<div class="ti"><div class="tt">关键价位</div><div class="lg"><div class="li" style="border-left:3px solid #34d399"><span class="lp">¥900+</span><span class="ld">偏强</span></div><div class="li" style="border-left:3px solid #a5b4fc"><span class="lp">¥750-900</span><span class="ld">震荡</span></div><div class="li" style="border-left:3px solid #34d399"><span class="lp">¥700以下</span><span class="ld">成本支撑</span></div></div></div>
-<div class="ti"><div class="tt">📐 宏观经济</div><div class="tc"><strong>核心指标：</strong><em>高炉开工率、港口库存、房地产竣工</em><br><strong>当前判断：</strong>铁水产量>240万吨/日，需求有支撑<br><strong>观察点：</strong><div class="tc-items"><span class="tc-tag">高炉开工率</span><span class="tc-tag">港口库存</span><span class="tc-tag">房地产需求</span></div></div></div>
-<div class="ti"><div class="tt">⚡ 供需格局</div><div class="tc"><strong>核心指标：</strong><em>四大矿发运量、到港量、压港量</em><br><strong>当前判断：</strong>到港量季节性回升<br><strong>观察点：</strong><div class="tc-items"><span class="tc-tag">澳巴发运量</span><span class="tc-tag">非主流矿到港</span><span class="tc-tag">港库变化</span></div></div></div>
-<div class="ti"><div class="tt">💰 资金流向</div><div class="tc"><strong>核心指标：</strong><em>大连铁矿石持仓、大商所仓单</em><br><strong>当前判断：</strong>多头增仓<br><strong>观察点：</strong><div class="tc-items"><span class="tc-tag">对冲基金</span><span class="tc-tag">钢企套保</span><span class="tc-tag">贸易商投机</span></div></div></div>
-<div class="sg"><div class="sc"><div class="st">✅ 做多信号</div><div class="stx sl">高炉复产>85%+港口去库加速+房地产政策放松</div></div><div class="sc"><div class="st">🔴 做空信号</div><div class="stx ss">高炉限产<-50%+累库>30%+需求崩塌</div></div><div class="sc"><div class="st">⚠️ 反转信号</div><div class="stx sr">港口库存持续下降超3周</div></div></div>
+<div class="ti"><div class="tt">关键价位</div><div class="lg"><div class="lv"><span class="lp">¥900+</span><span class="ld">偏强</span></div><div class="lv"><span class="lp">¥750-900</span><span class="ld">震荡</span></div><div class="lv"><span class="lp">¥700以下</span><span class="ld">成本支撑</span></div></div></div>
+<div class="ti"><div class="tt">📐 宏观经济</div><div class="tc"><strong>核心指标：</strong><em>高炉开工</em><br><strong>当前判断：</strong>需求强<br><strong>观察点：</strong><div class="tg"><span class="ttag">开工率</span></div></div></div>
+<div class="ti"><div class="tt">⚡ 供需格局</div><div class="tc"><strong>核心指标：</strong><em>四大矿发运</em><br><strong>当前判断：</strong>回升<br><strong>观察点：</strong><div class="tg"><span class="ttag">发运</span></div></div></div>
+<div class="ti"><div class="tt">💰 资金流向</div><div class="tc"><strong>核心指标：</strong><em>大商所持仓</em><br><strong>当前判断：</strong>多头增<br><strong>观察点：</strong><div class="tg"><span class="ttag">对冲基金</span></div></div></div>
+<div class="sg"><div class="sc"><div class="st">✅ 做多</div><div class="stx sl">复产+去库</div></div><div class="sc"><div class="st">🔴 做空</div><div class="stx ss">限产+累库</div></div><div class="sc"><div class="st">⚠️ 反转</div><div class="stx sr">持续降</div></div></div>
+<div class="pcr-box"><div class="pcr-title">PCR 看跌/看涨比率</div><div class="pcr-desc"><span class="pl">定义：</span>PCR = 认沽成交量 ÷ 认购成交量<br><span class="pl">计算：</span>成交量加权<br><span class="pl">合约：</span>I2609.DCE (2609月)<br><span class="pl">来源���</span>Tushare期权(opt_daily)<br><span class="pl">解读：</span>• &lt;0.8 抄底 • 0.8-1.0 偏看跌 • 1.0-1.2 中性 • 1.2-1.5 略看涨 • >1.5 逃顶</div><div class="pcr-grid"><div class="pi"><div class="pn">1.0498</div><div class="plb">PCR</div></div><div class="pi"><div class="pn" style="color:#a5b4fc">略看涨</div><div class="plb">信号</div></div><div class="pi"><div class="pn">做空gamma（卖看跌期权对冲）</div><div class="plb">Gamma</div></div></div><div class="pupd">更新: 2026-04-28</div></div>
 <a href="index.html" class="bt">← 返回品种列表</a>
 </div></body></html>
