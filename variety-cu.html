@@ -25,11 +25,12 @@
 .gamma-title{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
 .gamma-content{padding:12px 14px;font-size:11px;line-height:1.7}.gamma-section{margin-bottom:12px}
 .gamma-section strong{color:#a5b4fc}.gamma-section b{color:#fff}
-.oi-box{background:#1a1f26;border-radius:10px;margin:16px 0;overflow:hidden}
-.oi-title{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
-.oi-data{padding:12px 14px}.oi-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #2f3336}.oi-row:last-child{border:none}
-.oi-row span{color:#8899a6;font-size:12px}.oi-val{color:#fff;font-weight:600}.oi-val.up{color:#ef5350}.oi-val.down{color:#26a69a}
-.oi-no{padding:12px 14px;color:#8899a6;font-size:12px}
+.prem-box{background:#1a1f26;border-radius:10px;margin:16px 0;overflow:hidden}
+.prem-title{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
+.prem-note{padding:8px 14px;font-size:11px;color:#6b7280;border-bottom:1px solid #2f3336}
+.prem-header{display:grid;grid-template-columns:2fr 1fr 1fr;padding:8px 14px;font-size:11px;color:#8899a6;border-bottom:1px solid #2f3336}
+.prem-row{display:grid;grid-template-columns:2fr 1fr 1fr;padding:8px 14px;font-size:12px;border-bottom:1px solid #2f3336}.prem-row:last-child{border-bottom:none}
+.pm-rng{font-weight:700;color:#fff}.pm-type{font-weight:600}.pm-dte{color:#8899a6}
 .bt{display:block;width:100%;text-align:center;background:#1e242b;color:#8899a6;padding:12px;border-radius:8px;margin-top:20px;text-decoration:none}
 @media(max-width:600px){.hd{flex-direction:column}.lg{grid-template-columns:1fr}}
 </style></head><body><div class="c">
@@ -38,13 +39,16 @@
 <div class="hd"><div><div class="hn">铜(CU)</div><div class="hs">单位:元/吨 更新:20260428</div><div class="hc">CU2606.SHF·2606月主力</div></div>
 <div><div class="hp">¥102,260</div><div class="hcng dn">↓ 0.75%</div></div></div>
 <div class="oi">持仓量 <strong>20.3万手</strong></div></div>
-<div class="oi-box"><div class="oi-title">📈 持仓量变化</div><div class="oi-no">暂无数据</div></div>
 <div class="ti"><div class="tt">关键价位</div><div class="lg"><div class="lv"><span class="lp">¥105,000+</span><span class="ld">偏强</span></div><div class="lv"><span class="lp">¥95,000-105,000</span><span class="ld">震荡</span></div><div class="lv"><span class="lp">¥90,000以下</span><span class="ld">成本支撑</span></div></div></div>
 <div class="ti"><div class="tt">📐 宏观经济</div><div class="tc"><strong>核心指标：</strong><em>伦铜价格·TC/RC</em><br><strong>当前判断：</strong>需求疲软，TC低位<br><strong>观察点：</strong><div class="tg"><span class="ttag">伦铜</span><span class="ttag">库存</span></div></div></div>
 <div class="ti"><div class="tt">⚡ 供需格局</div><div class="tc"><strong>核心指标：</strong><em>冶炼厂开工·硫酸</em><br><strong>当前判断：</strong>检修增加<br><strong>观察点：</strong><div class="tg"><span class="ttag">硫酸</span></div></div></div>
 <div class="ti"><div class="tt">💰 资金流向</div><div class="tc"><strong>核心指标：</strong><em>LME投机净头寸</em><br><strong>当前判断：</strong>多头回升<br><strong>观察点：</strong><div class="tg"><span class="ttag">对冲基金</span></div></div></div>
 <div class="sg"><div class="sc"><div class="st">✅ 做多</div><div class="stx sl">大涨+去库</div></div><div class="sc"><div class="st">🔴 做空</div><div class="stx ss">累库</div></div><div class="sc"><div class="st">⚠️ 反转</div><div class="stx sr">持续下降</div></div></div>
-<div class="pcr-box"><div class="pcr-title">PCR 看跌/看涨比率</div><div class="pcr-desc"><span class="pl">定义：</span>PCR = 认沽成交量 ÷ 认购成交量<br><span class="pl">计算：</span>成交量加权<br><span class="pl">期权：</span>沪铜期权 (CU2606.SHF 2606月)<br><span class="pl">来源：</span>Tushare期权(opt_daily)<br><span class="pl">解读：</span>• &lt;0.8 抄底 • 0.8-1.0 偏看跌 • 1.0-1.2 中性 • 1.2-1.5 略看涨 • >1.5 逃顶</div><div class="pcr-grid"><div class="pi"><div class="pn">0.9074</div><div class="plb">PCR</div></div><div class="pi"><div class="pn" style="color:#a5b4fc">略看跌</div><div class="plb">信号</div></div><div class="pi"><div class="pn">-</div><div class="plb">Gamma</div></div></div><div class="pupd">更新: 2026-04-28</div></div><div class="gamma-box">
+<div class="prem-box"><div class="prem-title">💰 期权权利金参考（Delta≈0.2）</div>
+<div class="prem-note">以下为Delta≈0.2时、不同到期日期权的权利金参考区间（未经长期验证，辨证看待）</div>
+<div class="prem-header"><span>权利金区间</span><span>类型</span><span>参考到期日</span></div>
+<div class="pm-row"><span class="pm-rng">800-8000</span><span class="pm-type" style="color:#34d399">看涨</span><span class="pm-dte">70天</span></div></div>
+<div class="pcr-box"><div class="pcr-title">PCR 看跌/看涨比率</div><div class="pcr-desc"><span class="pl">定义：</span>PCR = 认沽成交量 ÷ 认购成交量<br><span class="pl">计算：</span>成交量加权<br><span class="pl">合约：</span>CU2606.SHF (2606月)<br><span class="pl">来源：</span>Tushare期权(opt_daily)<br><span class="pl">解读：</span>• &lt;0.8 抄底 • 0.8-1.0 偏看跌 • 1.0-1.2 中性 • 1.2-1.5 略看涨 • >1.5 逃顶</div><div class="pcr-grid"><div class="pi"><div class="pn">0.9074</div><div class="plb">PCR</div></div><div class="pi"><div class="pn" style="color:#a5b4fc">略看跌</div><div class="plb">信号</div></div><div class="pi"><div class="pn">-</div><div class="plb">Gamma</div></div></div><div class="pupd">更新: 2026-04-28</div></div><div class="gamma-box">
 <div class="gamma-title">📊 PCR与Gamma关系</div>
 <div class="gamma-content">
 <div class="gamma-section"><strong>一、基础概念</strong><br>
