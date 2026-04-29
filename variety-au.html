@@ -31,6 +31,14 @@
 .prem-header{display:grid;grid-template-columns:1fr 1fr 1fr;padding:8px 14px;font-size:11px;color:#8899a6;border-bottom:1px solid #2f3336;justify-items:center}
 .prem-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:8px 14px;font-size:12px;border-bottom:1px solid #2f3336;justify-items:center}.prem-row:last-child{border-bottom:none}
 .pm-rng{font-weight:700;color:#fff;text-align:center}.pm-type{font-weight:600;text-align:center}.pm-dte{color:#8899a6;text-align:center}
+.art-box{background:#1a1f26;border-radius:10px;margin:16px 0;overflow:hidden}
+.art-title-bar{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
+.art-item{padding:12px 14px;border-bottom:1px solid #2f3336}.art-item:last-child{border-bottom:none}
+.art-meta{display:flex;gap:10px;margin-bottom:6px}.art-src{font-size:11px;color:#a5b4fc;background:#1e242b;padding:2px 6px;border-radius:3px}
+.art-date{font-size:11px;color:#6b7280}
+.art-title{font-size:13px;font-weight:600;margin-bottom:6px}.art-title a{color:#e7e9ea;text-decoration:none}
+.art-title a:hover{color:#6366f1}
+.art-sum{font-size:12px;color:#8899a6;line-height:1.5}
 .bt{display:block;width:100%;text-align:center;background:#1e242b;color:#8899a6;padding:12px;border-radius:8px;margin-top:20px;text-decoration:none}
 @media(max-width:600px){.hd{flex-direction:column}.lg{grid-template-columns:1fr}}
 </style></head><body><div class="c">
@@ -43,6 +51,7 @@
 <div class="ti"><div class="tt">📐 宏观经济</div><div class="tc"><strong>核心指标：</strong><em>美联储利率·美元</em><br><strong>当前判断：</strong>降息预期<br><strong>观察点：</strong><div class="tg"><span class="ttag">美元</span></div></div></div>
 <div class="ti"><div class="tt">⚡ 供需格局</div><div class="tc"><strong>核心指标：</strong><em>央行购金</em><br><strong>当前判断：</strong>增持<br><strong>观察点：</strong><div class="tg"><span class="ttag">购金</span></div></div></div>
 <div class="ti"><div class="tt">💰 资金流向</div><div class="tc"><strong>核心指标：</strong><em>COMEX投机</em><br><strong>当前判断：</strong>净多头增<br><strong>观察点：</strong><div class="tg"><span class="ttag">ETF</span></div></div></div>
+
 <div class="sg"><div class="sc"><div class="st">✅ 做多</div><div class="stx sl">地缘+降息</div></div><div class="sc"><div class="st">🔴 做空</div><div class="stx ss">美元强</div></div><div class="sc"><div class="st">⚠️ 反转</div><div class="stx sr">停购</div></div></div>
 
 <div class="pcr-box"><div class="pcr-title">PCR 看跌/看涨比率</div><div class="pcr-desc"><span class="pl">定义：</span>PCR = 认沽成交量 ÷ 认购成交量<br><span class="pl">计算：</span>成交量加权<br><span class="pl">合约：</span>AU2606.SHF (2606月)<br><span class="pl">来源：</span>Tushare期权(opt_daily)<br><span class="pl">解读：</span>• &lt;0.8 抄底 • 0.8-1.0 偏看跌 • 1.0-1.2 中性 • 1.2-1.5 略看涨 • >1.5 逃顶</div><div class="pcr-grid"><div class="pi"><div class="pn">1.0716</div><div class="plb">PCR</div></div><div class="pi"><div class="pn" style="color:#a5b4fc">略看涨</div><div class="plb">信号</div></div><div class="pi"><div class="pn">做空gamma（卖看跌期权对冲）</div><div class="plb">Gamma</div></div></div><div class="pupd">更新: 2026-04-28</div></div><div class="gamma-box">
@@ -55,11 +64,11 @@
 • <b>负Gamma</b>（做市商天然偏向）：涨时卖出，跌时买入 → 抑制波动<br>
 • <b>正Gamma</b>：涨时买入，跌时卖出 → 放大波动</div>
 <div class="gamma-section"><strong>三、如何通过PCR判断</strong><br>
-• <b>高PCR+买入看跌驱动</b> = 做市商卖出看跌期权 → <b>负Gamma</b>（越跌越买，短期可能反弹）<br>
-• <b>低PCR+买入看涨驱动</b> = 做市商卖出看涨期权 → <b>正Gamma</b>（越涨越买，加速上涨）</div>
+• <b>高PCR+买入看跌驱动</b> = 做市商卖出看跌期权 → <b>负Gamma</b><br>
+• <b>低PCR+买入看涨驱动</b> = 做市商卖出看涨期权 → <b>正Gamma</b></div>
 <div class="gamma-section"><strong>四、实战含义</strong><br>
-• <b>恐慌大跌(PCR飙升)</b>：负Gamma加剧，越跌越买，可能反弹但跌太深会爆仓<br>
-• <b>疯狂大涨</b>：正Gamma加剧，越涨越买，易现"逼空"行情<br>
+• <b>恐慌大跌(PCR飙升)</b>：负Gamma加剧，可能反弹但跌太深会爆仓<br>
+• <b>疯狂大涨</b>：正Gamma加剧，易现"逼空"行情<br>
 • <b>Gamma挤压</b>：股价快速经过平值期权附近，做市商对冲放大波动</div>
 </div>
 </div>
