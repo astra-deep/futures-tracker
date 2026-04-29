@@ -341,57 +341,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <!-- PCR 看跌/看涨比率 -->
 
 <div class="pcr-section">
-  <div class="pcr-hdr">
-    <span>📊 PCR 成交比率（看跌/看涨）</span>
-    <span style="font-weight:normal;color:#6b7280">更新: 2026-04-28</span>
-  </div>
-  <div class="pcr-body">
-    <div class="pcr-main">
-      <div class="pcr-value-block">
-        <div class="pcr-big" style="color:#60a5fa">1.0498</div>
-        <div class="pcr-label">PCR成交比</div>
-      </div>
-      <div class="pcr-meta">
-        <div class="pcr-signal neutral">略看涨</div>
-        <div style="font-size:11px;color:#6b7280;margin-bottom:6px">PCR = 看跌期权成交量 ÷ 看涨期权成交量</div>
-        <div class="pcr-stats">
-          <div class="pcr-stat">Call成交量 <span class="pcr-stat-val pcr-stat-call">0</span></div>
-          <div class="pcr-stat">Put成交量 <span class="pcr-stat-val pcr-stat-put">0</span></div>
-          
-          <div class="pcr-stat">PCR持仓 <span class="pcr-stat-val" style="color:#60a5fa">1.2293</span></div>
-          
-        </div>
-      </div>
-    </div>
-
-    <hr class="pcr-divider">
-
-    
-
-    <div class="pcr-table">
-      <div class="pcr-table-title">📐 PCR 信号参考表</div>
-      <div class="pcr-table-grid">
-        <div class="pcr-range">
-          <div class="pcr-range-val pcr-range-bear">PCR &gt; 1.2</div>
-          <div class="pcr-range-label">空头主导 | 谨慎抄底 | 对冲为主</div>
-        </div>
-        <div class="pcr-range">
-          <div class="pcr-range-val pcr-range-neu">0.8 &lt; PCR &lt; 1.2</div>
-          <div class="pcr-range-label">多空平衡 | 观望为主 | 震荡策略</div>
-        </div>
-        <div class="pcr-range">
-          <div class="pcr-range-val pcr-range-bull">PCR &lt; 0.8</div>
-          <div class="pcr-range-label">多头主导 | 顺势做多 | 牛市价差</div>
-        </div>
-        <div class="pcr-range">
-          <div class="pcr-range-val" style="color:#8899a6">HV &gt; 25%</div>
-          <div class="pcr-range-label">高波动 | 买期权优于卖期权 | 控制仓位</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pcr-footer">PCR &gt; 1 说明看跌资金更活跃；PCR &lt; 1 说明看涨资金更活跃 | 数据来源: Tushare期权成交数据 | 仅供参考，不构成投资建议</div>
-  </div>
+  <div class="pcr-hdr"><span>📊 PCR 成交比率</span></div>
+  <div class="pcr-no-data">暂无期权数据（该品种当前无上市期权或数据更新中）</div>
 </div>
 
 
