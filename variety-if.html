@@ -403,77 +403,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       </div>
       
     </div>
-    <div class="vix-footer">数据基于20日历史波动率 · Tushare Pro · 策略来源: CBOE 25条期权策略</div>
-  </div>
-</div>
-
-<!-- ③ 25策略完整对照表 -->
-<div class="vix-section" style="margin-top:16px">
-  <div class="vix-hdr">
-    <span>📖 25条期权策略对照表</span>
-  </div>
-  <div class="vix-body">
-    <div class="strat-toggle" onclick="toggleStrat(this)">▶ 点击展开全部25条策略</div>
-    <div class="strat-list" id="stratList">
-      <div class="strat-row" style="background:#1e242b;color:#8899a6;font-weight:600">
-        <span>编号</span><span>策略名称</span><span>类型</span><span>风险</span>
-      </div>
-      
-      <div class="strat-row">
-        <span class="strat-id">#24</span>
-        <span class="strat-name">Box Spread</span>
-        <span class="strat-type t-arbitrage">🎯 套利</span>
-        <span class="t-risk-极低">🟢 极低</span>
-      </div>
-      
-      <div class="strat-row">
-        <span class="strat-id">#5</span>
-        <span class="strat-name">备兑股票保护圈 (Protective Collar)</span>
-        <span class="strat-type t-neutral">⚖️ 中性</span>
-        <span class="t-risk-低">🟢 低</span>
-      </div>
-      
-      <div class="strat-row">
-        <span class="strat-id">#18</span>
-        <span class="strat-name">卖出蝶式 (Short Butterfly)</span>
-        <span class="strat-type t-neutral">⚖️ 中性</span>
-        <span class="t-risk-低">🟢 低</span>
-      </div>
-      
-      <div class="strat-row">
-        <span class="strat-id">#23</span>
-        <span class="strat-name">Reverse Conversion</span>
-        <span class="strat-type t-arbitrage">🎯 套利</span>
-        <span class="t-risk-低">🟢 低</span>
-      </div>
-      
-      <div class="strat-row">
-        <span class="strat-id">#3</span>
-        <span class="strat-name">卖出备兑看涨 (Covered Call)</span>
-        <span class="strat-type t-neutral">⚖️ 中性</span>
-        <span class="t-risk-中">🟡 中</span>
-      </div>
-      
-      <div class="strat-row">
-        <span class="strat-id">#9</span>
-        <span class="strat-name">看涨日历价差 (Bull Calendar Spread)</span>
-        <span class="strat-type t-neutral">⚖️ 中性</span>
-        <span class="t-risk-中">🟡 中</span>
-      </div>
-      
+    <div class="vix-footer">数据基于20日历史波动率 · Tushare Pro</div>
+    <div style="font-size:11px;color:#6b7280;margin-top:10px;padding:8px 10px;background:#1e242b;border-radius:6px;line-height:1.7">
+      <strong style="color:#8899a6">📖 PCR解读：</strong>PCR = 看跌成交量 / 看涨成交量<br>
+      <span style="color:#34d399">PCR &lt; 0.6</span> 偏多头 | <span style="color:#fbbf24">PCR 0.6-0.8</span> 中性偏多 | <span style="color:#fbbf24">PCR 0.8-1.0</span> 中性 | <span style="color:#f97316">PCR 1.0-1.2</span> 略偏空 | <span style="color:#ef5350">PCR &gt; 1.2</span> 偏空<br>
+      <strong style="color:#8899a6">HV解读：</strong>HV &gt; 40% 高波动买方不利 | HV 15-25% 适中 | HV &lt; 10% 低波动卖方占优
     </div>
   </div>
 </div>
 
-<script>
-function toggleStrat(el) {
-  var list = document.getElementById('stratList');
-  var isOpen = list.classList.contains('open');
-  list.classList.toggle('open');
-  el.textContent = isOpen ? '▶ 点击展开全部25条策略' : '▼ 点击收起';
-  el.style.color = isOpen ? '#8899a6' : '#34d399';
-}
-</script>
 
 <!-- ④ 期权权利金参考 -->
 
@@ -494,28 +432,6 @@ function toggleStrat(el) {
       <span class="prem-dte">70天</span>
     </div>
     
-  </div>
-</div>
-
-
-<!-- ⑤ PCR（有数据时显示） -->
-
-
-</div>
-      </div>
-    </div>
-
-    
-
-    <div style="font-size:11px;color:#6b7280;margin-top:8px;padding:8px 10px;background:#1e242b;border-radius:6px;line-height:1.7">
-      <strong style="color:#8899a6">📖 PCR解读：</strong>PCR = 看跌成交量 / 看涨成交量<br>
-      <span style="color:#34d399">PCR &lt; 0.6</span> 偏多头 | 
-      <span style="color:#fbbf24">PCR 0.6-0.8</span> 中性偏多 | 
-      <span style="color:#fbbf24">PCR 0.8-1.0</span> 中性 | 
-      <span style="color:#f97316">PCR 1.0-1.2</span> 略偏空 | 
-      <span style="color:#ef5350">PCR &gt; 1.2</span> 偏空<br>
-      <strong style="color:#8899a6">HV解读：</strong>HV &gt; 40% 高波动买方不利 | HV 15-25% 适中 | HV &lt; 10% 低波动卖方占优
-    </div>
   </div>
 </div>
 
