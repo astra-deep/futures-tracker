@@ -1,34 +1,2951 @@
-<!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>大宗商品投研平台 v0.1 演示版</title><style>
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+
+
+
+
+
+<meta charset="UTF-8">
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+<title>大宗商品追踪系统</title>
+
+
+
+
+
+<style>
+
+
+
+
+
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f1419;color:#e7e9ea;min-height:100vh}
-.container{max-width:1400px;margin:0 auto;padding:16px}
-.header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#1a1f26;border-radius:12px;margin-bottom:20px}
-.header h1{font-size:18px;color:#fff}
-.header-right{display:flex;align-items:center;gap:15px}
-.time{color:#8899a6;font-size:12px}
-.tag{background:#252a30;color:#8899a6;font-size:11px;padding:4px 10px;border-radius:4px}
-.main-grid{display:grid;grid-template-columns:1fr 420px;gap:16px}
-.card{background:#1a1f26;border-radius:12px;overflow:hidden}
-.card-header{padding:12px 16px;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between;align-items:center}
-.card-title{font-size:13px;font-weight:600}
-.card-body{padding:0}
-table{width:100%;border-collapse:collapse}
-th{text-align:left;padding:8px 14px;color:#8899a6;font-size:11px;font-weight:500;border-bottom:1px solid #2f3336;background:#1e242b}
-td{padding:8px 14px;border-bottom:1px solid #1e242b;font-size:12px}
-tr:last-child td{border-bottom:none}
-.name{color:#fff;font-weight:600}
-.symbol{color:#8899a6;font-size:10px}
-.price{font-weight:700;font-size:13px}
-.report-card{background:#1e252b;border-radius:8px;padding:14px;margin-bottom:10px}
-.report-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.inst-badge{background:#ffd700;color:#000;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px}
+
+
+
+
+
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f1419;color:#e7e9ea;min-height:100vh;font-size:15px}
+
+
+
+
+
+.container{max-width:1100px;margin:0 auto;padding:12px 16px}
+
+
+
+
+
+.header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:#1a1f26;border-radius:12px;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+
+
+
+
+
+.hdr-left h1{font-size:18px;color:#fff}
+
+
+
+
+
+.subtitle{color:#8899a6;font-size:11px;margin-left:8px}
+
+
+
+
+
+.hdr-right{display:flex;align-items:center;gap:8px}
+
+
+
+
+
+.date-tag{background:#252a30;color:#8899a6;font-size:11px;padding:4px 10px;border-radius:4px}
+
+
+
+
+
+.data-note{background:#1a2a1a;color:#34d399;font-size:11px;padding:4px 10px;border-radius:4px}
+
+
+
+
+
+
+
+
+
+
+
+/* 滚动异动条 */
+
+
+
+
+
+.ticker-wrap{width:100%;overflow:hidden;background:#1e242b;border-radius:8px;margin-bottom:14px;height:36px;display:flex;align-items:center}
+
+
+
+
+
+.ticker-label{background:#6366f1;color:#fff;font-size:11px;font-weight:700;padding:0 10px;height:100%;display:flex;align-items:center;white-space:nowrap;flex-shrink:0;border-right:1px solid #2f3336}
+
+
+
+
+
+.ticker-track{display:flex;align-items:center;gap:0;overflow:hidden;flex:1}
+
+
+
+
+
+.ticker-item{display:flex;align-items:center;gap:6px;padding:0 16px;white-space:nowrap;font-size:12px;border-right:1px solid #2f3336;height:36px;flex-shrink:0}
+
+
+
+
+
+.ticker-item.up{color:#ef5350}
+
+
+
+
+
+.ticker-item.down{color:#26a69a}
+
+
+
+
+
+.ticker-empty{color:#6b7280;font-size:12px;padding:0 16px}
+
+
+
+
+
+
+
+
+
+
+
+/* 搜索 */
+
+
+
+
+
+.search-wrap{position:relative;margin-bottom:14px}
+
+
+
+
+
+.search-input{width:100%;background:#1a1f26;border:1px solid #2f3336;color:#fff;padding:11px 15px;border-radius:10px;font-size:14px}
+
+
+
+
+
+.search-input:focus{outline:none;border-color:#6366f1}
+
+
+
+
+
+.search-dropdown{position:absolute;top:100%;left:0;right:0;background:#1a1f26;border:1px solid #6366f1;border-radius:10px;margin-top:4px;display:none;z-index:100;max-height:320px;overflow-y:auto}
+
+
+
+
+
+.search-dropdown.active{display:block}
+
+
+
+
+
+.search-item{display:flex;justify-content:space-between;align-items:center;padding:11px 15px;cursor:pointer;border-bottom:1px solid #1e242b;text-decoration:none;color:inherit}
+
+
+
+
+
+.search-item:last-child{border-bottom:none}
+
+
+
+
+
+.search-item:hover{background:#252a30}
+
+
+
+
+
+.search-item-name{color:#fff;font-size:13px;font-weight:600}
+
+
+
+
+
+.search-item-code{color:#8899a6;font-size:10px}
+
+
+
+
+
+.search-item-dir{font-size:11px}
+
+
+
+
+
+.search-empty{padding:14px;text-align:center;color:#8899a6;font-size:12px}
+
+
+
+
+
+.search-hint{padding:9px 14px;color:#6b7280;font-size:11px;border-top:1px solid #2f3336}
+
+
+
+
+
+
+
+
+
+
+
+/* 全球市场 */
+
+
+
+
+
+.section-title2{font-size:11px;color:#8899a6;text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px 0;display:flex;align-items:center;gap:6px}
+
+
+
+
+
+.market-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax:110px,1fr));gap:8px;margin-bottom:14px}
+
+
+
+
+
+.market-item{background:#1e242b;border-radius:8px;padding:10px;text-align:center;cursor:default}
+
+
+
+
+
+.market-name{color:#8899a6;font-size:10px;margin-bottom:3px}
+
+
+
+
+
+.market-price{color:#fff;font-size:13px;font-weight:700}
+
+
+
+
+
+.market-chg{font-size:10px;margin-top:2px}
+
+
+
+
+
+.up{color:#ef5350}
+
+
+
+
+
+.down{color:#26a69a}
+
+
+
+
+
+.neu{color:#fbbf24}
+
+
+
+
+
+.market-up{color:#ef5350}
+
+
+
+
+
+.market-down{color:#26a69a}
+
+
+
+
+
+.market-neu{color:#8899a6}
+
+
+
+
+
+.market-section{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+
+
+
+
+
+.market-col{background:#1a1f26;border-radius:10px;overflow:hidden}
+
+
+
+
+
+.market-col-hdr{padding:9px 13px;background:#1e242b;font-size:12px;font-weight:600;color:#e7e9ea;border-bottom:1px solid #2f3336}
+
+
+
+
+
+.market-col-body{padding:10px}
+
+
+
+
+
+.market-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #1e242b;font-size:12px}
+
+
+
+
+
+.market-row:last-child{border-bottom:none}
+
+
+
+
+
+.market-row-name{color:#b0b8c1}
+
+
+
+
+
+.market-row-price{color:#fff;font-weight:600}
+
+
+
+
+
+.market-row-chg{font-size:11px;min-width:55px;text-align:right}
+
+
+
+
+
+.market-loading{color:#6b7280;font-size:12px;text-align:center;padding:14px}
+
+
+
+
+
+.global-tile{flex:1;min-width:120px;background:#1e242b;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+
+
+
+
+
+.global-tile-up{background:rgba(239,83,80,0.12)}
+
+
+
+
+
+.global-tile-down{background:rgba(38,166,154,0.12)}
+
+
+
+
+
+.global-tile-name{color:#8899a6;font-size:11px}
+
+
+
+
+
+.global-tile-price{color:#fff;font-size:18px;font-weight:700}
+
+
+
+
+
+.global-tile-chg{font-size:12px;font-weight:600}
+
+
+
+
+
+.global-tile-up .global-tile-chg{color:#ef5350}
+
+
+
+
+
+.global-tile-down .global-tile-chg{color:#26a69a}
+
+
+
+
+
+.news-section{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+
+
+
+
+
+.news-col{background:#1a1f26;border-radius:10px;overflow:hidden}
+
+
+
+
+
+.news-col-hdr{padding:9px 13px;background:#1e242b;font-size:12px;font-weight:600;color:#e7e9ea;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between;align-items:center}
+
+
+
+
+
+.news-col-hdr span{font-size:11px;color:#8899a6;font-weight:400}
+
+
+
+
+
+.news-item{padding:9px 13px;border-bottom:1px solid #1e242b}
+
+
+
+
+
+.news-item:last-child{border-bottom:none}
+
+
+
+
+
+.news-item-title{color:#e7e9ea;font-size:12px;line-height:1.5;margin-bottom:3px;cursor:pointer}
+
+
+
+
+
+.news-item-title:hover{color:#6366f1}
+
+
+
+
+
+.news-item-title .tag-hot{background:rgba(251,191,36,0.15);color:#fbbf24;font-size:10px;padding:1px 5px;border-radius:3px;margin-right:4px}
+
+
+
+
+
+.news-item-meta{color:#6b7280;font-size:10px;display:flex;justify-content:space-between;align-items:center}
+.news-item-body{color:#8899a6;font-size:11px;line-height:1.6;margin:6px 0;padding:8px;background:#161a1f;border-radius:6px;display:none;max-height:400px;overflow-y:auto}
+.news-expand-btn{background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;font-size:10px;padding:2px 8px;border-radius:10px;cursor:pointer;margin-left:8px}
+
+
+
+
+
+.news-item-meta span:first-child{color:#818cf8}
+
+
+
+
+
+.news-more{text-align:center;padding:7px;color:#6b7280;font-size:11px;cursor:pointer}
+
+
+
+
+
+.news-more:hover{color:#6366f1}
+
+
+
+
+
+
+
+
+
+
+
+/* 外资研报 */
+
+
+
+
+
+
+
+
+
+
+
+.report-modal-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;gap:12px}
+
+
+
+
+
+.report-modal-title{color:#fff;font-size:16px;font-weight:600;line-height:1.4;flex:1}
+
+
+
+
+
+.report-modal-section{margin-top:14px;padding-top:14px;border-top:1px solid #2f3336}
+
+
+
+
+
+.report-modal-section-title{color:#8899a6;font-size:11px;font-weight:600;margin-bottom:6px;text-transform:uppercase}
+
+
+
+
+
+.report-modal-detail{color:#b0b8c1;font-size:13px;line-height:1.7}
+
+
+
+
+
+.report-modal-key{background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:6px;padding:10px 14px;margin-top:12px}
+
+
+
+
+
+.report-modal-key-title{color:#a5b4fc;font-size:11px;margin-bottom:4px}
+
+
+
+
+
+.report-modal-key-text{color:#e7e9ea;font-size:13px}
+
+
+
+
+
+.reports-section{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:14px}
+
+
+
+
+
+.report-card{background:#1e242b;border-radius:8px;padding:11px}
+
+
+
+
+
+.report-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+
+
+
+
+
+.report-inst{background:#6366f1;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px}
+
+
+
+
+
 .report-date{color:#8899a6;font-size:10px}
-.report-title{color:#fff;font-size:12px;font-weight:600;line-height:1.4;margin-bottom:8px}
-.bullet-list{margin:0 0 0 16px;color:#b0b8c1;font-size:11px;line-height:1.6}
-.bullet-list li{margin-bottom:3px}
-.conclusion{margin-top:10px;padding-top:8px;border-top:1px solid #2f3336;font-size:11px;font-weight:600}
-.status-bar{background:#252a30;border-radius:8px;padding:15px;text-align:center;margin-top:12px}
-.status-num{font-size:32px;font-weight:700;color:#ef5350}
-.status-label{color:#8899a6;font-size:11px;margin-top:4px}
-.update-time{color:#8899a6;font-size:11px;padding:8px 14px;background:#1a1f26;border-radius:8px;margin-top:10px;text-align:center}
-</style></head><body><div class="container"><div class="header"><h1>大宗商品投研平台 <span style="font-size:12px;color:#8899a6;font-weight:normal;">演示版 v0.1</span></h1><div class="header-right"><span class="time">2026年04月30日 03:00</span><span class="tag">数据源：Tushare Pro</span></div></div><div class="main-grid"><div><div class="card"><div class="card-header"><span class="card-title">国内期货实时行情</span><span style="color:#8899a6;font-size:10px">2026-04-24 收盘数据</span></div><div class="card-body"><table><thead><tr><th>品种</th><th>代码</th><th>最新价</th><th>涨跌幅</th><th>合约</th></tr></thead><tbody><tr><td class='name'>沪铜</td><td class='symbol'>CU</td><td class='price'>102,530</td><td style='color:#26a69a'>▲ 0.34%</td><td>CU2605.SHF</td></tr><tr><td class='name'>沪铝</td><td class='symbol'>AL</td><td class='price'>24,980</td><td style='color:#26a69a'>▲ 0.28%</td><td>AL2605.SHF</td></tr><tr><td class='name'>沪镍</td><td class='symbol'>NI</td><td class='price'>141,540</td><td style='color:#26a69a'>▲ 0.53%</td><td>NI2605.SHF</td></tr><tr><td class='name'>沪锌</td><td class='symbol'>ZN</td><td class='price'>24,185</td><td style='color:#26a69a'>▲ 0.35%</td><td>ZN2605.SHF</td></tr><tr><td class='name'>沪金</td><td class='symbol'>AU</td><td class='price'>1,051.4</td><td style='color:#ef5350'>▼ 0.46%</td><td>AU2606.SHF</td></tr><tr><td class='name'>沪银</td><td class='symbol'>AG</td><td class='price'>19,586</td><td style='color:#ef5350'>▼ 1.30%</td><td>AG2606.SHF</td></tr><tr><td class='name'>橡胶</td><td class='symbol'>RU</td><td class='price'>17,070</td><td style='color:#26a69a'>▲ 0.95%</td><td>RU2605.SHF</td></tr><tr><td class='name'>棕榈油</td><td class='symbol'>P</td><td class='price'>9,625</td><td style='color:#26a69a'>▲ 2.03%</td><td>P2605.DCE</td></tr><tr><td class='name'>豆粕</td><td class='symbol'>M</td><td class='price'>2,859</td><td style='color:#26a69a'>▲ 1.45%</td><td>M2605.DCE</td></tr><tr><td class='name'>焦煤</td><td class='symbol'>JM</td><td class='price'>1,114</td><td style='color:#26a69a'>▲ 1.18%</td><td>JM2605.DCE</td></tr></tbody></table></div><div class="update-time">演示数据，实时行情需对接期货公司API</div></div><div class="card" style="margin-top:16px"><div class="card-header"><span class="card-title">伊朗局势追踪</span></div><div class="card-body" style="padding:14px"><div class="status-bar"><div class="status-num">9/10</div><div class="status-label">高度紧张 · 持续中</div></div><div style="margin-top:12px;font-size:11px;color:#b0b8c1;line-height:1.7"><p>• 霍尔木兹实质封锁，通行量约8艘/日（-85pct YoY）</p><p>• 伊朗陆上存储约40m桶，可覆盖约22天出口</p><p>• Trump-Xi峰会（五月14-15日）最大宏观催化剂</p><p>• 市场已对伊美冲突脱敏</p></div></div></div></div><div><div class="card"><div class="card-header"><span class="card-title">外资研报摘要</span><span style="color:#ffd700;font-size:10px">今日更新 · 7份</span></div><div class="card-body" style="padding:12px;max-height:75vh;overflow-y:auto"><div class='report-card'><div class='report-header'><span class='inst-badge'>JPM</span><span class='report-date'>2026.04.21</span></div><div class='report-title'>APAC THEMATICS: Iran talks delayed / Warsh new Fed vision / S&P target 7600 / barbell AI strategy</div><ul class='bullet-list'><li>Iran confirms no peace talks in Pakistan (US blockade called act of war), Trump extends ceasefire. Markets largely desensitized to Iran headlines.</li><li>Kevin Warsh (Fed chair candidate) proposes new Fed framework: balance sheet reduction, AI productivity gains = lower rates possible.</li><li>JPM raises S&P target to 7600 (22x P/E), forecasts 2027 EPS growth +22% YoY.</li><li>Barbell strategy: high-growth AI + low-vol/high-yield. Iran oil storage countdown ~26 days.</li><li>MXASJ flat vs pre-Iran despite 12m forward EPS +10%. EPS momentum not reflected in prices.</li></ul><div class='conclusion' style='color:#ffd700'>中性: Neutral</div></div><div class='report-card'><div class='report-header'><span class='inst-badge'>JPM</span><span class='report-date'>2026.04.22</span></div><div class='report-title'>China Equity Strategy: Trump-Xi summit, imported inflation debate, property recovery</div><ul class='bullet-list'><li>Trump-Xi summit (May 14-15) is key near-term catalyst. MXCN historically +3-4% in the month before.</li><li>Rare earths supply assurance is biggest thematic beneficiary. Soybeans/aircraft/chips = headline risk.</li><li>Consumer recovery not V-shaped (household balance sheet repair takes time). Prefer young generation health demand + tier-1 CBD developers.</li><li>Long-term structural themes: energy security, AI & robotics, selective consumption winners.</li><li>A-share liquidity improving: turnover rate rose from 3.2% (Apr 7) to 4.8% (Apr 20).</li></ul><div class='conclusion' style='color:#ffd700'>中性: Neutral - structural opportunities</div></div><div class='report-card'><div class='report-header'><span class='inst-badge'>GS</span><span class='report-date'>2026.04.21</span></div><div class='report-title'>China Grid Tech: March transformer exports +56% YoY, US exports +118% YoY, price +54% YoY</div><ul class='bullet-list'><li>March total transformer export value +56% YoY (vs electronic meters -6%, switchgear +5%). Strong export trend confirmed.</li><li>US power transformer supply-demand gap: 72% currently, expected to narrow to 60% by 2028 as local capacity expands.</li><li>Export price to US (220-330MVA segment) +54% YoY YTD average. Prices remain elevated.</li><li>Prefer: Sieyuan (Buy), Nari Tech (Buy). Neutral on Huaming (fully reflected).</li><li>GOES (grain-oriented steel) price dipped in Feb but overall raw material costs remain high.</li></ul><div class='conclusion' style='color:#26a69a'>看多: Bullish - volume and price both strong</div></div><div class='report-card'><div class='report-header'><span class='inst-badge'>GS</span><span class='report-date'>2026.04.22</span></div><div class='report-title'>China Healthcare: AACR 2026 - B7H3 ADC encouraging, PD-1/VEGF combo broadly comparable</div><ul class='bullet-list'><li>Hansoh B7-H3 ADC (Ris-Rez) + PD-L1 combo: cORR 47.1% in 2L+ nsq-NSCLC (non-head-to-head vs HLX43 48.6%).</li><li>mPFS 11.2 months (PD-L1 TPS less than 1), vs AK112/chemo 7.1 months. Needs longer follow-up for durability.</li><li>Combo discontinuation rate 7.5% (vs monotherapy 3.2%) - meaningfully higher but acceptable.</li><li>Lepu/Junshi PD-1/VEGF bispecific (LM-299): 1L NSCLC ORR 55% (broadly comparable to AK112).</li><li>Global NSCLC ADC competition is intense. Long-term differentiation requires extended follow-up.</li></ul><div class='conclusion' style='color:#ffd700'>中性: Neutral - ADC pipeline positive but competitive</div></div><div class='report-card'><div class='report-header'><span class='inst-badge'>DB</span><span class='report-date'>2026.04.20</span></div><div class='report-title'>RMB Internationalization Blog (3): Iran war accelerates RMB internationalization</div><ul class='bullet-list'><li>March RMB cross-border payments surged to CNY 9.5 trillion (previously never exceeded CNY 8 trillion). Dollar share dropped below 40% for first time.</li><li>CIPS daily transaction volume averaged RMB 920.5 billion in March (+48.5% MoM), exceeded RMB 1 trillion for first time.</li><li>Iran conflict led China to reduce oil imports from GCC countries (USD settlement) and increase exports to Middle East (RMB settlement).</li><li>CIPS global participants: 194 direct + 1597 indirect participants. Coverage expanding rapidly.</li><li>Petrodollar regime under pressure - RMB internationalization accelerating, but durability uncertain.</li></ul><div class='conclusion' style='color:#ffd700'>中性: Neutral - positive medium-term trend</div></div><div class='report-card'><div class='report-header'><span class='inst-badge'>BNY</span><span class='report-date'>2026.04.23</span></div><div class='report-title'>Silver linings amid the conflict clouds: ECB on hold, ASEAN/LatAm stable</div><ul class='bullet-list'><li>European core inflation steady or falling in March. No pre-emptive rate hike next week from ECB or BoE.</li><li>UK PPI: input +4.4% m/m, output +0.9%. Corporate profit compression ongoing (unsustainable).</li><li>ASEAN balance of payments gap manageable. Bank Indonesia holds rates as expected.</li><li>LatAm currencies may pause after recent gains.</li><li>Iran conflict supply chain impact still transmitting through Europe. Cost pass-through to consumers takes time.</li></ul><div class='conclusion' style='color:#ffd700'>中性: Neutral - ECB holds, Iran conflict persists but does not escalate</div></div><div class='report-card'><div class='report-header'><span class='inst-badge'>JPM</span><span class='report-date'>2026.04.20</span></div><div class='report-title'>Asia Pacific Equity Derivatives: HK/A-share options - low vol environment + bullish technicals</div><ul class='bullet-list'><li>HSTECH/HSCEI calls: low IV + MACD bullish crossover. Asymmetric upside into DeepSeek V4 catalyst.</li><li>March single-stock structured product issuance below redemptions. Vega supply reduced. HK options open interest declining.</li><li>Warrant demand subdued, Southbound flows moderating. Asia-based investors prefer US single-stock options.</li><li>MXASJ EPS +10% vs price flat. EPS momentum not priced in - waiting for catalyst.</li><li>Realized dispersion high supports holding vol positions.</li></ul><div class='conclusion' style='color:#ffd700'>中性: Neutral - low vol env, buy calls for asymmetric setup</div></div></div></div></div></div></div></body></html>
+
+
+
+
+
+.report-title{color:#fff;font-size:12px;font-weight:600;margin-bottom:5px;line-height:1.4}
+
+
+
+
+
+.report-summary{color:#b0b8c1;font-size:11px;line-height:1.6}
+
+
+
+
+
+.report-bull{font-size:11px;font-weight:600;padding-top:5px;margin-top:5px;border-top:1px solid #2f3336}
+
+
+
+
+
+.report-key{font-size:10px;color:#fbbf24;padding-top:4px}
+
+
+
+
+
+.bull-bullish{color:#34d399}.bull-neutral{color:#fbbf24}.bull-bearish{color:#ef5350}
+
+
+
+
+
+
+
+
+
+
+
+/* 板块折叠 */
+
+
+
+
+
+.section{margin-bottom:10px}
+
+
+
+
+
+.section-hdr{display:flex;justify-content:space-between;align-items:center;padding:10px 15px;background:#1a1f26;border-radius:10px;cursor:pointer;user-select:none}
+
+
+
+
+
+.section-hdr:hover{background:#222830}
+
+
+
+
+
+.section-title{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:#fff}
+
+
+
+
+
+.section-title span{font-size:15px}
+
+
+
+
+
+.section-count{background:#252a30;color:#8899a6;font-size:10px;padding:2px 7px;border-radius:10px}
+
+
+
+
+
+.section-arrow{color:#8899a6;font-size:11px;transition:transform 0.2s}
+
+
+
+
+
+.section-hdr.open .section-arrow{transform:rotate(180deg)}
+
+
+
+
+
+.section-body{display:none;padding:8px 4px;gap:8px;flex-wrap:wrap}
+
+
+
+
+
+.section-body.open{display:flex}
+
+
+
+
+
+
+
+
+
+
+
+/* 品种卡片 */
+
+
+
+
+
+.var-card{background:#1a1f26;border-radius:10px;padding:12px;text-decoration:none;color:inherit;display:block;min-width:140px;flex:1;border:1px solid #2f3336;transition:all 0.2s}
+
+
+
+
+
+.var-card:hover{transform:translateY(-2px);border-color:#6366f1}
+
+
+
+
+
+.var-name{color:#fff;font-size:13px;font-weight:700;margin-bottom:1px}
+
+
+
+
+
+.var-sym{color:#8899a6;font-size:10px;margin-bottom:7px}
+
+
+
+
+
+.var-price{font-size:18px;font-weight:700;margin-bottom:1px}
+
+
+
+
+
+.var-chg{font-size:11px;font-weight:500;margin-bottom:4px}
+
+
+
+
+
+.var-oi{font-size:10px;color:#8899a6;margin-bottom:4px}
+
+
+
+
+
+.var-dir{font-size:10px;padding-top:5px;border-top:1px solid #2f3336}
+
+
+
+
+
+.focus-card{border-color:#34d399}
+
+
+
+
+
+.warning-card{border-color:#ef5350}
+
+
+
+
+
+
+
+
+
+
+
+.update-note{color:#6b7280;font-size:11px;text-align:center;padding:12px 0;line-height:2}
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:600px){
+
+
+
+
+
+  .market-section,.news-section,.note-section{grid-template-columns:1fr}
+
+
+
+
+
+  .market-grid{grid-template-columns:repeat(2,1fr)}
+
+
+
+
+
+}
+
+
+
+
+
+</style>
+
+
+
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+
+
+
+<div class="container">
+
+
+
+
+
+<div class="header">
+
+
+
+
+
+  <div class="hdr-left"><h1>大宗商品追踪系统 <span class="subtitle">v1.5</span></h1></div>
+
+
+
+
+
+  <div class="hdr-right"><span class="data-note">每日收盘更新</span><span class="date-tag" id="dataDate">20260427</span></div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 持仓异动滚动条 -->
+
+
+
+
+
+<div class="ticker-wrap">
+
+
+
+
+
+  <div class="ticker-label">🚨 持仓异动</div>
+
+
+
+
+
+  <div class="ticker-track" id="tickerTrack">
+
+
+
+
+
+    <div class="ticker-empty">收盘后自动更新...</div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 搜索框 -->
+
+
+
+
+
+<div class="search-wrap">
+
+
+
+
+
+  <input type="text" class="search-input" id="searchInput" placeholder="🔍 搜索品种名称或代码，如：沪铜、铜、CU、生猪、LH、棕榈油、PTA..." autocomplete="off">
+
+
+
+
+
+  <div class="search-dropdown" id="searchDropdown"></div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 全球市场（热力图） -->
+
+
+
+
+
+<div class="section-title2">🌏 全球市场 <span id="globalUpdateTime" style="font-size:10px;color:#6b7280;font-weight:400;margin-left:8px"></span></div>
+
+
+
+
+
+<div id="globalHeatmap" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 宏观资讯 -->
+
+
+
+
+
+<div class="section-title2">📋 宏观与市场资讯</div>
+
+
+
+
+
+<div class="news-section">
+
+
+
+
+
+  <div class="news-col">
+
+
+
+
+
+    <div class="news-col-hdr">🔥 7×24 财经快讯 <span id="newsCount">--</span></div>
+
+
+
+
+
+    <div id="newsList"><div class="market-loading">加载中...</div></div>
+
+
+
+
+
+    <div class="news-more" id="newsMoreBtn" onclick="toggleNews()">展开更多 ▼</div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+  <div class="news-col">
+
+
+
+
+
+    <div class="news-col-hdr">🏛️ 重要财经日历 <span>今日</span></div>
+
+
+
+
+
+    <div id="macroCalendar"><div class="market-loading">加载中...</div></div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 外资研报摘要（折叠） -->
+
+
+
+
+
+<div class="section-title2" id="reportsToggle" onclick="toggleReports()" style="cursor:pointer">📝 外资研报摘要 <span id="reportsCount" style="font-size:11px;color:#8899a6;font-weight:400"></span> <span id="reportsArrow" style="font-size:10px;color:#6b7280">▼</span></div>
+
+
+
+
+
+<div class="reports-section" id="reportsContainer" style="display:none">
+
+
+
+
+
+  <div class="market-loading">加载中...</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- 品种板块 -->
+
+
+
+
+
+<div class="section-title2">📦 全部追踪品种</div>
+
+
+
+
+
+<div id="sections"><div class="section"><div class="section-hdr open" onclick="toggleSection(this)"><div class="section-title">📊 股指期货 <span class="section-count">2</span></div><span class="section-arrow">▲</span></div><div class="section-body open"><a href="variety-im.html" class="var-card"><div class="var-name">中证1000</div><div class="var-sym">IM</div><div class="var-price">¥8,163.00</div><div class="var-chg down">-0.14%</div><div class="var-dir ">📊 关注</div></a><a href="variety-if.html" class="var-card"><div class="var-name">沪深300</div><div class="var-sym">IF</div><div class="var-price">¥4,713.60</div><div class="var-chg up">+0.02%</div><div class="var-dir ">📊 关注</div></a></div></div><div class="section"><div class="section-hdr open" onclick="toggleSection(this)"><div class="section-title">🥇 有色金属 <span class="section-count">9</span></div><span class="section-arrow">▲</span></div><div class="section-body open"><a href="variety-cu.html" class="var-card"><div class="var-name">CU</div><div class="var-sym">CU</div><div class="var-price">¥102,800.00</div><div class="var-chg up">+0.33%</div><div class="var-dir up">✅ 偏多</div></a><a href="variety-al.html" class="var-card"><div class="var-name">AL</div><div class="var-sym">AL</div><div class="var-price">¥24,855.00</div><div class="var-chg down">-0.04%</div><div class="var-dir up">✅ 偏多</div></a><a href="variety-ni.html" class="var-card"><div class="var-name">NI</div><div class="var-sym">NI</div><div class="var-price">¥149,310.00</div><div class="var-chg up">+3.15%</div><div class="var-dir ">📊 关注</div></a><a href="variety-au.html" class="var-card"><div class="var-name">AU</div><div class="var-sym">AU</div><div class="var-price">¥1,039.42</div><div class="var-chg up">+0.71%</div><div class="var-dir up">✅ 偏多</div></a><a href="variety-ag.html" class="var-card"><div class="var-name">AG</div><div class="var-sym">AG</div><div class="var-price">¥18,820.00</div><div class="var-chg up">+2.05%</div><div class="var-dir up">✅ 偏多</div></a><a href="variety-ao.html" class="var-card"><div class="var-name">氧化铝</div><div class="var-sym">AO</div><div class="var-price">¥2,807.00</div><div class="var-chg down">-0.67%</div><div class="var-dir ">📊 成本支撑</div></a><a href="variety-lc.html" class="var-card"><div class="var-name">LC</div><div class="var-sym">LC</div><div class="var-price">¥75,400.00</div><div class="var-chg down">-0.82%</div><div class="var-dir up">🏆 聚焦品种 · 偏多</div></a><a href="variety-zn.html" class="var-card"><div class="var-name">沪锌</div><div class="var-sym">ZN</div><div class="var-price">¥24,225.00</div><div class="var-chg down">-0.33%</div><div class="var-dir ">📊 关注</div></a><a href="variety-pb.html" class="var-card"><div class="var-name">沪铅</div><div class="var-sym">PB</div><div class="var-price">¥16,660.00</div><div class="var-chg down">-0.51%</div><div class="var-dir "></div></a></div></div><div class="section"><div class="section-hdr open" onclick="toggleSection(this)"><div class="section-title">⚫ 黑色系 <span class="section-count">6</span></div><span class="section-arrow">▲</span></div><div class="section-body open"><a href="variety-i.html" class="var-card"><div class="var-name">铁矿石</div><div class="var-sym">I</div><div class="var-price">¥786.50</div><div class="var-chg up">+0.13%</div><div class="var-dir up">✅ 偏多</div></a><a href="variety-rb.html" class="var-card"><div class="var-name">RB</div><div class="var-sym">RB</div><div class="var-price">¥3,190.00</div><div class="var-chg down">-0.03%</div><div class="var-dir ">📊 成本支撑</div></a><a href="variety-jm.html" class="var-card"><div class="var-name">JM</div><div class="var-sym">JM</div><div class="var-price">¥1,277.00</div><div class="var-chg up">+1.47%</div><div class="var-dir up">✅ 震荡偏强</div></a><a href="variety-sm.html" class="var-card"><div class="var-name">锰硅</div><div class="var-sym">SM</div><div class="var-price">¥6,146.00</div><div class="var-chg down">-0.58%</div><div class="var-dir ">🏆 聚焦品种 · 震荡偏强</div></a><a href="variety-sf.html" class="var-card"><div class="var-name">硅铁</div><div class="var-sym">SF</div><div class="var-price">¥5,794.00</div><div class="var-chg up">+0.79%</div><div class="var-dir ">📊 关注</div></a><a href="variety-j.html" class="var-card"><div class="var-name">J</div><div class="var-sym">J</div><div class="var-price">¥1,848.50</div><div class="var-chg up">+0.85%</div><div class="var-dir "></div></a></div></div><div class="section"><div class="section-hdr open" onclick="toggleSection(this)"><div class="section-title">🛢️ 能源化工 <span class="section-count">8</span></div><span class="section-arrow">▲</span></div><div class="section-body open"><a href="variety-sc.html" class="var-card"><div class="var-name">原油</div><div class="var-sym">SC</div><div class="var-price">¥648.40</div><div class="var-chg up">+1.78%</div><div class="var-dir ">🌊 地缘影响大</div></a><a href="variety-ma.html" class="var-card"><div class="var-name">甲醇</div><div class="var-sym">MA</div><div class="var-price">¥2,895.00</div><div class="var-chg up">+0.83%</div><div class="var-dir ">📊 成本支撑</div></a><a href="variety-ta.html" class="var-card"><div class="var-name">PTA</div><div class="var-sym">TA</div><div class="var-price">¥6,436.00</div><div class="var-chg up">+0.31%</div><div class="var-dir ">📊 成本主导</div></a><a href="variety-eb.html" class="var-card"><div class="var-name">苯乙烯</div><div class="var-sym">EB</div><div class="var-price">¥9,785.00</div><div class="var-chg up">+0.97%</div><div class="var-dir ">📊 成本定价</div></a><a href="variety-eg.html" class="var-card"><div class="var-name">乙二醇</div><div class="var-sym">EG</div><div class="var-price">¥4,842.00</div><div class="var-chg up">+0.39%</div><div class="var-dir "></div></a><a href="variety-pp.html" class="var-card"><div class="var-name">聚丙烯</div><div class="var-sym">PP</div><div class="var-price">¥8,349.00</div><div class="var-chg up">+0.82%</div><div class="var-dir "></div></a><a href="variety-v.html" class="var-card"><div class="var-name">PVC</div><div class="var-sym">V</div><div class="var-price">¥5,189.00</div><div class="var-chg up">+0.29%</div><div class="var-dir "></div></a><a href="variety-l.html" class="var-card"><div class="var-name">塑料</div><div class="var-sym">L</div><div class="var-price">¥8,145.00</div><div class="var-chg up">+0.79%</div><div class="var-dir "></div></a></div></div><div class="section"><div class="section-hdr open" onclick="toggleSection(this)"><div class="section-title">🌾 农产品 <span class="section-count">9</span></div><span class="section-arrow">▲</span></div><div class="section-body open"><a href="variety-ru.html" class="var-card"><div class="var-name">RU</div><div class="var-sym">RU</div><div class="var-price">¥17,225.00</div><div class="var-chg up">+0.97%</div><div class="var-dir ">📊 关注</div></a><a href="variety-p.html" class="var-card"><div class="var-name">棕榈油</div><div class="var-sym">P</div><div class="var-price">¥9,778.00</div><div class="var-chg down">-0.25%</div><div class="var-dir ">📊 跟随马盘</div></a><a href="variety-m.html" class="var-card"><div class="var-name">豆粕</div><div class="var-sym">M</div><div class="var-price">¥2,984.00</div><div class="var-chg down">-0.5%</div><div class="var-dir ">📊 跟随美豆</div></a><a href="variety-lh.html" class="var-card"><div class="var-name">生猪</div><div class="var-sym">LH</div><div class="var-price">¥11,405.00</div><div class="var-chg down">-0.39%</div><div class="var-dir ">🐷 养殖周期</div></a><a href="variety-cf.html" class="var-card"><div class="var-name">棉花</div><div class="var-sym">CF</div><div class="var-price">¥16,195.00</div><div class="var-chg down">-0.43%</div><div class="var-dir ">📊 关注</div></a><a href="variety-sr.html" class="var-card"><div class="var-name">白糖</div><div class="var-sym">SR</div><div class="var-price">¥5,397.00</div><div class="var-chg down">-0.04%</div><div class="var-dir ">📊 关注</div></a><a href="variety-rm.html" class="var-card"><div class="var-name">菜粕</div><div class="var-sym">RM</div><div class="var-price">¥2,381.00</div><div class="var-chg down">-0.04%</div><div class="var-dir "></div></a><a href="variety-y.html" class="var-card"><div class="var-name">豆油</div><div class="var-sym">Y</div><div class="var-price">¥8,527.00</div><div class="var-chg down">-0.52%</div><div class="var-dir ">📊 跟随美豆</div></a><a href="variety-ap.html" class="var-card"><div class="var-name">苹果</div><div class="var-sym">AP</div><div class="var-price">¥7,667.00</div><div class="var-chg down">-1.66%</div><div class="var-dir "></div></a></div></div><div class="section"><div class="section-hdr open" onclick="toggleSection(this)"><div class="section-title">🧱 建材/其他 <span class="section-count">4</span></div><span class="section-arrow">▲</span></div><div class="section-body open"><a href="variety-sa.html" class="var-card"><div class="var-name">纯碱</div><div class="var-sym">SA</div><div class="var-price">¥1,247.00</div><div class="var-chg down">-0.64%</div><div class="var-dir ">📊 关注</div></a><a href="variety-fg.html" class="var-card"><div class="var-name">玻璃</div><div class="var-sym">FG</div><div class="var-price">¥1,079.00</div><div class="var-chg down">-0.83%</div><div class="var-dir ">📊 关注</div></a><a href="variety-bu.html" class="var-card"><div class="var-name">沥青</div><div class="var-sym">BU</div><div class="var-price">¥4,109.00</div><div class="var-chg up">+0.86%</div><div class="var-dir "></div></a><a href="variety-zc.html" class="var-card"><div class="var-name">动力煤</div><div class="var-sym">ZC</div><div class="var-price">¥801.40</div><div class="var-chg neu">0.0%</div><div class="var-dir "></div></a></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="update-note">
+
+
+
+
+
+  📌 点击品种卡片进入详情页（含三层投资框架 + 做多做空信号 + 关键价位 + 投资笔记）<br>
+
+
+
+
+
+  🔍 搜索支持：中英文名称、代码（CU/P/LH/LC等）<br>
+
+
+
+
+
+  管理页面：/admin
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+// ========== 数据 ==========
+
+
+
+
+
+const FRAMES = {"LC":{"name":"碳酸锂","unit":"元/吨","direction":"🏆 聚焦品种 · 偏多","position":"🏆 聚焦","update_date":"2026-04-24","key_levels":[["¥80,000+","偏强","neutral"],["¥72,000-75,000","支撑区","long"],["¥65,000以下","长线布局区","long"]],"macro":{"核心指标":"锂价 · 新能源车产销","当前判断":"澳矿成本支撑，需求旺季临近","观察点":["锂辉石价格","磷酸铁锂排产"]},"supply":{"核心指标":"进口量 · 盐湖产量","当前判断":"进口窗口收窄，供应压力缓解","观察点":["澳矿发运","宜春矿端"]},"signal_long":"澳矿成本支撑+需求旺季+去库","signal_short":"供过于求预期","reversal":"价格涨但去库放缓","news":["下游节前备库启动","澳矿到港量下降"],"reports":[],"pcr":0.6069,"pcr_signal":"极度看跌（抄底信号）"},"SM":{"name":"锰硅","unit":"元/吨","direction":"🏆 聚焦品种 · 震荡偏强","position":"🏆 聚焦","update_date":"2026-04-24","key_levels":[["¥8,500+","偏强","neutral"],["¥7,000-7,500","支撑区","long"],["¥6,500以下","成本支撑区","long"]],"macro":{"核心指标":"南方限电 · 锰矿价格","当前判断":"南方限电收紧供应，成本坚挺","观察点":["南方电网限电","锰矿到港"]},"supply":{"核心指标":"主产区开工率 · 钢厂招标","当前判断":"产区开工降，招标价上调","观察点":["硅锰开工率","北方大厂招标"]},"signal_long":"南方限电加剧+锰矿大涨+招标价上调","signal_short":"限电解除+锰矿到港增加","reversal":"锰矿到港增加+开工率回升","news":["南方限电影响贵州/广西产区","锰矿价格坚挺"],"reports":[]},"JM":{"name":"焦煤","unit":"元/吨","direction":"✅ 震荡偏强","position":"✅ 持仓","update_date":"2026-04-24","key_levels":[["¥1,300+","偏强","neutral"],["¥1,100-1,150","支撑区","long"],["¥950以下","成本支撑区","long"]],"macro":{"核心指标":"澳煤政策 · 蒙煤通关","当前判断":"蒙煤通关正常，供应稳定","观察点":["中蒙口岸通关车数"]},"supply":{"核心指标":"煤矿安检 · 焦化厂开工率","当前判断":"主产区安检持续，供应略紧","观察点":["安检范围","焦化厂补库"]},"signal_long":"安检升级+焦化厂集中补库","signal_short":"澳煤政策放松+焦化厂限产","reversal":"焦化厂库存上来后涨势放缓","news":["主产区安检持续","蒙煤通关800车/日"],"reports":[],"pcr":0.6572,"pcr_signal":"极度看跌（抄底信号）"},"CU":{"name":"沪铜","unit":"元/吨","direction":"✅ 偏多","position":"✅ 持仓","update_date":"2026-04-24","key_levels":[["¥75,000+","偏强","neutral"],["¥72,000-75,000","震荡","neutral"],["¥68,000以下","长线布局区","long"]],"macro":{"核心指标":"铜矿供应 · 中国需求","当前判断":"Trump-Xi峰会（5月14-15日）为核心催化剂","观察点":["铜矿TC/RC","LME库存变化"]},"supply":{"核心指标":"进口窗口 · 硫酸价格","当前判断":"进口窗口微利，冶炼厂检修对冲","观察点":["硫酸价格","进口比价"]},"signal_long":"铜矿供应收紧+中国需求超预期","signal_short":"全球经济衰退+铜矿增产","reversal":"价格强势但现货升水收窄","news":["LME铜库存单周下降5.5万吨","中国进口溢价走强"],"reports":[],"pcr":0.9074,"pcr_signal":"略看跌"},"AL":{"name":"沪铝","unit":"元/吨","direction":"✅ 偏多","position":"✅ 持仓","update_date":"2026-04-24","key_levels":[["¥20,500+","偏强","neutral"],["¥19,000-20,500","震荡","neutral"],["¥18,000以下","成本支撑区","long"]],"macro":{"核心指标":"铝土矿 · 电力成本","当前判断":"水电铝优势显现，成本支撑强","观察点":["云南水电情况","铝土矿进口"]},"supply":{"核心指标":"铝锭库存 · 铝棒加工费","当前判断":"库存不高，旺季去库预期","观察点":["铝锭出库量","铝棒加工费"]},"signal_long":"水电铝减产+需求超预期","signal_short":"产能大规模复产+需求下滑","reversal":"铝价涨但铝棒贴水扩大","news":["云南限电减产10万吨","铝锭社会库存95万吨"],"reports":[],"pcr":1.0233,"pcr_signal":"略看涨"},"NI":{"name":"沪镍","unit":"元/吨","direction":"📊 关注","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥155,000+","偏强","neutral"],["¥130,000-155,000","震荡","neutral"],["¥115,000以下","印尼成本线","long"]],"macro":{"核心指标":"印尼政策 · LME库存","当前判断":"印尼镍矿配额政策暂无变化，LME库存34万吨（历史高位）","观察点":["印尼能矿部配额","LME镍库存"]},"supply":{"核心指标":"不锈钢需求 · 硫酸镍","当前判断":"不锈钢需求疲软，库存压力大","观察点":["不锈钢库存","硫酸镍价格"]},"signal_long":"印尼政策收紧+不锈钢需求回暖","signal_short":"印尼大量新增产能+不锈钢减产","reversal":"镍铁价格率先反弹但期货跟涨有限","news":["印尼新增镍铁项目投产","不锈钢300系库存高位"],"reports":[],"pcr":0.4532,"pcr_signal":"极度看跌（抄底信号）"},"AU":{"name":"沪金","unit":"元/克","direction":"✅ 偏多","position":"✅ 持仓","update_date":"2026-04-24","key_levels":[["¥620+","偏强","neutral"],["¥580-620","支撑区","long"],["¥520以下","长线多头区","long"]],"macro":{"核心指标":"美联储政策 · 地缘风险","当前判断":"美伊战争风险升温，黄金避险需求强劲","观察点":["美联储降息预期","全球央行购金"]},"supply":{"核心指标":"ETF持仓 · COMEX净多头","当前判断":"全球央行持续购金，ETF流入稳定","观察点":["SPDR持仓","COMEX黄金净多头"]},"signal_long":"美伊战争升级+美联储降息+央行购金","signal_short":"美元强势反弹+地缘缓和","reversal":"金银比突破80","news":["美伊局势紧张","全球央行持续购金"],"reports":[],"pcr":1.0716,"pcr_signal":"略看涨"},"AG":{"name":"沪银","unit":"元/千克","direction":"✅ 偏多","position":"✅ 持仓","update_date":"2026-04-24","key_levels":[["¥7,500+","偏强","neutral"],["¥6,500-7,500","震荡","neutral"],["¥5,500以下","成本支撑区","long"]],"macro":{"核心指标":"金银比 · 工业需求","当前判断":"金银比突破80，银价弹性更大","观察点":["金银比","光伏需求"]},"supply":{"核心指标":"白银ETF持仓 · COMEX库存","当前判断":"ETF持仓持续流出，但COMEX库存去化","观察点":["SLV持仓","COMEX白银库存"]},"signal_long":"金银比修复+工业需求回暖","signal_short":"金银比均值回归+避险降温","reversal":"金银比触及85后回落","news":["光伏组件排产增加","白银ETF减持"],"reports":[],"pcr":0.8507,"pcr_signal":"略看跌"},"AO":{"name":"氧化铝","unit":"元/吨","direction":"📊 成本支撑","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥4,000+","偏强","neutral"],["¥3,300-4,000","震荡","neutral"],["¥2,800以下","成本支撑区","long"]],"macro":{"核心指标":"铝土矿 · 烧碱价格","当前判断":"烧碱价格高位，成本支撑强","观察点":["烧碱价格","国产铝土矿"]},"supply":{"核心指标":"氧化铝开工率 · 港口库存","当前判断":"部分产能检修，供应略紧","观察点":["河南/山西开工率","港口库存"]},"signal_long":"烧碱大涨+铝厂补库","signal_short":"烧碱大跌+库存累积","reversal":"氧化铝与烧碱走势背离","news":["烧碱价格高位","成本支撑较强"],"reports":[]},"I":{"name":"铁矿石","unit":"元/干吨","direction":"✅ 偏多","position":"✅ 持仓","update_date":"2026-04-24","key_levels":[["¥850+","偏强","neutral"],["¥750-850","震荡","neutral"],["¥680以下","非主流矿成本线","long"]],"macro":{"核心指标":"钢厂利润 · 发运量","当前判断":"钢厂利润改善，补库积极","观察点":["力拓/必拓发运","钢厂高炉开工"]},"supply":{"核心指标":"港口库存 · 压港船只","当前判断":"港口库存1.3亿吨，压港船只减少","观察点":["澳大利亚发运","港口库存变化"]},"signal_long":"钢厂利润扩大+发运受限","signal_short":"全球需求下滑+发运恢复","reversal":"港口库存下降+贴水收窄","news":["力拓发运受限（热带气旋）","钢厂利润改善补库积极"],"reports":[],"pcr":1.0498,"pcr_signal":"略看涨"},"RB":{"name":"螺纹钢","unit":"元/吨","direction":"📊 成本支撑","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥3,800+","偏强","neutral"],["¥3,200-3,800","震荡","neutral"],["¥2,900以下","电炉成本线","long"]],"macro":{"核心指标":"房地产需求 · 基建投资","当前判断":"地产需求仍弱，基建托底","观察点":["螺纹钢库存","基建投资增速"]},"supply":{"核心指标":"钢厂开工率 · 库存","当前判断":"供应充足，库存压力不大","观察点":["高炉开工率","螺纹钢库存"]},"signal_long":"基建加速+钢厂减产","signal_short":"需求下滑+库存累积","reversal":"库存上升但价格仍强","news":["螺纹钢库存小幅下降","基建需求托底"],"reports":[],"pcr":0.7154,"pcr_signal":"偏看跌"},"SC":{"name":"原油","unit":"元/桶","direction":"🌊 地缘影响大","position":"🌊 关注","update_date":"2026-04-24","key_levels":[["¥650+","偏强","neutral"],["¥550-650","震荡","neutral"],["¥480以下","OPEC成本线","long"]],"macro":{"核心指标":"OPEC产量 · 美伊局势","当前判断":"霍尔木兹通行受限，伊朗库存约26天后耗尽","观察点":["霍尔木兹通行量","伊朗导弹库存"]},"supply":{"核心指标":"美国产量 · 战略库存","当前判断":"美国页岩油增产缓慢","观察点":["EIA库存","贝克休斯钻井数"]},"signal_long":"霍尔木兹封锁+库存耗尽","signal_short":"美伊谈判成功+伊朗出口恢复","reversal":"油价大涨后，沙特趁机增产","news":["霍尔木兹通行受限","伊朗库存约26天后耗尽"],"reports":[],"pcr":0.6771,"pcr_signal":"极度看跌（抄底信号）"},"MA":{"name":"甲醇","unit":"元/吨","direction":"📊 成本支撑","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥2,800+","偏强","neutral"],["¥2,400-2,800","震荡","neutral"],["¥2,100以下","成本支撑区","long"]],"macro":{"核心指标":"煤炭价格 · 天然气","当前判断":"煤炭价格稳定，成本支撑","观察点":["内矿价格","天然气价格"]},"supply":{"核心指标":"甲醇装置开工率 · 库存","当前判断":"装置检修，供应收紧","观察点":["甲醇开工率","港口库存"]},"signal_long":"煤炭上涨+装置意外停车","signal_short":"煤炭下跌+库存累积","reversal":"库存上升但价格不跌","news":["甲醇装置检修中","港口库存下降"],"reports":[],"pcr":0.6918,"pcr_signal":"极度看跌（抄底信号）"},"TA":{"name":"PTA","unit":"元/吨","direction":"📊 成本主导","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥6,000+","偏强","neutral"],["¥5,200-6,000","震荡","neutral"],["¥4,600以下","成本支撑区","long"]],"macro":{"核心指标":"聚酯需求 · 纺织服装出口","当前判断":"聚酯负荷高，需求支撑强","观察点":["聚酯开工率","纺织服装出口"]},"supply":{"核心指标":"PTA装置检修 · 聚酯需求","当前判断":"PTA库存不高，需求稳定","观察点":["PTA周产量","聚酯现金流"]},"signal_long":"聚酯需求超预期+装置意外检修","signal_short":"聚酯减产+原油大跌","reversal":"加工费高位但库存累积","news":["聚酯负荷维持高位","PTA装置检修中"],"reports":[],"pcr":0.6392,"pcr_signal":"极度看跌（抄底信号）"},"EB":{"name":"苯乙烯","unit":"元/吨","direction":"📊 成本定价","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥9,500+","偏强","neutral"],["¥8,000-9,500","震荡","neutral"],["¥7,000以下","成本支撑区","long"]],"macro":{"核心指标":"纯苯价格 · 下游需求","当前判断":"纯苯支撑，PS/EPS需求平稳","观察点":["纯苯价格","下游开工率"]},"supply":{"核心指标":"装置开工率 · 港口库存","当前判断":"供应稳定，库存不高","观察点":["EB开工率","华东港口库存"]},"signal_long":"纯苯大涨+下游需求超预期","signal_short":"纯苯大跌+装置复产","reversal":"港口库存累积","news":["纯苯价格支撑较强"],"reports":[]},"RU":{"name":"天然橡胶","unit":"元/吨","direction":"📊 关注","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥17,500+","偏强","neutral"],["¥15,000-17,500","震荡","neutral"],["¥13,000以下","割胶成本线","long"]],"macro":{"核心指标":"ANRPC产量 · 汽车产销","当前判断":"国内产区开割，供应预期增加","观察点":["ANRPC产量","青岛库存"]},"supply":{"核心指标":"青岛库存 · 下游开工","当前判断":"青岛库存高位，去化缓慢","观察点":["青岛保税区库存","全钢胎开工率"]},"signal_long":"汽车产销超预期+收储预期","signal_short":"丰产压力+需求下滑","reversal":" RU-NR价差持续收窄","news":["海南产区陆续开割","全钢胎开工率偏低"],"reports":[],"pcr":0.9224,"pcr_signal":"略看跌"},"P":{"name":"棕榈油","unit":"元/吨","direction":"📊 跟随马盘","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥9,000+","偏强","neutral"],["¥7,500-9,000","震荡","neutral"],["¥6,500以下","成本支撑区","long"]],"macro":{"核心指标":"马棕产量 · 印尼出口政策","当前判断":"MPOB报告偏多","观察点":["马棕产量","印尼出口政策"]},"supply":{"核心指标":"港口库存 · 豆棕价差","当前判断":"库存不高，豆棕价差收窄","观察点":["国内港口库存","豆棕价差"]},"signal_long":"马棕大幅减产+印尼收紧出口","signal_short":"马棕复产+需求下滑","reversal":"豆棕价差持续收窄","news":["马棕库存下降","豆棕价差收窄"],"reports":[],"pcr":0.8717,"pcr_signal":"略看跌"},"M":{"name":"豆粕","unit":"元/吨","direction":"📊 跟随美豆","position":"📊 饲料","update_date":"2026-04-24","key_levels":[["¥3,800+","偏强","neutral"],["¥3,200-3,800","震荡","neutral"],["¥2,800以下","成本支撑区","long"]],"macro":{"核心指标":"美豆价格 · 豆粕库存","当前判断":"CBOT大豆偏强支撑成本","观察点":["CBOT大豆","美豆装港"]},"supply":{"核心指标":"大豆到港量 · 油厂开机率","当前判断":"到港量稳定，库存平稳","观察点":["大豆到港量","油厂开机率"]},"signal_long":"美豆大涨+饲料需求超预期","signal_short":"美豆大跌+库存累积","reversal":"油厂开机率不降但豆粕累库","news":["豆粕库存平稳","饲料需求正常"],"reports":[],"pcr":0.8967,"pcr_signal":"略看跌"},"LH":{"name":"生猪","unit":"元/吨","direction":"🐷 养殖周期","position":"🐷 养殖","update_date":"2026-04-24","key_levels":[["¥16,000+","偏强","neutral"],["¥14,000-16,000","震荡","neutral"],["¥12,000以下","养殖成本区","long"]],"macro":{"核心指标":"能繁母猪存栏 · 收储政策","当前判断":"去产能持续，周期底部","观察点":["能繁母猪存栏","收储政策"]},"supply":{"核心指标":"出栏量 · 屠宰开工率","当前判断":"出栏量高位，供应充足","观察点":["出栏量","屠宰开工率"]},"signal_long":"去产能超预期+收储加码","signal_short":"二次育肥出栏+需求下滑","reversal":"仔猪价格先于肉猪上涨","news":["生猪去产能持续","养殖成本支撑较强"],"reports":[],"pcr":1.4579,"pcr_signal":"极度看涨（逃顶信号）"},"CF":{"name":"棉花","unit":"元/吨","direction":"📊 关注","position":"📊 农产品","update_date":"2026-04-24","key_levels":[["¥16,000+","偏强","neutral"],["¥14,000-16,000","震荡","neutral"],["¥12,500以下","新疆成本线","long"]],"macro":{"核心指标":"美棉价格 · 新疆棉政策","当前判断":"美棉偏强支撑国内","观察点":["美棉走势","新疆棉政策"]},"supply":{"核心指标":"商业库存 · 纺企开工率","当前判断":"商业库存偏高，需求平稳","观察点":["商业库存","纺企开机率"]},"signal_long":"美棉大涨+纺企补库","signal_short":"美棉大跌+订单下滑","reversal":"纺企库存持续下降","news":["美棉价格偏强"],"reports":[],"pcr":0.4464,"pcr_signal":"极度看跌（抄底信号）"},"SR":{"name":"白糖","unit":"元/吨","direction":"📊 关注","position":"📊 农产品","update_date":"2026-04-24","key_levels":[["¥6,500+","偏强","neutral"],["¥5,800-6,500","震荡","neutral"],["¥5,000以下","成本支撑区","long"]],"macro":{"核心指标":"原糖价格 · 进口成本","当前判断":"原糖偏强，进口窗口收窄","观察点":["原糖走势","进口利润"]},"supply":{"核心指标":"国产糖产量 · 库存","当前判断":"本榨季产量下降，库存偏紧","观察点":["国产糖产量","糖厂库存"]},"signal_long":"原糖大涨+进口利润倒挂","signal_short":"原糖大跌+抛储","reversal":"进口大量到港","news":["原糖偏强运行"],"reports":[],"pcr":1.0152,"pcr_signal":"略看涨"},"SA":{"name":"纯碱","unit":"元/吨","direction":"📊 关注","position":"📊 建材","update_date":"2026-04-24","key_levels":[["¥2,800+","偏强","neutral"],["¥2,200-2,800","震荡","neutral"],["¥1,800以下","成本支撑区","long"]],"macro":{"核心指标":"浮法玻璃 · 光伏玻璃","当前判断":"浮法玻璃冷修增加，需求转弱","观察点":["浮法玻璃冷修","纯碱库存"]},"supply":{"核心指标":"氨碱法/联碱法开工率","当前判断":"开工率高位，供应充足","观察点":["纯碱开工率","碱厂库存"]},"signal_long":"光伏玻璃投产+冷修减少","signal_short":"浮法玻璃大规模冷修","reversal":"纯碱厂库存持续下降","news":["纯碱开工率维持高位"],"reports":[],"pcr":0.9865,"pcr_signal":"略看跌"},"FG":{"name":"玻璃","unit":"元/吨","direction":"📊 关注","position":"📊 建材","update_date":"2026-04-24","key_levels":[["¥1,600+","偏强","neutral"],["¥1,300-1,600","震荡","neutral"],["¥1,100以下","成本支撑区","long"]],"macro":{"核心指标":"房地产竣工 · 深加工订单","当前判断":"竣工面积下降，需求疲软","观察点":["竣工面积","深加工订单"]},"supply":{"核心指标":"在产产能 · 库存","当前判断":"冷修增加，库存压力略缓解","观察点":["在产日熔量","玻璃库存"]},"signal_long":"政策松绑+冷修加速","signal_short":"需求下滑+库存累积","reversal":"库存突然下降","news":["浮法玻璃库存高位","冷修产线增加"],"reports":[]},"ZN":{"name":"沪锌","unit":"元/吨","direction":"📊 关注","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥25,000+","偏强","neutral"],["¥22,000-25,000","震荡","neutral"],["¥20,000以下","成本支撑区","long"]],"macro":{"核心指标":"锌矿供应 · 镀锌需求","当前判断":"锌矿供应偏紧，镀锌需求平稳","观察点":["锌矿TC","镀锌板出口"]},"supply":{"核心指标":"锌矿进口量 · 冶炼厂开工率","当前判断":"矿端紧张传导至锭","观察点":["锌矿到港","冶炼厂库存"]},"signal_long":"锌矿大涨+镀锌需求超预期","signal_short":"矿端放松+需求下滑","reversal":"LME库存持续下降","news":["锌矿TC加工费下降","镀锌板出口保持增长"],"reports":[],"pcr":0.8818,"pcr_signal":"略看跌"},"Y":{"name":"豆油","unit":"元/吨","direction":"📊 跟随美豆","position":"📊 农产品","update_date":"2026-04-24","key_levels":[["¥8,500+","偏强","neutral"],["¥7,200-8,500","震荡","neutral"],["¥6,500以下","成本支撑区","long"]],"macro":{"核心指标":"美豆价格 · 马棕走势","当前判断":"美豆偏强，国内供应偏紧","观察点":["CBOT大豆","马棕产量"]},"supply":{"核心指标":"大豆到港量 · 油厂开机率","当前判断":"豆油库存偏低，供应偏紧","观察点":["大豆到港","豆油库存"]},"signal_long":"美豆大涨+豆油库存持续下降","signal_short":"美豆大跌+油厂累库","reversal":"豆油库存拐头上升","news":["豆油库存持续下降","油厂开机率稳定"],"reports":[],"pcr":1.0296,"pcr_signal":"略看涨"},"PX":{"name":"对二甲苯","unit":"元/吨","direction":"🏆 聚焦品种","position":"🏆 聚焦","update_date":"2026-04-24","key_levels":[["¥8,500+","偏强","neutral"],["¥7,000-8,500","震荡","neutral"],["¥6,000以下","成本支撑区","long"]],"macro":{"核心指标":"PX进口量 · 聚酯需求","当前判断":"大摩测算PTA利润修复，PX需求支撑强","观察点":["PX进口量","聚酯开工率"]},"supply":{"核心指标":"PX装置开工率 · PTA需求","当前判断":"国内PX新产能释放，供应压力增加","观察点":["PX开工率","PTA开工率"]},"signal_long":"PTA检修少+聚酯需求强","signal_short":"PX新产能释放+聚酯减产","reversal":"PX社会库存持续下降","news":["聚酯负荷维持高位","PX新装置即将投产"],"reports":[]},"IM":{"name":"中证1000","unit":"点","direction":"📊 关注","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥6,500+","偏强","neutral"],["¥5,500-6,500","震荡","neutral"],["¥4,500以下","成本支撑区","long"]],"macro":{"核心指标":"沪深300 PMI","当前判断":"Trump-Xi峰会（5月14-15日）为核心催化剂","观察点":["美股走势","北向资金"]},"supply":{"核心指标":"指数成分股盈利","当前判断":"盈利预期下修，但政策加码预期支撑","观察点":["北向资金","融资融券"]},"signal_long":"政策大幅加码+外资大幅流入","signal_short":"美股暴跌+外资流出","reversal":"沪深300反弹但成交量未放大","news":[],"reports":[]},"IF":{"name":"沪深300","unit":"点","direction":"📊 关注","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥6,500+","偏强","neutral"],["¥5,500-6,500","震荡","neutral"],["¥4,500以下","成本支撑区","long"]],"macro":{"核心指标":"沪深300 PMI","当前判断":"Trump-Xi峰会（5月14-15日）为核心催化剂","观察点":["美股走势","北向资金"]},"supply":{"核心指标":"指数成分股盈利","当前判断":"盈利预期下修，但政策加码预期支撑","观察点":["北向资金","融资融券"]},"signal_long":"政策大幅加码+外资大幅流入","signal_short":"美股暴跌+外资流出","reversal":"沪深300反弹但成交量未放大","news":[],"reports":[]},"SF":{"name":"硅铁","unit":"元/吨","direction":"📊 关注","position":"📊 关注","update_date":"2026-04-24","key_levels":[["¥7,500+","偏强","neutral"],["¥6,500-7,500","震荡","neutral"],["¥5,800以下","成本支撑区","long"]],"macro":{"核心指标":"电价 · 兰炭价格","当前判断":"电价稳定，兰炭成本支撑","观察点":["主产区电价","兰炭价格"]},"supply":{"核心指标":"主产区开工率 · 出口订单","当前判断":"开工率高位，供应充足","观察点":["主产区开工率","出口订单"]},"signal_long":"电力紧张+出口大增","signal_short":"产能复产+出口下滑","reversal":"库存下降但价格不涨","news":["硅铁出口订单增加"],"reports":[]},"IO":{"pcr":0.8229,"pcr_signal":"偏看跌","hv":null,"direction":"","支撑":"","压力":""},"MO":{"pcr":0.8793,"pcr_signal":"略看跌","hv":null,"direction":"","支撑":"","压力":""},"J":{"pcr":0.8716,"pcr_signal":"略看跌","hv":null,"direction":"","支撑":"","压力":""},"V":{"pcr":0.8979,"pcr_signal":"略看跌","hv":null,"direction":"","支撑":"","压力":""},"PP":{"pcr":0.4227,"pcr_signal":"极度看跌（抄底信号）","hv":null,"direction":"","支撑":"","压力":""},"L":{"pcr":1.3831,"pcr_signal":"极度看涨（逃顶信号）","hv":null,"direction":"","支撑":"","压力":""},"EG":{"pcr":0.636,"pcr_signal":"极度看跌（抄底信号）","hv":null,"direction":"","支撑":"","压力":""},"RM":{"pcr":0.9564,"pcr_signal":"略看跌","hv":null,"direction":"","支撑":"","压力":""},"AP":{"pcr":1.7134,"pcr_signal":"极度看涨（逃顶信号）","hv":null,"direction":"","支撑":"","压力":""},"PB":{"pcr":1.0676,"pcr_signal":"略看涨","hv":null,"direction":"","支撑":"","压力":""}};
+
+
+
+
+
+const PRICES = {"CU":{"price":102800.0,"change":0.33,"date":"20260427","oi":212045.0,"oi_change":1445.0,"name":"CU"},"AL":{"price":24855.0,"change":-0.04,"date":"20260427","oi":333801.0,"oi_change":6479.0,"name":"AL"},"NI":{"price":149310.0,"change":3.15,"date":"20260427","oi":191745.0,"oi_change":15755.0,"name":"NI"},"AU":{"price":1039.42,"change":0.71,"date":"20260427","oi":173811.0,"oi_change":-5400.0,"name":"AU"},"AG":{"price":18820.0,"change":2.05,"date":"20260427","oi":208635.0,"oi_change":-13865.0,"name":"AG"},"AO":{"price":2807.0,"change":-0.67,"date":"20260424","oi":287256,"oi_chg":1090,"oi_change":0.4,"name":"氧化铝"},"I":{"price":786.5,"change":0.13,"date":"20260424","oi":580558,"oi_chg":16856,"oi_change":3.0,"name":"铁矿石"},"RB":{"price":3190.0,"change":-0.03,"date":"20260427","oi":1790156.0,"oi_change":30899.0,"name":"RB"},"HC":{"price":3392.0,"change":-0.09,"date":"20260424","oi":1785520,"oi_chg":85580,"oi_change":5.0,"name":"热卷"},"JM":{"price":1277.0,"change":1.47,"date":"20260427","oi":431993.0,"oi_change":13163.0,"name":"JM"},"SM":{"price":6146.0,"change":-0.58,"date":"20260424","oi":285857,"oi_chg":15337,"oi_change":5.7,"name":"锰硅"},"SC":{"price":648.4,"change":1.78,"date":"20260424","oi":41561,"oi_chg":-1182,"oi_change":-2.8,"name":"原油"},"MA":{"price":2895.0,"change":0.83,"date":"20260424","oi":631322,"oi_chg":15361,"oi_change":2.5,"name":"甲醇"},"TA":{"price":6436.0,"change":0.31,"date":"20260424","oi":933910,"oi_chg":7849,"oi_change":0.8,"name":"PTA"},"EB":{"price":9785.0,"change":0.97,"date":"20260424","oi":237091,"oi_chg":8,"oi_change":0.0,"name":"苯乙烯"},"RU":{"price":17225.0,"change":0.97,"date":"20260427","oi":194078.0,"oi_change":821.0,"name":"RU"},"P":{"price":9778.0,"change":-0.25,"date":"20260424","oi":470423,"oi_chg":24,"oi_change":0.0,"name":"棕榈油"},"M":{"price":2984.0,"change":-0.5,"date":"20260424","oi":2471408,"oi_chg":-746,"oi_change":-0.0,"name":"豆粕"},"LH":{"price":11405.0,"change":-0.39,"date":"20260424","oi":203379,"oi_chg":-5479,"oi_change":-2.6,"name":"生猪"},"CF":{"price":16195.0,"change":-0.43,"date":"20260424","oi":815586,"oi_chg":-17501,"oi_change":-2.1,"name":"棉花"},"SR":{"price":5397.0,"change":-0.04,"date":"20260424","oi":589183,"oi_chg":-2811,"oi_change":-0.5,"name":"白糖"},"SA":{"price":1247.0,"change":-0.64,"date":"20260424","oi":890710,"oi_chg":-8419,"oi_change":-0.9,"name":"纯碱"},"FG":{"price":1079.0,"change":-0.83,"date":"20260424","oi":1254984,"oi_chg":-9636,"oi_change":-0.8,"name":"玻璃"},"IF":{"price":4713.6,"change":0.02,"date":"20260424","oi":138176,"oi_chg":-3549,"oi_change":-2.5,"name":"沪深300"},"IM":{"price":8163.0,"change":-0.14,"date":"20260424","oi":209086,"oi_chg":-318,"oi_change":-0.2,"name":"中证1000"},"ZN":{"price":24225.0,"change":-0.33,"date":"20260424","oi":103942,"oi_chg":1826,"oi_change":1.8,"name":"沪锌"},"Y":{"price":8527.0,"change":-0.52,"date":"20260424","oi":706493,"oi_chg":-6245,"oi_change":-0.9,"name":"豆油"},"J":{"price":1848.5,"change":0.85,"date":"20260427","oi":29465.0,"oi_change":1994.0,"name":"J"},"PB":{"price":16660.0,"change":-0.51,"date":"20260423","oi":71059,"oi_chg":7227,"oi_change":11.3,"name":"沪铅"},"BU":{"price":4109.0,"change":0.86,"date":"20260423","oi":209900,"oi_chg":5278,"oi_change":2.6,"name":"沥青"},"PP":{"price":8349.0,"change":0.82,"date":"20260423","oi":397318,"oi_chg":741,"oi_change":0.2,"name":"聚丙烯"},"V":{"price":5189.0,"change":0.29,"date":"20260423","oi":925421,"oi_chg":26269,"oi_change":2.9,"name":"PVC"},"L":{"price":8145.0,"change":0.79,"date":"20260423","oi":346165,"oi_chg":7692,"oi_change":2.3,"name":"塑料"},"EG":{"price":4842.0,"change":0.39,"date":"20260423","oi":268029,"oi_chg":10920,"oi_change":4.2,"name":"乙二醇"},"SF":{"price":5794.0,"change":0.79,"date":"20260423","oi":223462,"oi_chg":-851,"oi_change":-0.4,"name":"硅铁"},"AP":{"price":7667.0,"change":-1.66,"date":"20260423","oi":108987,"oi_chg":19943,"oi_change":22.4,"name":"苹果"},"RM":{"price":2381.0,"change":-0.04,"date":"20260423","oi":773323,"oi_chg":3760,"oi_change":0.5,"name":"菜粕"},"ZC":{"price":801.4,"change":0.0,"date":"20260423","oi":0,"oi_chg":0,"oi_change":0.0,"name":"动力煤"},"IC":{"price":8177.0,"change":-0.9,"date":"20260423","oi":159238,"oi_chg":5811,"oi_change":3.8,"name":"中证500"},"IH":{"price":2911.2,"change":-0.13,"date":"20260423","oi":60680,"oi_chg":3231,"oi_change":5.6,"name":"上证50"},"LC":{"price":75400,"change":-0.82,"date":"2026-04-23"}};
+
+
+
+
+
+const GLOBAL = {"CSI300":{"name":"沪深300","price":4799.627,"change":0.66},"CSI500":{"name":"中证500","price":8376.1808,"change":1.28},"GEM":{"name":"创业板指","price":3752.7591,"change":1.73},"SPX":{"name":"标普500","price":7173.91,"change":0.0},"NDX":{"name":"纳斯达克","price":24663.7991,"change":-0.9},"DJI":{"name":"道琼斯","price":49141.9297,"change":-0.05},"VIX":{"name":"恐慌指数","price":22.0,"change":0.0},"DXY":{"name":"美元指数","price":99.0,"change":0.0},"XAU":{"name":"黄金(美元)","price":4618.576,"change":0.22},"XAG":{"name":"白银(美元)","price":74.158,"change":0.56},"CL":{"name":"WTI原油","price":99.204,"change":-0.73},"HSI":{"name":"恒生指数","price":25814.37,"change":-1.077},"NKY":{"name":"日经225","price":38000.0,"change":0.0},"CNH":{"name":"离岸人民币","price":7.25,"change":0.0}};
+
+
+
+
+
+const REPORTS = [{"inst":"Citi","instColor":"#f97316","date":"2026.04.29","title":"政治局会议解读：政策以执行替代刺激，AI+升至最高优先级","summary":"花旗：4月政治局会议为2019年来最短声明，传递\"以执行替代刺激\"信号。无强刺激工具，降准预期推至下半年。AI+被两次提及创历史新高，六大基建方向明确。人民币\"基本稳定\"≠大幅升值，房产仅稳不救。","detail":"花旗：4月政治局会议为2019年来最短声明，传递\"以执行替代刺激\"信号。无强刺激工具，降准预期推至下半年。AI+被两次提及创历史新高，六大基建方向明确。人民币\"基本稳定\"≠大幅升值，房产仅稳不救。","bull":"Neutral","signal":"财政收敛，货币审慎","key":"AI+国家战略，基础设施高个位数增长","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.29","title":"政治局会议：AI+创历史最高优先级，不再预期2026年降准","summary":"高盛：货币政策不再预期今年降准（此前预计降准50bp）。AI+被两次提及创历史新高，六大基础设施方向确认：算力网、通信网、水网、电网、地下管网、物流网。房产仅稳不救，无中央层面新工具。","detail":"高盛：货币政策不再预期今年降准（此前预计降准50bp）。AI+被两次提及创历史新高，六大基础设施方向确认：算力网、通信网、水网、电网、地下管网、物流网。房产仅稳不救，无中央层面新工具。","bull":"Neutral","signal":"政策连续性优先，精准滴灌","key":"AI+最高优先级，下半年降准概率下降","link":""},{"inst":"UBS","instColor":"#8b5cf6","date":"2026.04.29","title":"政治局会议：审慎乐观，能源安全一石三鸟","summary":"瑞银：会议声明为近7年最短，信心充足但审慎推进。能源投资\"一石三鸟\"：经济安全+支撑AI+拉动内需。环保政策在经济强劲时执行更激进，大型现代龙头企业受益。人民币过快升值将触发干预（2-3月已两次出手）。","detail":"瑞银：会议声明为近7年最短，信心充足但审慎推进。能源投资\"一石三鸟\"：经济安全+支撑AI+拉动内需。环保政策在经济强劲时执行更激进，大型现代龙头企业受益。人民币过快升值将触发干预（2-3月已两次出手）。","bull":"Neutral","signal":"审慎推进，大型龙头受益","key":"能源安全战略地位提升，汇率有序升值","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.28","title":"原油：资本支出新周期开启，2026年供需缺口3mb/d","summary":"高盛：2026年全球供需缺口约3百万桶/天，Q2缺口高达9.6百万桶/天。布伦特Q2-Q4预测$90-$100/桶。全年capex上行周期开启，五大Buy标的：Halliburton、ConocoPhillips、Valero、Diamondback、Cenovus。炼油毛利Gulf Coast同比+95%。","detail":"高盛：2026年全球供需缺口约3百万桶/天，Q2缺口高达9.6百万桶/天。布伦特Q2-Q4预测$90-$100/桶。全年capex上行周期开启，五大Buy标的：Halliburton、ConocoPhillips、Valero、Diamondback、Cenovus。炼油毛利Gulf Coast同比+95%。","bull":"Bullish","signal":"做多原油/炼油","key":"Brent $90-$100/桶，炼油>上游","link":""},{"inst":"DB","instColor":"#f59e0b","date":"2026.04.27","title":"霍尔木兹封锁恶化，4月供应中断12-12.9mb/d","summary":"德银：伊朗IRGC于4月19日恢复通行限制，效果比美国封锁更严厉。4月供应中断量12-12.9百万桶/天，比3月13百万桶更高。海峡重新开放时间从5月推迟至6月。中国炼厂加工量持续下滑，油价高于$96概率增加。","detail":"德银：伊朗IRGC于4月19日恢复通行限制，效果比美国封锁更严厉。4月供应中断量12-12.9百万桶/天，比3月13百万桶更高。海峡重新开放时间从5月推迟至6月。中国炼厂加工量持续下滑，油价高于$96概率增加。","bull":"Bullish","signal":"做多原油","key":"霍尔木兹紧张，油价上行风险$96+","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.28","title":"亚洲韧性：能源冲击下的早期抵御力","summary":"高盛：亚洲在能源冲击中展现早期韧性。中国相对有利：油气28%+12亿桶储备+能源进口多元化。AI已改变战争形态，持续强化AI作为中国股市主导主题。","detail":"高盛：亚洲在能源冲击中展现早期韧性。中国相对有利：油气28%+12亿桶储备+能源进口多元化。AI已改变战争形态，持续强化AI作为中国股市主导主题。","bull":"Bullish","signal":"A港股超配","key":"MSCI中国24%回报空间，AI主题持续","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.28","title":"中国汽车：1Q26 ADR前瞻，分化趋势延续","summary":"高盛：1Q26中国汽车行业分化明显：新车型周期驱动销量+ASP提升，但利润率承压。出口市场增长强劲，国内市场竞争加剧。","detail":"高盛：1Q26中国汽车行业分化明显：新车型周期驱动销量+ASP提升，但利润率承压。出口市场增长强劲，国内市场竞争加剧。","bull":"Mixed","signal":"分化，精选龙头","key":"新车型周期vs利润率压力","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.28","title":"中国消费：1Q26宠物食品业绩整体不及预期","summary":"高盛：1Q26宠物食品行业业绩整体不及预期，反映消费复苏力度仍然疲弱。成本端通胀压力开始显现。","detail":"高盛：1Q26宠物食品行业业绩整体不及预期，反映消费复苏力度仍然疲弱。成本端通胀压力开始显现。","bull":"Bearish","signal":"谨慎消费板块","key":"消费疲弱，成本压力显现","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.28","title":"中国房地产周报：成交面积持续改善","summary":"高盛：第17周30城成交面积继续增长，改善趋势延续。政策支持下房地产市场初现企稳迹象，但整体复苏仍需时间。","detail":"高盛：第17周30城成交面积继续增长，改善趋势延续。政策支持下房地产市场初现企稳迹象，但整体复苏仍需时间。","bull":"Neutral","signal":"房产初稳","key":"成交面积改善，复苏仍需时间","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.28","title":"中国智能手机：3月出货量环比+24%，新机型密集发布","summary":"高盛：3月中国智能手机出货量环比增长24%，受益于新机型密集发布。AI功能成为主要卖点，高端化趋势延续。","detail":"高盛：3月中国智能手机出货量环比增长24%，受益于新机型密集发布。AI功能成为主要卖点，高端化趋势延续。","bull":"Bullish","signal":"手机需求回暖","key":"出货量环比+24%，高端化趋势","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.28","title":"中国电力：欧洲能源安全——公用事业处于电气化核心","summary":"高盛：欧洲能源安全框架下，公用事业公司处于欧洲电气化核心位置。储能、智能电网需求爆发。","detail":"高盛：欧洲能源安全框架下，公用事业公司处于欧洲电气化核心位置。储能、智能电网需求爆发。","bull":"Bullish","signal":"欧洲电网投资","key":"电气化核心，公用事业受益","link":""},{"inst":"JPM","instColor":"#6366f1","date":"2026.04.28","title":"美国能源：伊朗提议谈判，美国能源出口创纪录","summary":"摩根大通：伊朗提出开放谈判提案，霍尔木兹局势出现缓和曙光。美国能源出口创历史新高，LNG运输船订单活跃。","detail":"摩根大通：伊朗提出开放谈判提案，霍尔木兹局势出现缓和曙光。美国能源出口创历史新高，LNG运输船订单活跃。","bull":"Bullish","signal":"美国能源出口商受益","key":"LNG出口创纪录，油价高位","link":""},{"inst":"JPM","instColor":"#6366f1","date":"2026.04.28","title":"日本银行股+4%：鹰派日本央行带动，目标价空间大","summary":"摩根大通：日本央行转向鹰派立场，日本银行股上涨4%。近期股价与盈利/PE出现背离，提供配置空间。","detail":"摩根大通：日本央行转向鹰派立场，日本银行股上涨4%。近期股价与盈利/PE出现背离，提供配置空间。","bull":"Bullish","signal":"超配日本银行","key":"日本银行PE折让，央行鹰派受益","link":""},{"inst":"MS","instColor":"#60a5fa","date":"2026.04.24","title":"亚洲竞争格局重塑：投资亚洲竞争力再定义","summary":"摩根士丹利：亚洲在全球供应链重构中竞争力持续强化。半导体、AI、新能源成为区域合作新焦点。","detail":"摩根士丹利：亚洲在全球供应链重构中竞争力持续强化。半导体、AI、新能源成为区域合作新焦点。","bull":"Bullish","signal":"亚洲竞争力重塑","key":"AI+半导体主导，供应链重构","link":""},{"inst":"MS","instColor":"#60a5fa","date":"2026.04.26","title":"中国自由流动性vs MSCI中国同比变化","summary":"摩根士丹利：中国自由流动性指标与MSCI中国指数同比变化高度相关。当前流动性环境支持A股估值修复。","detail":"摩根士丹利：中国自由流动性指标与MSCI中国指数同比变化高度相关。当前流动性环境支持A股估值修复。","bull":"Bullish","signal":"A股流动性支持","key":"流动性支持估值，MSCI中国修复","link":""},{"inst":"CA","instColor":"#ec4899","date":"2026.04.27","title":"中国周度动态：政治局料聚焦稳定与安全","summary":"荷兰国际集团：4月政治局会议预计聚焦稳定与安全，而非强刺激。政策连续性优先，防风险为主线。","detail":"荷兰国际集团：4月政治局会议预计聚焦稳定与安全，而非强刺激。政策连续性优先，防风险为主线。","bull":"Neutral","signal":"政策稳字当头","key":"稳定优先，改革节奏平稳","link":""},{"inst":"Citi","instColor":"#f97316","date":"2026.04.27","title":"中国冲突影响追踪：价格影响减弱，经济影响上升","summary":"花旗：中东冲突对全球的价格冲击正在减弱，但经济影响开始显现。中国经济相对韧性，但出口压力上升。","detail":"花旗：中东冲突对全球的价格冲击正在减弱，但经济影响开始显现。中国经济相对韧性，但出口压力上升。","bull":"Neutral","signal":"经济影响显现","key":"出口压力+，内需韧性强","link":""},{"inst":"BOA","instColor":"#ef4444","date":"2026.04.24","title":"中国消费调查：能源价格上涨带来轻微压力","summary":"美国银行：4月消费者调查显示能源价格上行带来轻微通胀压力。消费者信心仍强，但支出意愿边际放缓。","detail":"美国银行：4月消费者调查显示能源价格上行带来轻微通胀压力。消费者信心仍强，但支出意愿边际放缓。","bull":"Neutral","signal":"消费信心强但边际放缓","key":"能源价格压力，支出意愿放缓","link":""},{"inst":"DB","instColor":"#f59e0b","date":"2026.04.27","title":"黄金回归：货币未来的历史视角","summary":"德银：地缘风险和央行购金推动黄金回归法定货币体系。美元主导地位面临挑战，但过程漫长。","detail":"德银：地缘风险和央行购金推动黄金回归法定货币体系。美元主导地位面临挑战，但过程漫长。","bull":"Bullish","signal":"黄金长期看涨","key":"央行购金，黄金避险需求","link":""},{"inst":"GS","instColor":"#34d399","date":"2026.04.27","title":"商品CTA最新动态：4月27日市场更新","summary":"高盛商品CTA：能源价格高位震荡，农产品平稳，金属分化。霍尔木兹紧张局势持续支撑原油。","detail":"高盛商品CTA：能源价格高位震荡，农产品平稳，金属分化。霍尔木兹紧张局势持续支撑原油。","bull":"Neutral","signal":"能源高位，金属分化","key":"原油震荡，CTA中性配置","link":""}];
+
+
+
+
+
+const NEWS = [
+  {
+    "title": "中国国有炼油企业寻求恢复暂停后的燃料出口。",
+    "body": "中国国有炼油企业已开始申请政府许可，以便在5月份恢复燃料出口，理由是国内库存充足。据知情人士透露，包括中国石油化工集团公司（中石化集团）和中国石油天然气集团公司在内的中国主要石油公司自上周以来一直在寻求批准出口汽油和柴油。由于信息保密，这些知情人士要求匿名。在伊朗战争初期，北京决定限制出口，优先保障国内供应，此后几周内，中国各地的库存激增。当时，霍尔木兹海峡的关闭引发了石油和成品油主要进口国的恐慌。然而，知情人士表示，在过去几周里，国内燃油价格上涨导致需求意外疲软——部分原因是电动汽车的使用——从而缓解了供应商的压力。与此同时，出口利润率大幅上升。据 JLC International 称，国有炼油企业销售单位的汽油和柴油库存分别达到了 2025 年和 2024 年以来的最高水平。中石化和中石油的代表尚未立即回应置评请求。政府尚未就此请求宣布任何许可证变更。中国国家发展和改革委员会以及商务部尚未回复寻求置评的传真。作为世界最大的石油进口国，中国多年来一直致力于能源安全——这一战略依靠多元化的供应商、对国内生产的大量投资以及储备，使其在面临历史性的供应危机时比邻国经济体更有优势。为了保护本国消费者，该国也迅速采取行动，限制燃料出口，即便菲律宾和越南等进口国正面临严重的燃料短缺。（来源：彭博社）",
+    "summary": "中国国有炼油企业已开始申请政府许可，以便在5月份恢复燃料出口，理由是国内库存充足。据知情人士透露，包括中国石油化工集团公司（中石化集团）和中国石油天然气集团公司在内的中国主要石油公司自上周以来一直在寻求批准出口汽油和柴油。由于信息保密，这些知情人士要求匿名。在伊朗战争初期，北京决定限制出口，优先保障国内供应，此后几周内，中国各地的库存激增。当时，霍尔木兹海峡的关闭引发了石油和成品油主要进口国的恐慌。然而，知情人士表示，在过去几周里，国内燃油价格上涨导致需求意外疲软——部分原因是电动汽车的使用——从而缓解了供应商的压力。与此同时，出口利润率大幅上升。据 JLC International 称，国",
+    "source": "Bloomberg",
+    "time": "08:00",
+    "date": "2026-04-29",
+    "hot": false
+  },
+  {
+    "title": "中国电池市场竞争激烈，拖累储能利润。",
+    "body": "中国电池和储能行业的竞争日益激烈，开始对盈利造成压力，大量新进入者挤压了利润空间，并引发了人们对其他清洁能源行业中出现的残酷价格战的担忧。中国领先的可再生能源设备制造商之一阳光电源股份有限公司公布，其第一季度利润大幅下滑，凸显了产能扩张速度超过需求增长速度给制造商带来的压力。这家总部位于合肥的公司周一在一份文件中表示，1月至3月期间，其净利润同比下降40%至22.9亿元人民币（约合3.35亿美元）。该结果低于彭博社调查的分析师平均预期的33.2亿元人民币。阳光电源股价一度下跌5%，之后收复了大部分失地。在与分析师的财报电话会议上，该公司警告称，储能业务的毛利率将持续下降，而过去两年该业务的毛利率曾高达40%。该公司还表示，将探索通过其供应链开展更多合作，可能包括互惠持股协议。继全年盈利不及预期之后，该公司本季度业绩下滑，并指出在竞争日益激烈的市场环境中，利润率面临压力。在中国，制造商们正竞相通过加速进入市场或扩大生产来抢占全球储能市场份额，这加剧了竞争并侵蚀了盈利能力。这种快速扩张引发了人们的担忧，即电池和储能行业可能会重蹈中国太阳能设备行业的覆辙，出现激烈的竞争。在中国太阳能设备行业，产能过剩和激烈的价格战已经导致了普遍的亏损。有关部门已经介入，在过去三个月中至少与电池制造商举行了两次会议，敦促他们控制产能扩张，并阻止价格战。彭博行业研究分析师Chia Chen等人写道： “储能市场强劲挑战者的崛起可能预示着一场残酷的价格战，这场价格战已经重创了太阳能行业。”他们补充说，阳光电源的规模和品牌实力应该有助于支撑其相对于规模较小的竞争对手的利润率。宁德时代科技股份有限公司（CATL）已将其50亿美元的香港配股定价在此前公布的价格区间下限。CATL表示，已与国内电力设备制造商北京海博强科技有限公司签署了一份为期三年的钠离子电池供应协议。（来源：彭博社）",
+    "summary": "中国电池和储能行业的竞争日益激烈，开始对盈利造成压力，大量新进入者挤压了利润空间，并引发了人们对其他清洁能源行业中出现的残酷价格战的担忧。中国领先的可再生能源设备制造商之一阳光电源股份有限公司公布，其第一季度利润大幅下滑，凸显了产能扩张速度超过需求增长速度给制造商带来的压力。这家总部位于合肥的公司周一在一份文件中表示，1月至3月期间，其净利润同比下降40%至22.9亿元人民币（约合3.35亿美元）。该结果低于彭博社调查的分析师平均预期的33.2亿元人民币。阳光电源股价一度下跌5%，之后收复了大部分失地。在与分析师的财报电话会议上，该公司警告称，储能业务的毛利率将持续下降，而过去两年该业务的毛利",
+    "source": "Bloomberg",
+    "time": "08:00",
+    "date": "2026-04-29",
+    "hot": false
+  },
+  {
+    "title": "中国誓言加强能源安全，但伊朗和平协议仍遥遥无期。",
+    "body": "中国最高领导人承诺应对外部冲击，加强能源安全，同时强调今年迄今为止的增长好于预期，此前伊朗战争导致全球能源市场动荡。在伊朗战争爆发后召开的首次以经济为重点的会议上表示，中国将“有条不紊地应对外部冲击和挑战，提高能源资源安全水平，以高质量发展的确定性应对各种不确定性”。虽然没有宣布任何新措施，但会议基本重申了现有的政策承诺，包括承诺保持充足的流动性并保持货币“基本稳定”。新华社周二发布的官方数据显示，中国经济开局强劲，各项关键指标均超出预期。数据显示，尽管中国经济仍面临“一定困难”，但这表明其具有“强大的韧性和活力”。政治局的声明是对这场已持续三个月的战争给中国带来的风险最直接的承认之一。美国和伊朗于4月7日左右达成停火协议，但如果双方未能就重启谈判达成一致，敌对行动可能再次爆发。目前，特朗普政府正在考虑德黑兰提出的结束冲突的方案。这种令人安心的言辞标志着北京官员的态度与一年前相比发生了转变。一年前，面对美国高达145%的关税，他们曾加强了应对准备。当时，决策者承诺制定应急预案，并宣布了一项最终被用来促进投资的新工具。法国兴业银行大中华区经济学家林美玲表示：“政策制定者听起来信心满满” ，并补充说，会议“没有取得任何重大成果”。迄今为止，这场引发全球能源危机的冲突对中国的影响有限。第一季度经济增长反弹幅度超出预期，北京多年来为加强能源安全所做的努力，帮助避免了3月份出现严重的供应中断。然而，霍尔木兹海峡的长期封锁对世界第二大经济体构成严重威胁。除了会限制供应外，高油价还可能抑制全球消费，并损害近年来作为中国经济增长关键引擎的出口。政治局呼吁“有针对性、有效”地运用财政和货币政策，并承诺通过扩大高质量商品和服务的供应来“充分挖掘”国内需求的潜力。中国领导层还强调了促进技术自主和培育“独立可控”供应链的必要性。官员们呼吁建设重大基础设施项目，并誓言要加快建设与水、电、计算能力和电信等各个方面相关的各种电网和网络。目前来看，第一季度经济形势向好，这使得中国决策者能够等待并评估形势，然后再推出额外的刺激措施。政府已经提高了2026年的公共支出和基础设施投资，以支持经济增长。由于石油危机提振了通胀前景，市场对进一步宽松货币政策的预期有所下降。高盛集团的经济学家不再预测今年会降息，尽管许多人仍然预期银行会降低存款准备金率，以确保市场流动性充足，从而消化政府债券的发行。（来源：彭博社）",
+    "summary": "中国最高领导人承诺应对外部冲击，加强能源安全，同时强调今年迄今为止的增长好于预期，此前伊朗战争导致全球能源市场动荡。在伊朗战争爆发后召开的首次以经济为重点的会议上表示，中国将“有条不紊地应对外部冲击和挑战，提高能源资源安全水平，以高质量发展的确定性应对各种不确定性”。虽然没有宣布任何新措施，但会议基本重申了现有的政策承诺，包括承诺保持充足的流动性并保持货币“基本稳定”。新华社周二发布的官方数据显示，中国经济开局强劲，各项关键指标均超出预期。数据显示，尽管中国经济仍面临“一定困难”，但这表明其具有“强大的韧性和活力”。政治局的声明是对这场已持续三个月的战争给中国带来的风险最直接的承认之一。美国和",
+    "source": "Bloomberg",
+    "time": "08:00",
+    "date": "2026-04-29",
+    "hot": false
+  },
+  {
+    "title": "特朗普称伊朗希望霍尔木兹海峡开放，以期结束战争。",
+    "body": "美国总统唐纳德·特朗普表示，伊朗已要求美国解除对霍尔木兹海峡的海上封锁，同时双方就结束这场持续两个月、扰乱全球能源供应的战争进行谈判。特朗普周二在Truth Social网站上表示，德黑兰希望这条对石油和天然气运输至关重要的水道“尽快”开放，“因为他们正在努力解决领导层问题”。他还补充说，伊朗曾表示其处于“崩溃状态”。美国领导人周一召集国家安全团队，讨论伊朗提出的结束冲突的提议。这场冲突始于2月28日美国和以色列对伊朗伊斯兰共和国的空袭。据美国有线电视新闻网（CNN）周二援引接近调解进程的消息人士报道，巴基斯坦的调解员预计伊朗将在未来几天内提交一份修改后的结束战争的提案。美国一直封锁往返伊朗港口的船只，试图榨取该国的石油收入，而伊朗则对几乎所有其他船只关闭了海峡。美国中央司令部称，海军陆战队周二在阿拉伯海登船检查了商船“蓝星三号”，但在“进行搜查并确认该船航程不会停靠伊朗港口”后将其释放。中央司令部表示，该船涉嫌试图违反美国海上封锁前往伊朗。伊朗一直表示，只要美国维持封锁，伊朗就不会开放霍尔木兹海峡。白宫则大肆渲染伊朗领导人之间的分歧，声称这是两国外交僵局的原因。布伦特原油连续第七个交易日上涨，收于每桶 111 美元以上，本周涨幅超过 5%，原因是人们越来越担心旷日持久的和平进程可能导致霍尔木兹港无限期关闭。这场战争的连锁反应在阿联酋周二宣布退出欧佩克时更加凸显，此举对欧佩克及其领导者沙特阿拉伯造成了沉重打击。阿联酋的原油产量可以超过其在欧佩克配额的限制，长期以来一直对该组织的限制感到不满。阿联酋能源部长苏海尔·马兹鲁伊表示：“我们认为，现在做出这项决定正合时宜，因为它不会对市场造成巨大冲击：目前市场供应不足。”他还表示，阿布扎比方面认为，战争造成的短缺需要灵活应对市场需求。伊朗已表示，如果华盛顿结束对伊朗港口的封锁，并推迟就其核计划展开更为复杂的谈判，伊朗可能愿意接受一项临时协议，以重新开放霍尔木兹海峡。伊朗坚持保留对海峡航运的部分控制权，而华盛顿不太可能接受这一点。据《纽约时报》援引多位知情人士的消息报道，总统已告知其顾问，他对伊朗的最新提议并不满意。虽然原因尚不清楚，但其政府此前曾表示，任何协议都必须包含限制伊朗核活动的条款。交战双方于4月7日左右开始停火，如果双方未能就新一轮谈判达成一致，敌对行动可能会恢复。此前，4 月中旬在巴基斯坦举行的第一轮谈判没有取得任何结果。美国国务卿马可·卢比奥告诉福克斯新闻，伊朗提出的结束战争的方案“比我们预想的要好”。但他同时表示，白宫“对提交方案的人是否有权提交方案存有疑问”，这与美国此前的说法相呼应，即伊朗领导人在谈判策略上存在分歧。在冲突爆发前，全球五分之一的石油和液化天然气都要经过具有战略意义的霍尔木兹海峡，如今该海峡仍然处于几乎完全停滞的状态。自战争爆发以来首批液化天然气运输船似乎已穿越水道驶出波斯湾。据船舶追踪数据显示，“穆巴拉兹”号于3月初从阿联酋装载货物，目前正在经过印度南端。尚不清楚该船选择此次航程的原因。（来源：彭博社）",
+    "summary": "美国总统唐纳德·特朗普表示，伊朗已要求美国解除对霍尔木兹海峡的海上封锁，同时双方就结束这场持续两个月、扰乱全球能源供应的战争进行谈判。特朗普周二在Truth Social网站上表示，德黑兰希望这条对石油和天然气运输至关重要的水道“尽快”开放，“因为他们正在努力解决领导层问题”。他还补充说，伊朗曾表示其处于“崩溃状态”。美国领导人周一召集国家安全团队，讨论伊朗提出的结束冲突的提议。这场冲突始于2月28日美国和以色列对伊朗伊斯兰共和国的空袭。据美国有线电视新闻网（CNN）周二援引接近调解进程的消息人士报道，巴基斯坦的调解员预计伊朗将在未来几天内提交一份修改后的结束战争的提案。美国一直封锁往返伊朗港",
+    "source": "Bloomberg",
+    "time": "08:00",
+    "date": "2026-04-29",
+    "hot": false
+  },
+  {
+    "title": "达成协议后，中国清理了必和必拓铁矿石港口库存。",
+    "body": "一些中国钢铁生产商已获准从必和必拓集团收购和交易此前在港口积压的铁矿石，此前该国国有买家与该矿业公司进行了有争议的谈判，最终达成协议。据两位知情人士透露，中国矿产资源集团有限公司已通知部分钢厂，将放出必和必拓（BHP）矿石库存，其中包括金宝混合细矿。这两位知情人士因事涉敏感而要求匿名。其中一位知情人士表示，钢厂须向中国矿产资源集团有限公司报告与该矿石相关的交易。北京方面的批准澄清了双方就长期合同达成协议后，港口剩余库存如何处理的种种疑虑。此前，钢厂被告知可以接收必和必拓的新货物，但现有库存的命运尚不明确。必和必拓拒绝置评。CMRG尚未回复置评请求。必和必拓上周证实，已与中国海事集团（CMRG）最终达成供应协议，结束了长达数月的僵局。此前，双方僵局导致必和必拓产品供应受限、货物运输改道以及港口库存积压。据麦格理集团有限公司估计，目前中国约 47 个港口共储存了约 2300 万吨必和必拓铁矿石粉。其中约一半是金布尔巴矿区铁矿石粉，其余部分是 C 矿区铁矿石粉和纽曼矿区铁矿石粉。新加坡铁矿石期货价格一度下跌1.4%，至每吨105.40美元，随后收复部分失地，于当地时间上午11:25报每吨105.95美元。大连交易所铁矿石期货价格下跌1.1%，至每吨777.5元人民币。（来源：彭博社）",
+    "summary": "一些中国钢铁生产商已获准从必和必拓集团收购和交易此前在港口积压的铁矿石，此前该国国有买家与该矿业公司进行了有争议的谈判，最终达成协议。据两位知情人士透露，中国矿产资源集团有限公司已通知部分钢厂，将放出必和必拓（BHP）矿石库存，其中包括金宝混合细矿。这两位知情人士因事涉敏感而要求匿名。其中一位知情人士表示，钢厂须向中国矿产资源集团有限公司报告与该矿石相关的交易。北京方面的批准澄清了双方就长期合同达成协议后，港口剩余库存如何处理的种种疑虑。此前，钢厂被告知可以接收必和必拓的新货物，但现有库存的命运尚不明确。必和必拓拒绝置评。CMRG尚未回复置评请求。必和必拓上周证实，已与中国海事集团（CMRG）",
+    "source": "Bloomberg",
+    "time": "08:00",
+    "date": "2026-04-29",
+    "hot": false
+  }
+];
+
+
+
+
+
+
+
+
+
+
+
+// 板块配置
+
+
+
+
+
+const CATEGORIES = [
+
+
+
+
+
+  {icon:'📊', name:'股指期货', codes:['IM','IF']},
+
+
+
+
+
+  {icon:'🥇', name:'有色金属', codes:['CU','AL','NI','AU','AG','AO','LC','ZN','PX']},
+
+
+
+
+
+  {icon:'⚫', name:'黑色系', codes:['I','RB','JM','HC','SM']},
+
+
+
+
+
+  {icon:'🛢️', name:'能源化工', codes:['SC','MA','TA','EB']},
+
+
+
+
+
+  {icon:'🌾', name:'农产品', codes:['RU','P','M','LH','CF','SR','Y']},
+
+
+
+
+
+  {icon:'🧱', name:'建材/其他', codes:['SA','FG']},
+
+
+
+
+
+];
+
+
+
+
+
+
+
+
+
+
+
+// ========== 渲染异动滚动条 ==========
+
+
+
+
+
+function renderTicker() {
+
+
+
+
+
+  const track = document.getElementById('tickerTrack');
+
+
+
+
+
+  const alerts = Object.entries(PRICES).filter(([code, p]) => {
+
+
+
+
+
+    return p.oi_change && Math.abs(p.oi_change) >= 10;
+
+
+
+
+
+  }).sort((a, b) => Math.abs(b[1].oi_change) - Math.abs(a[1].oi_change));
+
+
+
+
+
+
+
+
+
+
+
+  if (alerts.length === 0) {
+
+
+
+
+
+    track.innerHTML = '<div class="ticker-empty">今日无显著持仓异动（±10%以上）</div>';
+
+
+
+
+
+    return;
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+  // 去重翻倍实现无缝滚动
+
+
+
+
+
+  const items = [...alerts, ...alerts];
+
+
+
+
+
+  track.innerHTML = items.map(([code, p]) => {
+
+
+
+
+
+    const f = FRAMES[code] || {};
+
+
+
+
+
+    const dir = p.oi_change > 0 ? 'up' : 'down';
+
+
+
+
+
+    const arrow = p.oi_change > 0 ? '▲' : '▼';
+
+
+
+
+
+    return `<div class="ticker-item ${dir}">
+
+
+
+
+
+      ${f.name || code}(${code}) ${arrow}${Math.abs(p.oi_change).toFixed(1)}%
+
+
+
+
+
+    </div>`;
+
+
+
+
+
+  }).join('');
+
+
+
+
+
+
+
+
+
+
+
+  // 滚动动画
+
+
+
+
+
+  let pos = 0;
+
+
+
+
+
+  const itemWidth = 160;
+
+
+
+
+
+  const totalWidth = items.length * itemWidth;
+
+
+
+
+
+  function scroll() {
+
+
+
+
+
+    pos -= 0.5;
+
+
+
+
+
+    if (Math.abs(pos) >= totalWidth / 2) pos = 0;
+
+
+
+
+
+    track.style.transform = `translateX(${pos}px)`;
+
+
+
+
+
+    requestAnimationFrame(scroll);
+
+
+
+
+
+  }
+
+
+
+
+
+  scroll();
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ========== 渲染全球市场 ==========
+
+
+
+
+
+function renderGlobal() {
+
+
+
+
+
+  const container = document.getElementById('globalHeatmap');
+
+
+
+
+
+  const timeEl = document.getElementById('globalUpdateTime');
+
+
+
+
+
+  // 只显示6个核心市场
+
+
+
+
+
+  const keyMarkets = ['SPX','NDX','DJI','HSI','NKY','VIX'];
+
+
+
+
+
+  const items = keyMarkets.map(code => [code, GLOBAL[code] || {}]).filter(([_,d]) => d.name);
+
+
+
+
+
+  if (items.length === 0) {
+
+
+
+
+
+    container.innerHTML = '<div class="market-loading">暂无数据</div>';
+
+
+
+
+
+    return;
+
+
+
+
+
+  }
+
+
+
+
+
+  // 显示更新时间
+
+
+
+
+
+  if (timeEl && items[0][1].date) {
+
+
+
+
+
+    timeEl.textContent = '更新 ' + items[0][1].date;
+
+
+
+
+
+  }
+
+
+
+
+
+  container.innerHTML = items.map(([code, d]) => {
+
+
+
+
+
+    const chg = d.change || 0;
+
+
+
+
+
+    const cls = chg > 0 ? 'global-tile-up' : chg < 0 ? 'global-tile-down' : 'global-tile';
+
+
+
+
+
+    const arrow = chg > 0 ? '▲' : chg < 0 ? '▼' : '—';
+
+
+
+
+
+    const price = typeof d.price === 'number' ? (d.price > 100 ? Math.round(d.price).toLocaleString('zh-CN') : d.price.toFixed(2)) : '--';
+
+
+
+
+
+    return `<div class="global-tile ${cls}">
+
+
+
+
+
+      <div class="global-tile-name">${d.name || code}</div>
+
+
+
+
+
+      <div class="global-tile-price">${price}</div>
+
+
+
+
+
+      <div class="global-tile-chg">${arrow} ${Math.abs(chg).toFixed(2)}%</div>
+
+
+
+
+
+    </div>`;
+
+
+
+
+
+  }).join('');
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ========== 渲染品种板块 ==========
+
+
+
+
+
+function renderSections() {
+
+
+
+
+
+  const container = document.getElementById('sections');
+
+
+
+
+
+  container.innerHTML = '';
+
+
+
+
+
+  CATEGORIES.forEach((cat, idx) => {
+
+
+
+
+
+    const open = idx === 0 ? ' open' : '';
+
+
+
+
+
+    const cards = cat.codes.map(code => {
+
+
+
+
+
+      const f = FRAMES[code] || {};
+
+
+
+
+
+      const p = PRICES[code] || {};
+
+
+
+
+
+      const price = p.price;
+
+
+
+
+
+      const change = p.change || 0;
+
+
+
+
+
+      const chgClass = change > 0 ? 'up' : change < 0 ? 'down' : 'neu';
+
+
+
+
+
+      const chgSign = change > 0 ? '▲' : change < 0 ? '▼' : '—';
+
+
+
+
+
+      const dirClass = (f.direction || '').includes('禁止') ? 'down' : (f.direction || '').includes('聚焦') || (f.direction || '').includes('偏多') || (f.direction || '').includes('多头') ? 'up' : 'neu';
+
+
+
+
+
+      let cardClass = 'var-card';
+
+
+
+
+
+      if (f.position && f.position.includes('聚焦')) cardClass += ' focus-card';
+
+
+
+
+
+      if (f.position && f.position.includes('禁止')) cardClass += ' warning-card';
+
+
+
+
+
+      const displayPrice = typeof price === 'number' ? (price > 100 ? price.toLocaleString('zh-CN') : price.toFixed(2)) : '--';
+
+
+
+
+
+      const oi = p.oi || 0;
+
+
+
+
+
+      const oiChange = p.oi_change || 0;
+
+
+
+
+
+      const oiArrow = oiChange > 5 ? '▲' : oiChange < -5 ? '▼' : '';
+
+
+
+
+
+      const oiClass = oiChange > 5 ? 'up' : oiChange < -5 ? 'down' : 'neu';
+
+
+
+
+
+      return `<a href="variety-${code.toLowerCase()}.html" class="${cardClass}">
+
+
+
+
+
+        <div class="var-name">${f.name || code}</div>
+
+
+
+
+
+        <div class="var-sym">${code}</div>
+
+
+
+
+
+        <div class="var-price">${displayPrice}</div>
+
+
+
+
+
+        <div class="var-chg ${chgClass}">${chgSign} ${Math.abs(change).toFixed(2)}%</div>
+
+
+
+
+
+        ${oi > 0 ? `<div class="var-oi">持仓${(oi/10000).toFixed(1)}万手 <span class="${oiClass}">${oiArrow}${Math.abs(oiChange).toFixed(1)}%</span></div>` : ''}
+
+
+
+
+
+        <div class="var-dir ${dirClass}">${f.direction || '📊 关注'}</div>
+
+
+
+
+
+      </a>`;
+
+
+
+
+
+    }).join('');
+
+
+
+
+
+    container.innerHTML += `
+
+
+
+
+
+      <div class="section">
+
+
+
+
+
+        <div class="section-hdr${open}" onclick="toggleSection(this)">
+
+
+
+
+
+          <div class="section-title"><span>${cat.icon}</span><span>${cat.name}</span><span class="section-count">${cat.codes.length}个</span></div>
+
+
+
+
+
+          <span class="section-arrow">▼</span>
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <div class="section-body${open}">${cards}</div>
+
+
+
+
+
+      </div>`;
+
+
+
+
+
+  });
+
+
+
+
+
+  const cuDate = PRICES.CU ? PRICES.CU.date : '--';
+
+
+
+
+
+  document.getElementById('dataDate').textContent = cuDate;
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ========== 渲染外资研报 ==========
+
+
+
+
+
+function renderReports() {
+
+
+
+
+
+  const container = document.getElementById('reportsContainer');
+
+
+
+
+
+  const countEl = document.getElementById('reportsCount');
+
+
+
+
+
+  if (!REPORTS || REPORTS.length === 0) {
+
+
+
+
+
+    container.innerHTML = '<div style="color:#8899a6;font-size:12px;padding:8px">暂无研报数据</div>';
+
+
+
+
+
+    return;
+
+
+
+
+
+  }
+
+
+
+
+
+  const html = REPORTS.map(function(r, i) {
+
+
+
+
+
+    var bc = r.instColor || '#6366f1';
+
+
+
+
+
+    var isDark = r.inst === 'GS' || r.inst === 'JPM';
+
+
+
+
+
+    var bullCls = r.bull && r.bull.toLowerCase().indexOf('bull') > -1 ? 'bull-bullish' : r.bull && r.bull.toLowerCase().indexOf('bear') > -1 ? 'bull-bearish' : 'bull-neutral';
+
+
+
+
+
+    var hasDetail = !!r.detail;
+
+
+
+
+
+    var cursor = hasDetail ? 'cursor:pointer' : 'cursor:default';
+
+
+
+
+
+    var onclickAttr = hasDetail ? 'onclick="openReportModal(' + i + ')"' : '';
+
+
+
+
+
+    var titleExtra = hasDetail ? ' <span style="color:#6366f1;font-size:11px">详情→</span>' : '';
+
+
+
+
+
+    return '<div class="report-card" style="' + cursor + '" ' + onclickAttr + '>' +
+
+
+
+
+
+      '<div class="report-hdr"><span class="report-inst" style="background:' + bc + (isDark ? ';color:#000' : '') + '">' + r.inst + '</span><span class="report-date">' + r.date + '</span></div>' +
+
+
+
+
+
+      '<div class="report-title">' + r.title + titleExtra + '</div>' +
+
+
+
+
+
+      '<div class="report-summary">' + r.summary + '</div>' +
+
+
+
+
+
+      (r.key ? '<div class="report-key">🎯 ' + r.key + '</div>' : '') +
+
+
+
+
+
+      (r.signal ? '<div class="report-bull ' + bullCls + '">' + r.signal + '</div>' : '') +
+
+
+
+
+
+      '</div>';
+
+
+
+
+
+  }).join('');
+
+
+
+
+
+  container.innerHTML = html;
+
+
+
+
+
+  if (countEl) countEl.textContent = `（${REPORTS.length}篇）`;
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function toggleReports() {
+
+
+
+
+
+  const container = document.getElementById('reportsContainer');
+
+
+
+
+
+  const arrow = document.getElementById('reportsArrow');
+
+
+
+
+
+  const isHidden = container.style.display === 'none';
+
+
+
+
+
+  container.style.display = isHidden ? 'grid' : 'none';
+
+
+
+
+
+  arrow.textContent = isHidden ? '▲' : '▼';
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function openReportModal(idx) {
+
+
+
+
+
+  const r = REPORTS[idx];
+
+
+
+
+
+  if (!r) return;
+
+
+
+
+
+  const bullCls = r.bull && r.bull.toLowerCase().includes('bull') ? 'bull-bullish' : r.bull && r.bull.toLowerCase().includes('bear') ? 'bull-bearish' : 'bull-neutral';
+
+
+
+
+
+  const bc = r.instColor || '#6366f1';
+
+
+
+
+
+  const isDark = r.inst === 'GS' || r.inst === 'JPM';
+
+
+
+
+
+  const html = `
+
+
+
+
+
+    <div class="report-modal-hdr">
+
+
+
+
+
+      <div class="report-modal-title">${r.title}</div>
+
+
+
+
+
+      <span class="report-inst" style="background:${bc}${isDark ? ';color:#000' : ''};font-size:11px;padding:3px 8px;border-radius:3px;flex-shrink:0">${r.inst}</span>
+
+
+
+
+
+    </div>
+
+
+
+
+
+    <div style="color:#8899a6;font-size:12px;margin-bottom:12px">📅 ${r.date} &nbsp;|&nbsp; <span class="${bullCls}">${r.bull || 'Neutral'}</span></div>
+
+
+
+
+
+    ${r.summary ? `<div class="report-modal-section"><div class="report-modal-section-title">📌 核心观点</div><div class="report-modal-detail">${r.summary}</div></div>` : ''}
+
+
+
+
+
+    ${r.detail ? `<div class="report-modal-section"><div class="report-modal-section-title">📝 详细摘要</div><div class="report-modal-detail">${r.detail}</div></div>` : ''}
+
+
+
+
+
+    ${r.signal ? `<div class="report-modal-section"><div class="report-modal-section-title">🎯 投资信号</div><div class="report-modal-detail"><span class="${bullCls}" style="font-weight:600">${r.signal}</span></div></div>` : ''}
+
+
+
+
+
+    ${r.key ? `<div class="report-modal-key"><div class="report-modal-key-title">💡 关键数据 / 目标价</div><div class="report-modal-key-text">${r.key}</div></div>` : ''}
+
+
+
+
+
+    ${r.link ? `<div style="margin-top:14px;text-align:center"><a href="${r.link}" target="_blank" style="color:#6366f1;font-size:13px">📄 查看原文 →</a></div>` : ''}
+
+
+
+
+
+  `;
+
+
+
+
+
+  document.getElementById('modalReportContent').innerHTML = html;
+
+
+
+
+
+  document.getElementById('reportModal').style.display = 'flex';
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function closeReportModal() {
+
+
+
+
+
+  document.getElementById('reportModal').style.display = 'none';
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function toggleSection(hdr) {
+
+
+
+
+
+  hdr.classList.toggle('open');
+
+
+
+
+
+  hdr.nextElementSibling.classList.toggle('open');
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ========== 搜索 ==========
+
+
+
+
+
+const searchInput = document.getElementById('searchInput');
+
+
+
+
+
+const searchDropdown = document.getElementById('searchDropdown');
+
+
+
+
+
+
+
+
+
+
+
+searchInput.addEventListener('input', function() {
+
+
+
+
+
+  const q = this.value.trim().toLowerCase();
+
+
+
+
+
+  if (!q) { searchDropdown.classList.remove('active'); return; }
+
+
+
+
+
+  const results = Object.entries(FRAMES).filter(([code, f]) => {
+
+
+
+
+
+    if (!f || !f.name) return false;
+
+
+
+
+
+    return code.toLowerCase() === q ||
+
+
+
+
+
+           code.toLowerCase().includes(q) ||
+
+
+
+
+
+           (f.name || '').toLowerCase().includes(q) ||
+
+
+
+
+
+           (f.name || '').replace('沪','').replace('天然','').replace('碳酸','').toLowerCase().includes(q);
+
+
+
+
+
+  });
+
+
+
+
+
+  if (results.length === 0) {
+
+
+
+
+
+    searchDropdown.innerHTML = `<div class="search-empty">未找到「${searchInput.value}」</div>
+
+
+
+
+
+      <div class="search-hint">支持：中证1000(IM)、沪深300(IF)、铜(CU)、铝(AL)、镍(NI)、金(AU)、银(AG)、铁矿石(I)、螺纹钢(RB)、焦煤(JM)、焦炭(J)、热卷(HC)、锰硅(SM)、原油(SC)、甲醇(MA)、PTA、苯乙烯(EB)、橡胶(RU)、棕榈油(P)、豆粕(M)、生猪(LH)、棉花(CF)、白糖(SR)、纯碱(SA)、玻璃(FG)、碳酸锂(LC)</div>`;
+
+
+
+
+
+  } else {
+
+
+
+
+
+    searchDropdown.innerHTML = results.map(([code, f]) => {
+
+
+
+
+
+      const dirClass = (f.direction || '').includes('禁止') ? 'down' : (f.direction || '').includes('聚焦') || (f.direction || '').includes('偏多') ? 'up' : 'neu';
+
+
+
+
+
+      return `<a href="variety-${code.toLowerCase()}.html" class="search-item">
+
+
+
+
+
+        <div><div class="search-item-name">${f.name}</div><div class="search-item-code">${code}</div></div>
+
+
+
+
+
+        <div class="search-item-dir ${dirClass}">${f.direction || ''}</div>
+
+
+
+
+
+      </a>`;
+
+
+
+
+
+    }).join('');
+
+
+
+
+
+  }
+
+
+
+
+
+  searchDropdown.classList.add('active');
+
+
+
+
+
+});
+
+
+
+
+
+searchInput.addEventListener('blur', () => setTimeout(() => searchDropdown.classList.remove('active'), 200));
+
+
+
+
+
+searchInput.addEventListener('focus', () => { if (searchInput.value.trim()) searchDropdown.classList.add('active'); });
+
+
+
+
+
+
+
+
+
+
+
+// ========== 财经日历 ==========
+
+
+
+
+
+function loadMacroCalendar() {
+
+
+
+
+
+  const container = document.getElementById('macroCalendar');
+
+
+
+
+
+  const items = [
+
+
+
+
+
+    {time:'08:30', name:'中国4月LPR利率', impact:'高'},
+
+
+
+
+
+    {time:'10:00', name:'中国一季度GDP', impact:'高'},
+
+
+
+
+
+    {time:'14:00', name:'英国3月CPI', impact:'中'},
+
+
+
+
+
+    {time:'20:30', name:'美国4月纽约联储制造业指数', impact:'中'},
+
+
+
+
+
+    {time:'22:00', name:'美联储褐皮书', impact:'高'},
+
+
+
+
+
+  ];
+
+
+
+
+
+  container.innerHTML = items.map(item => `
+
+
+
+
+
+    <div class="news-item">
+
+
+
+
+
+      <div class="news-item-title" style="color:#e7e9ea">
+
+
+
+
+
+        <span style="background:${item.impact==='高'?'rgba(239,83,80,0.15)':'rgba(251,191,36,0.15)'};color:${item.impact==='高'?'#ef5350':'#fbbf24'};font-size:10px;padding:1px 5px;border-radius:3px;margin-right:6px">${item.impact}</span>
+
+
+
+
+
+        ${item.time} ${item.name}
+
+
+
+
+
+      </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+  `).join('');
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ========== 新闻 ==========
+
+
+
+
+
+let allNews = [];
+
+
+
+
+
+let newsExpanded = false;
+
+
+
+
+
+
+
+
+
+
+
+async function loadNews() {
+
+
+
+
+
+  const container = document.getElementById('newsList');
+
+
+
+
+
+  const countEl = document.getElementById('newsCount');
+
+
+
+
+
+
+
+
+
+
+
+  // 从NEWS变量加载（由fetch_prices.py每日更新）
+
+
+
+
+
+  allNews = (NEWS && NEWS.length > 0) ? NEWS : [];
+
+
+
+
+
+  countEl.textContent = `${allNews.length}条`;
+
+
+
+
+
+  renderNews(allNews.slice(0, 5));
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+function toggleNewsBody(btn, index) {
+  const allItems = document.querySelectorAll('.news-item');
+  const item = allItems[index];
+  const body = item.querySelector('.news-item-body');
+  if (!body) return;
+  const isExpanded = btn.textContent === '收起';
+  if (isExpanded) {
+    body.style.display = 'none';
+    btn.textContent = '展开';
+  } else {
+    body.style.display = 'block';
+    btn.textContent = '收起';
+  }
+}
+
+function renderNews(news) {
+  const container = document.getElementById('newsList');
+  container.innerHTML = news.map((item, index) => {
+    const hasBody = item.body && item.body.length > 50 && item.source === 'Bloomberg';
+    return `
+    <div class="news-item">
+      <div class="news-item-title">
+        ${item.hot ? '<span class="tag-hot">HOT</span>' : ''}
+        ${item.title}
+      </div>
+      ${hasBody ? '<div class="news-item-body">' + item.body.replace(/\n/g, '<br>') + '</div>' : ''}
+      <div class="news-item-meta">
+        <span>${item.source}</span>
+        <span>
+          ${item.time}
+          ${hasBody ? '<button class="news-expand-btn" onclick="toggleNewsBody(this, ' + index + ')">展开</button>' : ''}
+        </span>
+      </div>
+    </div>
+  `}).join('');
+}
+
+
+
+
+
+
+
+
+
+
+
+function toggleNews() {
+
+
+
+
+
+  const btn = document.getElementById('newsMoreBtn');
+
+
+
+
+
+  if (!newsExpanded) {
+
+
+
+
+
+    renderNews(allNews);
+
+
+
+
+
+    btn.textContent = '收起 ▲';
+
+
+
+
+
+    newsExpanded = true;
+
+
+
+
+
+  } else {
+
+
+
+
+
+    renderNews(allNews.slice(0, 5));
+
+
+
+
+
+    btn.textContent = '展开更多 ▼';
+
+
+
+
+
+    newsExpanded = false;
+
+
+
+
+
+  }
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+// ========== 初始化 ==========
+
+
+
+
+
+renderTicker();
+
+
+
+
+
+renderGlobal();
+
+
+
+
+
+renderSections();
+
+
+
+
+
+renderReports();
+
+
+
+
+
+loadMacroCalendar();
+
+
+
+
+
+loadNews();
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+
+
+
+
+
+</html>
+
+
+
+
+
