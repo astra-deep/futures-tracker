@@ -1,0 +1,219 @@
+{
+  "varieties": {
+    "CU": [
+      {
+        "url": "file:///摩根士丹利/China Inc Resilient But Not Immune to Oil Shock",
+        "title": "大摩 中国企业：上游受益/下游承压，EPS下调3.5%",
+        "source": "外资研报·摩根士丹利",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "CU",
+          "AL",
+          "LC",
+          "NI",
+          "SC"
+        ],
+        "summary": "油价+30美元/桶 → MSCI中国EPS下调3.5%。受益：上游能源/金属/绿色能源/半导体；受损：航空/炼油/消费/房地产。"
+      },
+      {
+        "url": "file:///摩根大通/China Metals Activity Tracker",
+        "title": "JPM 中国金属追踪：铜去库超季节性，库存10年最低",
+        "source": "外资研报·JPM",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "CU",
+          "AL"
+        ],
+        "summary": "近6周中国铜库存减少>25万吨，当前24.6万吨（10年同期最低）；洋山铜溢价升至70美元/吨；铜强铝弱格局确认，铝库存~150万吨（2019年来最高）。"
+      }
+    ],
+    "AL": [
+      {
+        "url": "file:///摩根士丹利/China Inc Resilient But Not Immune to Oil Shock",
+        "title": "大摩 中国企业：上游受益/下游承压，EPS下调3.5%",
+        "source": "外资研报·摩根士丹利",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "CU",
+          "AL",
+          "LC",
+          "NI",
+          "SC"
+        ],
+        "summary": "油价+30美元/桶 → MSCI中国EPS下调3.5%。受益：上游能源/金属/绿色能源/半导体；受损：航空/炼油/消费/房地产。"
+      },
+      {
+        "url": "file:///摩根大通/China Metals Activity Tracker",
+        "title": "JPM 中国金属追踪：铜去库超季节性，库存10年最低",
+        "source": "外资研报·JPM",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "CU",
+          "AL"
+        ],
+        "summary": "近6周中国铜库存减少>25万吨，当前24.6万吨（10年同期最低）；洋山铜溢价升至70美元/吨；铜强铝弱格局确认，铝库存~150万吨（2019年来最高）。"
+      }
+    ],
+    "NI": [
+      {
+        "url": "file:///摩根士丹利/China Inc Resilient But Not Immune to Oil Shock",
+        "title": "大摩 中国企业：上游受益/下游承压，EPS下调3.5%",
+        "source": "外资研报·摩根士丹利",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "CU",
+          "AL",
+          "LC",
+          "NI",
+          "SC"
+        ],
+        "summary": "油价+30美元/桶 → MSCI中国EPS下调3.5%。受益：上游能源/金属/绿色能源/半导体；受损：航空/炼油/消费/房地产。"
+      }
+    ],
+    "AU": [],
+    "AG": [],
+    "LC": [
+      {
+        "url": "file:///摩根士丹利/China Inc Resilient But Not Immune to Oil Shock",
+        "title": "大摩 中国企业：上游受益/下游承压，EPS下调3.5%",
+        "source": "外资研报·摩根士丹利",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "CU",
+          "AL",
+          "LC",
+          "NI",
+          "SC"
+        ],
+        "summary": "油价+30美元/桶 → MSCI中国EPS下调3.5%。受益：上游能源/金属/绿色能源/半导体；受损：航空/炼油/消费/房地产。"
+      }
+    ],
+    "I": [],
+    "RB": [],
+    "JM": [],
+    "SM": [],
+    "SC": [
+      {
+        "url": "file:///摩根士丹利/China Inc Resilient But Not Immune to Oil Shock",
+        "title": "大摩 中国企业：上游受益/下游承压，EPS下调3.5%",
+        "source": "外资研报·摩根士丹利",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "CU",
+          "AL",
+          "LC",
+          "NI",
+          "SC"
+        ],
+        "summary": "油价+30美元/桶 → MSCI中国EPS下调3.5%。受益：上游能源/金属/绿色能源/半导体；受损：航空/炼油/消费/房地产。"
+      }
+    ],
+    "RU": [],
+    "P": [],
+    "M": [],
+    "IF": [],
+    "IM": [],
+    "ZN": [],
+    "Y": [],
+    "PX": [],
+    "TA": [],
+    "MA": [],
+    "EB": [],
+    "CF": [],
+    "SR": [],
+    "SA": [],
+    "FG": [],
+    "HC": [],
+    "AO": [],
+    "LH": [],
+    "general": [
+      {
+        "url": "file:///摩根士丹利/China Musings Oil Shock",
+        "title": "大摩 中国企业：PPI可能升至1.2%，AI+战略突出",
+        "source": "外资研报·摩根士丹利",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "general"
+        ],
+        "summary": "2026年PPI预计+1.2%，CPI+0.8%；AI+行动计划提升至突出位置；政策重点在能源安全和绿色转型。"
+      },
+      {
+        "url": "file:///ANZ/China exceptionally easy liquidity is over",
+        "title": "ANZ 流动性收紧：超额流动性已完全抽走",
+        "source": "外资研报·ANZ",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "general"
+        ],
+        "summary": "4月超额流动性已完全抽走，隔夜回购利率升至1.25-1.35%；央行已回收CNY 6000亿流动性。"
+      },
+      {
+        "url": "file:///高盛/China Econ Proprietary Indicators April",
+        "title": "高盛 中国经济领先指标：3月CAI升至7.0%",
+        "source": "外资研报·高盛",
+        "added_at": "2026-04-29",
+        "varieties": [
+          "general"
+        ],
+        "summary": "3月中国CAI环比折年+7.0%（vs 1-2月均值5.4%）；制造业回升，建筑业回落；Q1库存对GDP贡献可能转正。"
+      }
+    ]
+  },
+  "general": [
+    {
+      "url": "file:///摩根士丹利/China Musings Oil Shock",
+      "title": "大摩 中国企业：PPI可能升至1.2%，AI+战略突出",
+      "source": "外资研报·摩根士丹利",
+      "added_at": "2026-04-29",
+      "varieties": [
+        "general"
+      ],
+      "summary": "2026年PPI预计+1.2%，CPI+0.8%；AI+行动计划提升至突出位置；政策重点在能源安全和绿色转型。"
+    },
+    {
+      "url": "file:///ANZ/China exceptionally easy liquidity is over",
+      "title": "ANZ 流动性收紧：超额流动性已完全抽走",
+      "source": "外资研报·ANZ",
+      "added_at": "2026-04-29",
+      "varieties": [
+        "general"
+      ],
+      "summary": "4月超额流动性已完全抽走，隔夜回购利率升至1.25-1.35%；央行已回收CNY 6000亿流动性。"
+    },
+    {
+      "url": "file:///摩根士丹利/China Inc Resilient But Not Immune to Oil Shock",
+      "title": "大摩 中国企业：上游受益/下游承压，EPS下调3.5%",
+      "source": "外资研报·摩根士丹利",
+      "added_at": "2026-04-29",
+      "varieties": [
+        "CU",
+        "AL",
+        "LC",
+        "NI",
+        "SC"
+      ],
+      "summary": "油价+30美元/桶 → MSCI中国EPS下调3.5%。受益：上游能源/金属/绿色能源/半导体；受损：航空/炼油/消费/房地产。"
+    },
+    {
+      "url": "file:///高盛/China Econ Proprietary Indicators April",
+      "title": "高盛 中国经济领先指标：3月CAI升至7.0%",
+      "source": "外资研报·高盛",
+      "added_at": "2026-04-29",
+      "varieties": [
+        "general"
+      ],
+      "summary": "3月中国CAI环比折年+7.0%（vs 1-2月均值5.4%）；制造业回升，建筑业回落；Q1库存对GDP贡献可能转正。"
+    },
+    {
+      "url": "file:///摩根大通/China Metals Activity Tracker",
+      "title": "JPM 中国金属追踪：铜去库超季节性，库存10年最低",
+      "source": "外资研报·JPM",
+      "added_at": "2026-04-29",
+      "varieties": [
+        "CU",
+        "AL"
+      ],
+      "summary": "近6周中国铜库存减少>25万吨，当前24.6万吨（10年同期最低）；洋山铜溢价升至70美元/吨；铜强铝弱格局确认，铝库存~150万吨（2019年来最高）。"
+    }
+  ]
+}
