@@ -125,6 +125,60 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .cat-link:hover,.cat-link.active{background:#6366f1;color:#fff}
 
 @media(max-width:700px){.note-section{grid-template-columns:1fr}}
+
+/* 金弦一号 */
+.jx-box{background:linear-gradient(135deg,#1a1f26 0%,#1a2418 100%);border:1px solid #2a3a28;border-radius:12px;padding:16px;margin-bottom:16px}
+.jx-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.jx-title{display:flex;align-items:center;gap:8px}
+.jx-title-icon{font-size:16px}
+.jx-title-text{font-size:14px;font-weight:700;color:#34d399}
+.jx-badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600}
+.jx-badge.buy{background:#1a2a1a;color:#34d399;border:1px solid #34d399}
+.jx-badge.sell{background:#2a1a1a;color:#ef5350;border:1px solid #ef5350}
+.jx-badge.neutral{background:#2a2a1a;color:#fbbf24;border:1px solid #fbbf24}
+.jx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.jx-item{background:#1a1f26;border-radius:8px;padding:10px;text-align:center}
+.jx-item-label{font-size:10px;color:#6b7280;margin-bottom:4px}
+.jx-item-value{font-size:16px;font-weight:700}
+.jx-strategy-box{margin-top:8px;padding:10px;background:#1a2518;border-radius:8px}
+.jx-strategy-label{font-size:10px;color:#34d399;margin-bottom:6px;font-weight:600}
+.jx-strategy-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.jx-strategy-item{background:#1a1f26;border-radius:6px;padding:8px;border-left:2px solid #34d399}
+.jx-strategy-item:nth-child(2){border-color:#6366f1}
+.jx-strategy-name{font-size:12px;font-weight:600;color:#fff}
+.jx-strategy-meta{font-size:10px;color:#8899a6;margin-top:3px}
+
+/* 25策略 */
+.strat-toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:#8899a6;font-size:12px;padding:6px 12px;background:#1e242b;border-radius:6px;margin-top:10px}
+.strat-toggle:hover{color:#fff}
+.strat-list{display:none;margin-top:10px;background:#1a1f26;border-radius:8px;overflow:hidden}
+.strat-list.open{display:block}
+.strat-row{display:grid;grid-template-columns:40px 1fr 90px 70px;gap:8px;padding:7px 12px;border-bottom:1px solid #1e242b;font-size:11px;align-items:center}
+.strat-row:last-child{border-bottom:none}
+.strat-row:hover{background:#1e242b}
+.strat-id{color:#6366f1;font-weight:600;font-family:monospace}
+.strat-name{color:#e7e9ea;font-weight:500}
+.strat-type{padding:2px 6px;border-radius:3px;font-size:10px;font-weight:600;text-align:center}
+.t-bullish,.t-buy{background:rgba(52,211,153,0.15);color:#34d399}
+.t-bearish,.t-sell{background:rgba(239,83,80,0.15);color:#ef5350}
+.t-neutral{background:rgba(251,191,36,0.15);color:#fbbf24}
+.t-volatility{background:rgba(99,102,241,0.15);color:#a5b4fc}
+.t-arbitrage{background:rgba(52,211,153,0.15);color:#34d399}
+.t-risk-low{color:#34d399}.t-risk-medium{color:#fbbf24}.t-risk-high{color:#ef5350}.t-risk-extreme{color:#f87171}
+
+/* 权利金 */
+.prem-section{margin-top:16px}
+.prem-box{background:#1a1f26;border-radius:10px;overflow:hidden}
+.prem-hdr{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
+.prem-note{font-size:10px;color:#6b7280;padding:6px 14px;background:#1e242b;border-bottom:1px solid #2f3336}
+.prem-row-hdr{background:#1e242b;font-weight:600;color:#8899a6;padding:7px 14px;display:grid;grid-template-columns:1fr 80px 80px;gap:0}
+.prem-row-item{padding:7px 14px;border-bottom:1px solid #1e242b;color:#b0b8c1;display:grid;grid-template-columns:1fr 80px 80px;gap:0}
+.prem-row-item:last-child{border-bottom:none}
+.prem-row-item:hover{background:#1e242b}
+.prem-rng{color:#fbbf24;font-weight:600}
+.prem-dte{color:#8899a6}
+
+@media(max-width:700px){.jx-grid{grid-template-columns:1fr 1fr}.jx-strategy-list{grid-template-columns:1fr}.strat-row{grid-template-columns:30px 1fr 70px}}
 </style>
 </head>
 <body>
@@ -195,6 +249,325 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 
 
+
+
+
+
+<!-- ========== 期权分析四大块 ========== -->
+
+<!-- ① 金弦一号策略 -->
+<div class="jx-box">
+  <div class="jx-hdr">
+    <div class="jx-title">
+      <span class="jx-title-icon">🎯</span>
+      <span class="jx-title-text">金弦一号策略</span>
+      <span class="jx-badge sell">
+        高波卖方策略
+      </span>
+    </div>
+  </div>
+  <div class="jx-grid">
+    <div class="jx-item">
+      <div class="jx-item-label">波动率 (HV)</div>
+      <div class="jx-item-value" style="color:#F85149">80.3%</div>
+    </div>
+    <div class="jx-item">
+      <div class="jx-item-label">波动环境</div>
+      <div class="jx-item-value" style="color:#F85149">高波动率</div>
+    </div>
+    <div class="jx-item">
+      <div class="jx-item-label">仓位建议</div>
+      <div class="jx-item-value" style="color:#34d399">
+        卖方为主
+      </div>
+    </div>
+  </div>
+  <div class="jx-strategy-box">
+    <div class="jx-strategy-label">⭐ 核心策略推荐</div>
+    <div class="jx-strategy-list">
+      
+      <div class="jx-strategy-item">
+        <div class="jx-strategy-name">买入铁秃鹰 (Long Iron Condor)</div>
+        <div class="jx-strategy-meta">🟡 中风险 | Δ中性 Θ-- ν++</div>
+      </div>
+      
+      <div class="jx-strategy-item">
+        <div class="jx-strategy-name">买入看涨期权 (Long Call)</div>
+        <div class="jx-strategy-meta">🔴 高风险 | Δ+ Θ- ν+</div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- ② 波动率仪表盘 -->
+<div class="vix-section">
+  <div class="vix-hdr">
+    <span>🌊 波动率仪表盘</span>
+    <span style="font-weight:normal;color:#6b7280">HV更新: </span>
+  </div>
+  <div class="vix-body">
+    <div class="vix-gauge">
+      <div>
+        <div class="vix-value" style="color:#F85149">80.3%</div>
+        <div class="vix-label">高波动率</div>
+      </div>
+      <div style="flex:1">
+        <div class="vix-bar-wrap">
+          <div class="vix-bar" style="width:160.52%;background:#F85149"></div>
+        </div>
+        <div class="vix-scale"><span>0%</span><span>低波</span><span>20%</span><span>中波</span><span>35%</span><span>高波</span><span>50%+</span></div>
+      </div>
+    </div>
+    
+    <div class="warnings-section">
+      
+      <div class="warning-item warn">⚠️ 高波动率环境：期权买方时间价值损耗快（Θ每天流失），注意Theta风险</div>
+      
+      <div class="warning-item warn">⚠️ 波动率可能均值回归：买入期权后若波动率下降，即使方向正确也可能亏钱</div>
+      
+      <div class="warning-item info">💡 建议：可考虑熊市/牛市价差策略（策略6/11），降低vega风险</div>
+      
+    </div>
+    
+    <div style="font-size:11px;color:#8899a6;margin:12px 0 8px 0">📋 推荐策略（根据波动率水平筛选）</div>
+    <div class="strategy-grid">
+      
+      <div class="strategy-card volatility">
+        <div class="strategy-num">#21 🌊 波动率</div>
+        <div class="strategy-name">买入铁秃鹰 (Long Iron Condor)</div>
+        <div class="strategy-desc">预期宽幅波动，做多波动率，保守版本</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 中">🟡 中</span>
+          <span class="strategy-greeks">Δ中性 Θ-- ν++</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card bullish">
+        <div class="strategy-num">#1 📈 看涨</div>
+        <div class="strategy-name">买入看涨期权 (Long Call)</div>
+        <div class="strategy-desc">强烈看多，杠杆做多</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 高">🔴 高</span>
+          <span class="strategy-greeks">Δ+ Θ- ν+</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card bearish">
+        <div class="strategy-num">#2 📉 看跌</div>
+        <div class="strategy-name">买入看跌期权 (Long Put)</div>
+        <div class="strategy-desc">强烈看空，对冲下行</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 高">🔴 高</span>
+          <span class="strategy-greeks">Δ- Θ- ν+</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card volatility">
+        <div class="strategy-num">#19 🌊 波动率</div>
+        <div class="strategy-name">买入跨式 (Long Straddle)</div>
+        <div class="strategy-desc">预期大幅波动不管方向，VIX低位最佳</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 高">🔴 高</span>
+          <span class="strategy-greeks">Δ中性 Θ-- ν++</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card volatility">
+        <div class="strategy-num">#20 🌊 波动率</div>
+        <div class="strategy-name">买入宽跨式 (Long Strangle)</div>
+        <div class="strategy-desc">预期大幅波动但方向不明，比Straddle成本低</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 高">🔴 高</span>
+          <span class="strategy-greeks">Δ中性 Θ-- ν++</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+    </div>
+    <div class="vix-footer">数据基于20日历史波动率 · Tushare Pro · 策略来源: CBOE 25条期权策略</div>
+  </div>
+</div>
+
+<!-- ③ 25策略完整对照表 -->
+<div class="vix-section" style="margin-top:16px">
+  <div class="vix-hdr">
+    <span>📖 25条期权策略对照表</span>
+  </div>
+  <div class="vix-body">
+    <div class="strat-toggle" onclick="toggleStrat(this)">▶ 点击展开全部25条策略</div>
+    <div class="strat-list" id="stratList">
+      <div class="strat-row" style="background:#1e242b;color:#8899a6;font-weight:600">
+        <span>编号</span><span>策略名称</span><span>类型</span><span>风险</span>
+      </div>
+      
+      <div class="strat-row">
+        <span class="strat-id">#21</span>
+        <span class="strat-name">买入铁秃鹰 (Long Iron Condor)</span>
+        <span class="strat-type t-volatility">🌊 波动率</span>
+        <span class="t-risk-中">🟡 中</span>
+      </div>
+      
+      <div class="strat-row">
+        <span class="strat-id">#1</span>
+        <span class="strat-name">买入看涨期权 (Long Call)</span>
+        <span class="strat-type t-bullish">📈 看涨</span>
+        <span class="t-risk-高">🔴 高</span>
+      </div>
+      
+      <div class="strat-row">
+        <span class="strat-id">#2</span>
+        <span class="strat-name">买入看跌期权 (Long Put)</span>
+        <span class="strat-type t-bearish">📉 看跌</span>
+        <span class="t-risk-高">🔴 高</span>
+      </div>
+      
+      <div class="strat-row">
+        <span class="strat-id">#19</span>
+        <span class="strat-name">买入跨式 (Long Straddle)</span>
+        <span class="strat-type t-volatility">🌊 波动率</span>
+        <span class="t-risk-高">🔴 高</span>
+      </div>
+      
+      <div class="strat-row">
+        <span class="strat-id">#20</span>
+        <span class="strat-name">买入宽跨式 (Long Strangle)</span>
+        <span class="strat-type t-volatility">🌊 波动率</span>
+        <span class="t-risk-高">🔴 高</span>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleStrat(el) {
+  var list = document.getElementById('stratList');
+  var isOpen = list.classList.contains('open');
+  list.classList.toggle('open');
+  el.textContent = isOpen ? '▶ 点击展开全部25条策略' : '▼ 点击收起';
+  el.style.color = isOpen ? '#8899a6' : '#34d399';
+}
+</script>
+
+<!-- ④ 期权权利金参考 -->
+
+<div class="prem-section">
+  <div class="prem-box">
+    <div class="prem-hdr">
+      <span>💰 期权权利金参考（Delta≈0.2）</span>
+    </div>
+    <div class="prem-note">以下为Delta≈0.2时、不同到期日期权的权利金参考区间（未经长期验证，辨证看待）</div>
+    <div class="prem-row-hdr">
+      <span>品种 / 合约</span><span>参考区间</span><span>参考到期日</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>铜 (CU)</span>
+      <span class="prem-rng">800-8000</span>
+      <span class="prem-dte">70天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>铝 (AL)</span>
+      <span class="prem-rng">80-1000</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>镍 (NI)</span>
+      <span class="prem-rng">200-2000</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>黄金 (AU)</span>
+      <span class="prem-rng">500-5000</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>白银 (AG)</span>
+      <span class="prem-rng">50-500</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>碳酸锂 (LC)</span>
+      <span class="prem-rng">400-8000</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>螺纹钢 (RB)</span>
+      <span class="prem-rng">20-200</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>铁矿石 (I)</span>
+      <span class="prem-rng">20-200</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>原油 (SC)</span>
+      <span class="prem-rng">200-2000</span>
+      <span class="prem-dte">40天</span>
+    </div>
+    
+    <div class="prem-row-item">
+      <span>橡胶 (RU)</span>
+      <span class="prem-rng">100-1000</span>
+      <span class="prem-dte">60天</span>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+<!-- ⑤ PCR（有数据时显示） -->
+
+<div class="vix-section" style="margin-top:16px">
+  <div class="vix-hdr">
+    <span>📊 期权PCR & 波动率</span>
+    <span style="font-weight:normal;color:#6b7280">更新: 20260424</span>
+  </div>
+  <div class="vix-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px">
+      <div style="text-align:center;padding:12px;background:#1e242b;border-radius:8px">
+        <div style="font-size:11px;color:#8899a6;margin-bottom:6px">PCR (成交量)</div>
+        <div style="font-size:26px;font-weight:700;color:#10b981">0.585</div>
+        <div style="font-size:11px;margin-top:4px;color:#10b981">✅偏多</div>
+      </div>
+      <div style="text-align:center;padding:12px;background:#1e242b;border-radius:8px">
+        <div style="font-size:11px;color:#8899a6;margin-bottom:6px">HV (20日)</div>
+        <div style="font-size:26px;font-weight:700;color:#6b7280">N/A</div>
+        <div style="font-size:11px;margin-top:4px;color:#6b7280">
+          数据不足
+        </div>
+      </div>
+    </div>
+    
+    <div style="display:flex;justify-content:space-between;font-size:12px;color:#8899a6;margin-bottom:10px">
+      <span>PCR持仓: <strong style="color:#fff">1.1369</strong></span>
+      <span>总成交量: <strong style="color:#fff">181732</strong> 手</span>
+      <span>到期月: <strong style="color:#fff">606</strong></span>
+    </div>
+    
+    <div style="font-size:11px;color:#6b7280;padding:8px 10px;background:#1e242b;border-radius:6px;line-height:1.7">
+      <strong style="color:#8899a6">📖 PCR解读：</strong>PCR = 看跌成交量 / 看涨成交量<br>
+      <span style="color:#34d399">PCR &lt; 0.6</span> 偏多头 | <span style="color:#fbbf24">PCR 0.6-0.8</span> 中性偏多 | <span style="color:#fbbf24">PCR 0.8-1.0</span> 中性 | <span style="color:#f97316">PCR 1.0-1.2</span> 略偏空 | <span style="color:#ef5350">PCR &gt; 1.2</span> 偏空<br>
+      <strong style="color:#8899a6">HV解读：</strong>HV &gt; 40% 高波动买方不利 | HV 15-25% 适中 | HV &lt; 10% 低波动卖方占优
+    </div>
+  </div>
+</div>
 
 
 <!-- VIX 波动率 + 期权策略推荐 -->
