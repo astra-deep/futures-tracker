@@ -83,6 +83,25 @@ def load_vix():
 
 VIX_DATA = load_vix()
 
+PCR_FILE = os.path.join(BASE_DIR, 'pcr.json')
+
+def load_pcr():
+    try:
+        with open(PCR_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except:
+        return {}
+
+PCR_DATA = load_pcr()
+
+def reload_pcr():
+    global PCR_DATA
+    try:
+        with open(PCR_FILE, 'r', encoding='utf-8') as f:
+            PCR_DATA = json.load(f)
+    except:
+        pass
+
 def reload_vix():
     global VIX_DATA
     try:
@@ -141,7 +160,7 @@ FRAMES = {
            'macro':{'核心指标':'锂价 · 新能源车产销','当前判断':'澳矿成本支撑，需求旺季临近','观察点':['锂辉石价格','磷酸铁锂排产']},
            'supply':{'核心指标':'进口量 · 盐湖产量','当前判断':'进口窗口收窄，供应压力缓解','观察点':['澳矿发运','宜春矿端']},
            'signal_long':'澳矿成本支撑+需求旺季+去库','signal_short':'供过于求预期','reversal':'价格涨但去库放缓',
-           'news':['下游节前备库启动','澳矿到港量下降'],'reports':[]},
+           'news':['下游节前备库启动','澳矿到港量下降'],'reports': [{'inst': 'GSX', 'date': '2026-04-29', 'title': 'Higher for Longer Pt 2: China Energy Security', 'bull': 'Bullish', 'summary': '美伊战争持续超预期，全球能源"更高更久"格局确立；中国能源安全战略受益'}, {'inst': 'JPM', 'date': '2026-04-28', 'title': 'OPECxit: UAE to leave OPEC', 'bull': 'Neutral', 'summary': 'UAE为OPEC第三大产油国（3.9mb/d）；霍尔木兹关闭阻止出口；冲突正常化后增加供应'}, {'inst': 'ANZ', 'date': '2026-04-29', 'title': 'OPEC still relevant but less decisive', 'bull': 'Neutral', 'summary': 'UAE退出OPEC正式化，短期影响有限；中期额外供应约1.0mb/d；风险不对称'}, {'inst': 'RiskMacro', 'date': '2026-04-30', 'title': 'X-Asset Dashboard', 'bull': 'Neutral', 'summary': '新兴市场股票/铜/大豆跑赢；黄金白银波动率偏度显示避险升温'}, {'inst': 'JPM', 'date': '2026-04-26', 'title': 'Press Metal升级至OW：铝短缺1.9mt，升水飙至$300/t', 'bull': 'Bullish', 'summary': '目标价RM10.10（Street最高）；铝短缺1.9mt；MJP升水从$140飙至$300/t；实际库存仅9天'}, {'inst': 'JPM', 'date': '2026-04-27', 'title': 'China Metals Activity Tracker: 6周铜强势去库', 'bull': 'Bullish', 'summary': '中国铜库存6周减少超250kt，降至245kt（10年同期最低）；LME铜$13,000以上持续买入'}, {'inst': 'BOA', 'date': '2026-04-24', 'title': 'Global Metals Weekly: Sulphuric acid corrodes copper margins', 'bull': 'Bullish', 'summary': '全球硫磺供应受霍尔木兹中断冲击；约1Mt铜矿供应面临风险；中国电网Q1投资+37%'}]},
 
     'SM': {'name':'锰硅','unit':'元/吨','direction':'🏆 聚焦品种 · 震荡偏强','position':'🏆 聚焦','update_date':'2026-04-24',
            'key_levels':[('¥8,500+','偏强','neutral'),('¥7,000-7,500','支撑区','long'),('¥6,500以下','偏弱','short')],
@@ -156,6 +175,21 @@ FRAMES = {
            'supply':{'核心指标':'煤矿安检 · 焦化厂开工率','当前判断':'主产区安检持续，供应略紧','观察点':['安检范围','焦化厂库存天数']},
            'signal_long':'安检升级+焦化厂集中补库','signal_short':'澳煤政策放松+焦化厂限产','reversal':'焦化厂库存高企仍压价采购',
            'news':['主产区安检持续','蒙煤通关800车/日'],'reports':[]},
+
+
+    'IM': {'name':'中证1000','unit':'点','direction':'📊 震荡','position':'📊 股指','update_date':'2026-04-30',
+           'key_levels':[('6200+','强阻力','neutral'),('5800-6200','震荡','neutral'),('5500-5800','支撑','long'),('5500以下','偏弱','short')],
+           'macro':{'核心指标':'A股情绪 · 流动性 · 美股联动','当前判断':'Trump-Xi峰会5月14-15日为市场核心催化剂','观察点':['北向资金','两融余额','美股走势']},
+           'supply':{'核心指标':'期货升贴水 · 持仓量','当前判断':'贴水结构，空头占优','观察点':['升贴水变化','持仓量']},
+           'signal_long':'政策刺激超预期+北向大幅净流入+贴水收窄','signal_short':'美股大跌+北向大幅净流出+升水转贴水','reversal':'升水扩大但指数不涨',
+           'news':[],'reports':[{'inst': 'JPM', 'date': '2026-04-27', 'title': 'US Market Intel Afternoon Briefing', 'bull': 'Bullish', 'summary': '美股财报季开局强劲，Visa涨幅超8%；标普利润率升至13.4%；中东推油价WTI至$106.88'}, {'inst': 'ANZ', 'date': '2026-04-30', 'title': "Monetary Policy Expectations: What's Priced In", 'bull': 'Neutral', 'summary': '新西兰5月降10bp；欧洲央行降3bp；美联储全年仅降2bp；全球央行政策分化'}, {'inst': 'GS', 'date': '2026-04-29', 'title': 'US Big Tech Names: Inovance TP raise, BYD strong 1Q26', 'bull': 'Bullish', 'summary': 'Inovance目标价上调；BYD 1Q26强劲；算力需求持续高景气'}]},
+
+    'IF': {'name':'沪深300','unit':'点','direction':'📊 震荡','position':'📊 股指','update_date':'2026-04-30',
+           'key_levels':[('4200+','强阻力','neutral'),('3500-3800','支撑','long'),('3500以下','偏弱','short')],
+           'macro':{'核心指标':'PMI·人民币汇率·美股','当前判断':'PPI通缩趋缓，企业盈利改善','观察点':['PMI','人民币']},
+           'supply':{'核心指标':'期货升贴水','当前判断':'贴水结构，谨慎情绪','观察点':['升贴水']},
+           'signal_long':'PMI超预期+北向净流入','signal_short':'美股暴跌+外资流出','reversal':'贴水突然收窄',
+           'news':[],'reports':[{'inst': 'JPM', 'date': '2026-04-29', 'title': 'Powell to remain on a divided committee', 'bull': 'Neutral', 'summary': 'Powell明确留任为制衡美联储独立性威胁；3位鹰派票委反对宽松；全年按兵不动'}, {'inst': 'IMF', 'date': '2026-04-29', 'title': 'EM Local Currency Bond Monitor', 'bull': 'Neutral', 'summary': '新兴市场本币债券资金流入监测；汇率波动为主要风险'}]},
 
     'CU': {'name':'沪铜','unit':'元/吨','direction':'⚠️ 观望','position':'⚠️ 观望','update_date':'2026-04-24',
            'key_levels':[('$13,500+','空单布局区','short'),('$12,000-12,200','分批布局多单','long'),('$11,500以下','长线多头极配区','long')],
@@ -383,12 +417,16 @@ def variety(code):
     reload_vix()
     vix_var = VIX_DATA.get('varieties', {}).get(code, {})
     
+    # PCR数据
+    reload_pcr()
+    pcr_var = PCR_DATA.get(code, {})
+    
     return render_template('variety.html',
         code=code, name=name, unit=unit,
         direction=direction, dir_class=dir_class,
         frame=f, price=p, note=note,
         all_codes=CODES, names=NAMES, dirs=DIRS,
-        vix_data=vix_var
+        vix_data=vix_var, pcr_data=pcr_var
     )
 
 @app.route('/api/prices')
