@@ -171,12 +171,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .prem-box{background:#1a1f26;border-radius:10px;overflow:hidden}
 .prem-hdr{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
 .prem-note{font-size:10px;color:#6b7280;padding:6px 14px;background:#1e242b;border-bottom:1px solid #2f3336}
-.prem-row-hdr{background:#1e242b;font-weight:600;color:#8899a6;padding:7px 14px;display:grid;grid-template-columns:1fr 80px 80px;gap:0}
-.prem-row-item{padding:7px 14px;border-bottom:1px solid #1e242b;color:#b0b8c1;display:grid;grid-template-columns:1fr 80px 80px;gap:0}
+.prem-row-hdr{background:#1e242b;font-weight:600;color:#8899a6;padding:7px 14px;display:grid;grid-template-columns:1fr 100px 70px 70px;gap:0}
+.prem-row-item{padding:7px 14px;border-bottom:1px solid #1e242b;color:#b0b8c1;display:grid;grid-template-columns:1fr 100px 70px 70px;gap:0}
 .prem-row-item:last-child{border-bottom:none}
 .prem-row-item:hover{background:#1e242b}
 .prem-rng{color:#fbbf24;font-weight:600}
+.prem-type-call{color:#34d399;font-weight:600}
+.prem-type-put{color:#ef5350;font-weight:600}
 .prem-dte{color:#8899a6}
+.prem-note{color:#6b7280;font-size:10px}
 
 @media(max-width:700px){.jx-grid{grid-template-columns:1fr 1fr}.jx-strategy-list{grid-template-columns:1fr}.strat-row{grid-template-columns:30px 1fr 70px}}
 </style>
@@ -492,67 +495,14 @@ function toggleStrat(el) {
     </div>
     <div class="prem-note">以下为Delta≈0.2时、不同到期日期权的权利金参考区间（未经长期验证，辨证看待）</div>
     <div class="prem-row-hdr">
-      <span>品种 / 合约</span><span>参考区间</span><span>参考到期日</span>
+      <span>品种 / 合约</span><span>参考区间</span><span>类型</span><span>到期日</span>
     </div>
     
     <div class="prem-row-item">
-      <span>铜 (CU)</span>
-      <span class="prem-rng">800-8000</span>
-      <span class="prem-dte">70天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>铝 (AL)</span>
-      <span class="prem-rng">80-1000</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>镍 (NI)</span>
-      <span class="prem-rng">200-2000</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>黄金 (AU)</span>
+      <span>黄金</span>
       <span class="prem-rng">500-5000</span>
+      <span class="prem-type-call">看涨</span>
       <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>白银 (AG)</span>
-      <span class="prem-rng">50-500</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>碳酸锂 (LC)</span>
-      <span class="prem-rng">400-8000</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>螺纹钢 (RB)</span>
-      <span class="prem-rng">20-200</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>铁矿石 (I)</span>
-      <span class="prem-rng">20-200</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>原油 (SC)</span>
-      <span class="prem-rng">200-2000</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
-    <div class="prem-row-item">
-      <span>橡胶 (RU)</span>
-      <span class="prem-rng">100-1000</span>
-      <span class="prem-dte">60天</span>
     </div>
     
   </div>
