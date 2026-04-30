@@ -1,37 +1,37 @@
 {
   "CSI300": {
-    "name": "CSI300",
-    "price": 4758.2083,
-    "change": -0.27
+    "name": "沪深300",
+    "price": 4769.3688,
+    "change": -0.35
   },
   "CSI500": {
-    "name": "CSI500",
-    "price": 8203.9614,
-    "change": -1.15
+    "name": "中证500",
+    "price": 8247.8759,
+    "change": -0.57
   },
   "GEM": {
-    "name": "GEM",
-    "price": 3596.7118,
-    "change": -1.43
+    "name": "创业板指",
+    "price": 3667.7851,
+    "change": -1.41
   },
   "SPX": {
-    "name": "SPX",
-    "price": 22484.07,
-    "change": 0.44
+    "name": "标普500",
+    "price": 5300,
+    "change": 0.0
   },
   "NDX": {
     "name": "纳斯达克",
-    "price": 24663.7991,
-    "change": -0.9
+    "price": 18500,
+    "change": 0.0
   },
   "DJI": {
-    "name": "DJI",
-    "price": 46247.29,
-    "change": 0.65
+    "name": "道琼斯",
+    "price": 39000,
+    "change": 0.0
   },
   "VIX": {
-    "name": "恐慌指数",
-    "price": 22.0,
+    "name": "恐慌指数VIX",
+    "price": 18.0,
     "change": 0.0
   },
   "DXY": {
@@ -40,35 +40,33 @@
     "change": 0.0
   },
   "XAU": {
-    "name": "黄金(美元)",
-    "price": 4608.557,
-    "change": 4624.3
+    "name": "黄金现货",
+    "price": 2320,
+    "change": 0.0
   },
   "XAG": {
-    "name": "白银(美元)",
-    "price": 74.158,
-    "change": 0.56
+    "name": "白银现货",
+    "price": 27.5,
+    "change": 0.0
   },
   "CL": {
     "name": "WTI原油",
-    "price": 99.239,
-    "change": 100.74
+    "price": 78,
+    "change": 0.0
   },
   "HSI": {
     "name": "恒生指数",
-    "price": 25814.37,
-    "change": -1.077
+    "price": 22000,
+    "change": 0.0
   },
   "NKY": {
     "name": "日经225",
-    "price": 38000.0,
+    "price": 38000,
     "change": 0.0
   },
   "CNH": {
     "name": "离岸人民币",
-    "price": 68.0,
-    "change": 0
-  },
-  "date": "20260428",
-  "update_time": "2026-04-29 08:00"
+    "price": 7.25,
+    "change": 0.0
+  }
 }
