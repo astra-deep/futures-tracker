@@ -380,6 +380,43 @@ FRAMES = {
 
 # ===== 路由 =====
 
+# Load variety reports from pdf_reports_v2.json
+import json as _json, os as _os
+_vr_file = _os.path.join(_os.path.dirname(__file__), 'pdf_reports_v2.json')
+try:
+    with open(_vr_file, 'r', encoding='utf-8') as _f:
+        _vr = _json.load(_f)
+    VARIETY_REPORTS = _vr.get('variety_reports', {})
+    MACRO_REPORTS = _vr.get('macro_reports', [])
+except Exception:
+    VARIETY_REPORTS = {}
+    MACRO_REPORTS = []
+
+
+_COLOR_MAP = {
+    'Goldman Sachs': '#6c4ef3', 'GS': '#6c4ef3',
+    'Morgan Stanley': '#3b82f6', 'MS': '#3b82f6',
+    'JPMorgan': '#10b981', 'JPM': '#10b981',
+    'BofA': '#ef4444', 'BOA': '#ef4444',
+    'Deutsche Bank': '#f59e0b', 'DB': '#f59e0b',
+    'ANZ': '#ec4899',
+    'UBS': '#8b5cf6',
+    'CA-CIB': '#06b6d4', 'CA': '#06b6d4',
+    'Federal Reserve': '#64748b', 'FED': '#64748b',
+    'China Watch': '#f97316', 'TS': '#f97316',
+}
+
+def _make_report_entry(r):
+    return {
+        'inst': r.get('issuer', ''),
+        'instColor': _COLOR_MAP.get(r.get('issuer', ''), '#8899a6'),
+        'date': r.get('date', '').replace('.', '/'),
+        'title': r.get('title', '')[:100],
+        'summary': r.get('summary', '')[:200],
+        'bullets': r.get('key_points', [])[:5],
+        'type': 'neutral',
+    }
+
 @app.route('/')
 def index():
     frames_data = {}
@@ -427,7 +464,8 @@ def variety(code):
         frame=f, price=p, note=note,
         all_codes=CODES, names=NAMES, dirs=DIRS,
         vix_data=vix_var, pcr_data=pcr_var
-    )
+    ,
+        variety_reports=VARIETY_REPORTS.get(code.upper(), []))
 
 @app.route('/api/prices')
 def api_prices():
