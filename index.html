@@ -2499,7 +2499,7 @@ function loadMacroInsights() {
     container.innerHTML = '<div style="color:#8899a6;font-size:12px;padding:8px">暂无宏观观点</div>';
     return;
   }
-  const html = MACRO_INSIGHTS.map(item => {
+  const insightsHtml = MACRO_INSIGHTS.map(item => {
     const instColor = item.instColor || '#6366f1';
     return '<div class="news-item" style="border-left:3px solid ' + instColor + ';margin-bottom:8px;padding:6px 8px;border-radius:0 6px 6px 0;background:#1a1f26">'
       + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">'
@@ -2509,7 +2509,7 @@ function loadMacroInsights() {
       + '<div style="font-size:12px;color:#d1d5db;line-height:1.5">' + item.summary + '</div>'
       + '</div>';
   }).join('');
-  container.innerHTML = html;
+  container.innerHTML = insightsHtml;
 }
 
 
