@@ -27,6 +27,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .up{color:#ef5350}
 .down{color:#26a69a}
 .neu{color:#fbbf24}
+
 .key-levels{background:#1e242b;border-radius:8px;padding:14px;margin-top:12px}
 .key-levels-title{font-size:12px;color:#8899a6;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
 .levels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
@@ -36,6 +37,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .level-item.neutral{border-color:#fbbf24}
 .level-price{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px}
 .level-label{font-size:11px;color:#8899a6}
+
 .signal-section{margin-bottom:16px}
 .section-hdr2{font-size:12px;color:#8899a6;text-transform:uppercase;letter-spacing:1px;margin:0 0 10px 0}
 .card{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:12px}
@@ -63,6 +65,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .bull-bullish{color:#34d399}
 .bull-neutral{color:#fbbf24}
 .bull-bearish{color:#ef5350}
+
 /* VIX 波动率区域 */
 .vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:16px}
 .vix-hdr{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between;align-items:center}
@@ -100,69 +103,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .warning-item.danger{background:rgba(239,83,80,0.1);border:1px solid rgba(239,83,80,0.3);color:#f87171}
 .warning-item.success{background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399}
 .vix-footer{font-size:10px;color:#6b7280;margin-top:10px;text-align:right}
+
 /* 笔记区域 */
+.note-section{display:grid;grid-template-columns:1fr 300px;gap:16px;margin-bottom:16px}
 .note-main{}
 .note-sidebar{position:sticky;top:16px}
+.note-card{background:#1a1f26;border-radius:10px;overflow:hidden}
+.note-card-hdr{padding:10px 14px;background:#1e242b;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between;align-items:center}
+.note-textarea{width:100%;background:#252a30;border:1px solid #2f3336;color:#e7e9ea;padding:10px;border-radius:8px;font-size:13px;line-height:1.7;min-height:140px;resize:vertical;font-family:inherit}
+.note-textarea:focus{outline:none;border-color:#6366f1}
+.note-hint{font-size:10px;color:#6b7280;margin-top:5px}
+.note-btn{background:#6366f1;color:#fff;border:none;padding:7px 18px;border-radius:6px;font-size:12px;cursor:pointer;margin-top:8px}
+.note-btn:hover{background:#5558e3}
+.note-saved{color:#34d399;font-size:11px;margin-top:6px;display:none}
+.note-idea-btn{display:inline-block;background:#1a2a1a;color:#34d399;border:1px solid #34d399;padding:6px 14px;border-radius:6px;font-size:11px;cursor:pointer;margin-top:8px;text-decoration:none}
+.note-idea-btn:hover{background:#1a3a2a}
+
 /* 快速跳转 */
-@media(max-width:700px){}
-/* 金弦一号 */
-.jx-box{background:linear-gradient(135deg,#1a1f26 0%,#1a2418 100%);border:1px solid #2a3a28;border-radius:12px;padding:16px;margin-bottom:16px}
-.jx-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.jx-title{display:flex;align-items:center;gap:8px}
-.jx-title-icon{font-size:16px}
-.jx-title-text{font-size:14px;font-weight:700;color:#34d399}
-.jx-badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:600}
-.jx-badge.buy{background:#1a2a1a;color:#34d399;border:1px solid #34d399}
-.jx-badge.sell{background:#2a1a1a;color:#ef5350;border:1px solid #ef5350}
-.jx-badge.neutral{background:#2a2a1a;color:#fbbf24;border:1px solid #fbbf24}
-.jx-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
-.jx-item{background:#1a1f26;border-radius:8px;padding:10px;text-align:center}
-.jx-item-label{font-size:10px;color:#6b7280;margin-bottom:4px}
-.jx-item-value{font-size:16px;font-weight:700}
-.jx-strategy-box{margin-top:8px;padding:10px;background:#1a2518;border-radius:8px}
-.jx-strategy-label{font-size:10px;color:#34d399;margin-bottom:6px;font-weight:600}
-.jx-strategy-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.jx-strategy-item{background:#1a1f26;border-radius:6px;padding:8px;border-left:2px solid #34d399}
-.jx-strategy-item:nth-child(2){border-color:#6366f1}
-.jx-strategy-name{font-size:12px;font-weight:600;color:#fff}
-.jx-strategy-meta{font-size:10px;color:#8899a6;margin-top:3px}
-/* 25策略 */
-.strat-toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:#8899a6;font-size:12px;padding:6px 12px;background:#1e242b;border-radius:6px;margin-top:10px}
-.strat-toggle:hover{color:#fff}
-.strat-list{display:none;margin-top:10px;background:#1a1f26;border-radius:8px;overflow:hidden}
-.strat-list.open{display:block}
-.strat-row{display:grid;grid-template-columns:40px 1fr 90px 70px;gap:8px;padding:7px 12px;border-bottom:1px solid #1e242b;font-size:11px;align-items:center}
-.strat-row:last-child{border-bottom:none}
-.strat-row:hover{background:#1e242b}
-.strat-id{color:#6366f1;font-weight:600;font-family:monospace}
-.strat-name{color:#e7e9ea;font-weight:500}
-.strat-type{padding:2px 6px;border-radius:3px;font-size:10px;font-weight:600;text-align:center}
-.t-bullish,.t-buy{background:rgba(52,211,153,0.15);color:#34d399}
-.t-bearish,.t-sell{background:rgba(239,83,80,0.15);color:#ef5350}
-.t-neutral{background:rgba(251,191,36,0.15);color:#fbbf24}
-.t-volatility{background:rgba(99,102,241,0.15);color:#a5b4fc}
-.t-arbitrage{background:rgba(52,211,153,0.15);color:#34d399}
-.t-risk-low{color:#34d399}.t-risk-medium{color:#fbbf24}.t-risk-high{color:#ef5350}.t-risk-extreme{color:#f87171}
-/* 权利金 */
-.prem-section{margin-top:16px}
-.prem-box{background:#1a1f26;border-radius:10px;overflow:hidden}
-.prem-hdr{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336}
-.prem-note{font-size:10px;color:#6b7280;padding:6px 14px;background:#1e242b;border-bottom:1px solid #2f3336}
-.prem-row-hdr{background:#1e242b;font-weight:600;color:#8899a6;padding:7px 14px;display:grid;grid-template-columns:1fr 100px 70px 70px;gap:0}
-.prem-row-item{padding:7px 14px;border-bottom:1px solid #1e242b;color:#b0b8c1;display:grid;grid-template-columns:1fr 100px 70px 70px;gap:0}
-.prem-row-item:last-child{border-bottom:none}
-.prem-row-item:hover{background:#1e242b}
-.prem-rng{color:#fbbf24;font-weight:600}
-.prem-type-call{color:#34d399;font-weight:600}
-.prem-type-put{color:#ef5350;font-weight:600}
-.prem-dte{color:#8899a6}
-.prem-note{color:#6b7280;font-size:10px}
-@media(max-width:700px){.jx-grid{grid-template-columns:1fr 1fr}.jx-strategy-list{grid-template-columns:1fr}.strat-row{grid-template-columns:30px 1fr 70px}}
+.all-cats{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid #2f3336}
+.cat-link{background:#1e242b;color:#8899a6;font-size:11px;padding:5px 12px;border-radius:6px;text-decoration:none;transition:all 0.2s}
+.cat-link:hover,.cat-link.active{background:#6366f1;color:#fff}
+
+@media(max-width:700px){.note-section{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="container">
-<a href="index.html" class="back">← 返回首页</a>
+<a href="/" class="back">← 返回首页</a>
+
 <div class="hero">
   <div class="hero-top">
     <div>
@@ -171,20 +139,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="hero-dir dir-neu">📊</div>
   </div>
+
   <div class="hero-price">1022.10</div>
   <div class="hero-chg down">
     ▼
     1.05%
   </div>
   <div class="hero-date">20260428</div>
+
   
   <div class="hero-oi">
     持仓量 <strong>16.6万手</strong>
     
   </div>
   
+
   
 </div>
+
+
 
 <div class="signal-section">
   <div class="section-hdr2">✅ 做多信号</div>
@@ -201,6 +174,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
   </div>
 </div>
+
 <div class="signal-section">
   <div class="section-hdr2">🔴 做空信号</div>
   <div class="card">
@@ -219,6 +193,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 
 
+
+
+
 <div class="signal-section">
   <div class="section-hdr2">📝 外资研报</div>
   
@@ -234,56 +211,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   
 </div>
 
-<!-- ========== 期权分析四大块 ========== -->
 
-<!-- ① 金弦一号策略 -->
-<div class="jx-box">
-  <div class="jx-hdr">
-    <div class="jx-title">
-      <span class="jx-title-icon">🎯</span>
-      <span class="jx-title-text">金弦一号策略</span>
-      <span class="jx-badge neutral">
-        中性价差策略
-      </span>
-    </div>
-  </div>
-  <div class="jx-grid">
-    <div class="jx-item">
-      <div class="jx-item-label">波动率 (HV)</div>
-      <div class="jx-item-value" style="color:#D29922">22.6%</div>
-    </div>
-    <div class="jx-item">
-      <div class="jx-item-label">波动环境</div>
-      <div class="jx-item-value" style="color:#D29922">中等波动率</div>
-    </div>
-    <div class="jx-item">
-      <div class="jx-item-label">仓位建议</div>
-      <div class="jx-item-value" style="color:#34d399">
-        中性价差
-      </div>
-    </div>
-  </div>
-  <div class="jx-strategy-box">
-    <div class="jx-strategy-label">⭐ 核心策略推荐</div>
-    <div class="jx-strategy-list">
-      
-      <div class="jx-strategy-item">
-        <div class="jx-strategy-name">保护性看跌 (Protective Put)</div>
-        <div class="jx-strategy-meta">🟢 低风险 | Δ+ Θ- ν+</div>
-      </div>
-      
-      <div class="jx-strategy-item">
-        <div class="jx-strategy-name">牛市看涨价差 (Bull Call Spread)</div>
-        <div class="jx-strategy-meta">🟢 低风险 | Δ+ Θ+ ν中性</div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-<!-- ② 波动率仪表盘 -->
+<!-- VIX 波动率 + 期权策略推荐 -->
+
 <div class="vix-section">
   <div class="vix-hdr">
-    <span>🌊 波动率仪表盘</span>
+    <span>🌊 波动率 & 期权策略</span>
     <span style="font-weight:normal;color:#6b7280">HV更新: </span>
   </div>
   <div class="vix-body">
@@ -299,6 +232,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
         <div class="vix-scale"><span>0%</span><span>低波</span><span>20%</span><span>中波</span><span>35%</span><span>高波</span><span>50%+</span></div>
       </div>
     </div>
+
     
     <div class="warnings-section">
       
@@ -306,106 +240,294 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       
     </div>
     
-    <div style="font-size:11px;color:#8899a6;margin:12px 0 8px 0">📋 推荐策略（根据波动率水平筛选）</div>
+
+    <div style="font-size:11px;color:#8899a6;margin:12px 0 8px 0">📋 推荐策略（根据VIX水平筛选）</div>
     <div class="strategy-grid">
       
       <div class="strategy-card bullish">
-        <div class="strategy-num">#4 📈 看涨</div>
+        <div class="strategy-num">策略 #4 📈 看涨</div>
         <div class="strategy-name">保护性看跌 (Protective Put)</div>
         <div class="strategy-desc">持股对冲，下跌有限，上涨无限</div>
         <div class="strategy-meta">
-          <span class="strategy-risk 低">🟢 低</span>
+          <span class="strategy-risk 低">🟢 低风险</span>
           <span class="strategy-greeks">Δ+ Θ- ν+</span>
           <span class="strategy-score">⭐⭐⭐</span>
         </div>
       </div>
       
       <div class="strategy-card bullish">
-        <div class="strategy-num">#6 📈 看涨</div>
+        <div class="strategy-num">策略 #6 📈 看涨</div>
         <div class="strategy-name">牛市看涨价差 (Bull Call Spread)</div>
         <div class="strategy-desc">温和看多，成本低，收益有上限</div>
         <div class="strategy-meta">
-          <span class="strategy-risk 低">🟢 低</span>
+          <span class="strategy-risk 低">🟢 低风险</span>
           <span class="strategy-greeks">Δ+ Θ+ ν中性</span>
           <span class="strategy-score">⭐⭐⭐</span>
         </div>
       </div>
       
       <div class="strategy-card bearish">
-        <div class="strategy-num">#11 📉 看跌</div>
+        <div class="strategy-num">策略 #11 📉 看跌</div>
         <div class="strategy-name">熊市看跌价差 (Bear Put Spread)</div>
         <div class="strategy-desc">温和看空，成本低，收益有上限</div>
         <div class="strategy-meta">
-          <span class="strategy-risk 低">🟢 低</span>
+          <span class="strategy-risk 低">🟢 低风险</span>
           <span class="strategy-greeks">Δ- Θ+ ν中性</span>
           <span class="strategy-score">⭐⭐⭐</span>
         </div>
       </div>
       
       <div class="strategy-card bullish">
-        <div class="strategy-num">#7 📈 看涨</div>
+        <div class="strategy-num">策略 #7 📈 看涨</div>
         <div class="strategy-name">牛市看跌价差 (Bull Put Spread)</div>
         <div class="strategy-desc">温和看多，收取权利金，收入策略</div>
         <div class="strategy-meta">
-          <span class="strategy-risk 中">🟡 中</span>
+          <span class="strategy-risk 中">🟡 中风险</span>
           <span class="strategy-greeks">Δ+ Θ+ ν中性</span>
           <span class="strategy-score">⭐⭐⭐</span>
         </div>
       </div>
       
       <div class="strategy-card bullish">
-        <div class="strategy-num">#10 📈 看涨</div>
+        <div class="strategy-num">策略 #10 📈 看涨</div>
         <div class="strategy-name">牛市对角价差 (Bull Diagonal Spread)</div>
         <div class="strategy-desc">长期看好短期谨慎，时间+方向双重优势</div>
         <div class="strategy-meta">
-          <span class="strategy-risk 中">🟡 中</span>
+          <span class="strategy-risk 中">🟡 中风险</span>
           <span class="strategy-greeks">Δ+ Θ? ν+</span>
           <span class="strategy-score">⭐⭐⭐</span>
         </div>
       </div>
       
       <div class="strategy-card bearish">
-        <div class="strategy-num">#12 📉 看跌</div>
+        <div class="strategy-num">策略 #12 📉 看跌</div>
         <div class="strategy-name">熊市看涨价差 (Bear Call Spread)</div>
         <div class="strategy-desc">温和看空，收取权利金，收入策略</div>
         <div class="strategy-meta">
-          <span class="strategy-risk 中">🟡 中</span>
+          <span class="strategy-risk 中">🟡 中风险</span>
           <span class="strategy-greeks">Δ- Θ+ ν中性</span>
           <span class="strategy-score">⭐⭐⭐</span>
         </div>
       </div>
       
     </div>
-    <div class="vix-footer">数据基于20日历史波动率 · Tushare Pro</div>
-    <div style="font-size:11px;color:#6b7280;margin-top:10px;padding:8px 10px;background:#1e242b;border-radius:6px;line-height:1.7">
-      <strong style="color:#8899a6">📖 PCR解读：</strong>PCR = 看跌成交量 / 看涨成交量<br>
-      <span style="color:#34d399">PCR &lt; 0.6</span> 偏多头 | <span style="color:#fbbf24">PCR 0.6-0.8</span> 中性偏多 | <span style="color:#fbbf24">PCR 0.8-1.0</span> 中性 | <span style="color:#f97316">PCR 1.0-1.2</span> 略偏空 | <span style="color:#ef5350">PCR &gt; 1.2</span> 偏空<br>
-      <strong style="color:#8899a6">HV解读：</strong>HV &gt; 40% 高波动买方不利 | HV 15-25% 适中 | HV &lt; 10% 低波动卖方占优
-    </div>
+    <div class="vix-footer">数据基于20日历史波动率计算 · Tushare · 策略来源: CBOE 25条期权策略</div>
   </div>
 </div>
 
-<!-- ④ 期权权利金参考 -->
 
-<div class="prem-section">
-  <div class="prem-box">
-    <div class="prem-hdr">
-      <span>💰 期权权利金参考（Delta≈0.2）</span>
+<!-- PCR 期权持仓分析 -->
+
+
+<!-- 笔记 + 快速跳转 -->
+<div class="note-section">
+  <div class="note-main">
+    <div class="all-cats">
+      
+      
+      <a href="/variety/CU" class="cat-link">CU</a>
+      
+      
+      
+      <a href="/variety/AL" class="cat-link">AL</a>
+      
+      
+      
+      <a href="/variety/NI" class="cat-link">NI</a>
+      
+      
+      
+      
+      
+      <a href="/variety/AG" class="cat-link">AG</a>
+      
+      
+      
+      <a href="/variety/ZN" class="cat-link">ZN</a>
+      
+      
+      
+      <a href="/variety/LC" class="cat-link">LC</a>
+      
+      
+      
+      <a href="/variety/I" class="cat-link">I</a>
+      
+      
+      
+      <a href="/variety/RB" class="cat-link">RB</a>
+      
+      
+      
+      <a href="/variety/HC" class="cat-link">HC</a>
+      
+      
+      
+      <a href="/variety/JM" class="cat-link">JM</a>
+      
+      
+      
+      <a href="/variety/SM" class="cat-link">SM</a>
+      
+      
+      
+      <a href="/variety/SC" class="cat-link">SC</a>
+      
+      
+      
+      <a href="/variety/MA" class="cat-link">MA</a>
+      
+      
+      
+      <a href="/variety/TA" class="cat-link">TA</a>
+      
+      
+      
+      <a href="/variety/EB" class="cat-link">EB</a>
+      
+      
+      
+      <a href="/variety/RU" class="cat-link">RU</a>
+      
+      
+      
+      <a href="/variety/P" class="cat-link">P</a>
+      
+      
+      
+      <a href="/variety/Y" class="cat-link">Y</a>
+      
+      
+      
+      <a href="/variety/M" class="cat-link">M</a>
+      
+      
+      
+      <a href="/variety/LH" class="cat-link">LH</a>
+      
+      
+      
+      <a href="/variety/CF" class="cat-link">CF</a>
+      
+      
+      
+      <a href="/variety/SR" class="cat-link">SR</a>
+      
+      
+      
+      <a href="/variety/SA" class="cat-link">SA</a>
+      
+      
+      
+      <a href="/variety/IF" class="cat-link">IF</a>
+      
+      
+      
+      <a href="/variety/IM" class="cat-link">IM</a>
+      
+      
+      
+      <a href="/variety/PX" class="cat-link">PX</a>
+      
+      
+      
+      <a href="/variety/AO" class="cat-link">AO</a>
+      
+      
+      
+      <a href="/variety/PP" class="cat-link">PP</a>
+      
+      
+      
+      <a href="/variety/L" class="cat-link">L</a>
+      
+      
+      
+      <a href="/variety/V" class="cat-link">V</a>
+      
+      
+      
+      <a href="/variety/EG" class="cat-link">EG</a>
+      
+      
+      
+      <a href="/variety/RM" class="cat-link">RM</a>
+      
+      
+      
+      <a href="/variety/SF" class="cat-link">SF</a>
+      
+      
+      
+      <a href="/variety/ZC" class="cat-link">ZC</a>
+      
+      
+      
+      <a href="/variety/AP" class="cat-link">AP</a>
+      
+      
+      
+      <a href="/variety/PB" class="cat-link">PB</a>
+      
+      
     </div>
-    <div class="prem-note">以下为Delta≈0.2时、不同到期日期权的权利金参考区间（未经长期验证，辨证看待）</div>
-    <div class="prem-row-hdr">
-      <span>品种 / 合约</span><span>参考区间</span><span>类型</span><span>到期日</span>
+  </div>
+  <div class="note-sidebar">
+    <div class="note-card">
+      <div class="note-card-hdr">📝 投资笔记</div>
+      <div class="card-body">
+        <textarea class="note-textarea" id="noteInput" placeholder="记录你的投资观点、想法、分析结论..."></textarea>
+        <div class="note-hint">笔记仅保存在本地服务器</div>
+        <button class="note-btn" onclick="saveNote()">保存笔记</button>
+        <div class="note-saved" id="noteSaved">✅ 已保存</div>
+      </div>
     </div>
-    
-    <div class="prem-row-item">
-      <span>黄金</span>
-      <span class="prem-rng">500-5000</span>
-      <span class="prem-type-call">看涨</span>
-      <span class="prem-dte">40天</span>
-    </div>
-    
   </div>
 </div>
+</div>
 
+<script>
+const CODE = 'AU';
+
+async function loadNote() {
+  try {
+    const res = await fetch('/api/notes/' + CODE);
+    const data = await res.json();
+    if (data.note) {
+      document.getElementById('noteInput').value = data.note;
+    }
+  } catch(e) {}
+}
+
+async function saveNote() {
+  const note = document.getElementById('noteInput').value;
+  const saved = document.getElementById('noteSaved');
+  try {
+    const res = await fetch('/api/notes/' + CODE, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({note})
+    });
+    const data = await res.json();
+    if (data.success) {
+      saved.style.display = 'block';
+      setTimeout(() => saved.style.display = 'none', 2000);
+    }
+  } catch(e) {
+    alert('保存失败');
+  }
+}
+
+// 自动保存（离开页面时）
+window.addEventListener('beforeunload', function() {
+  const note = document.getElementById('noteInput').value;
+  if (note) {
+    navigator.sendBeacon('/api/notes/' + CODE, JSON.stringify({note}),
+      {Content-Type:'application/json'});
+  }
+});
+
+loadNote();
+</script>
 </body>
 </html>
