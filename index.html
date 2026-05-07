@@ -2652,17 +2652,8 @@ async function loadNews() {
 
 
   allNews = (NEWS && NEWS.length > 0) ? NEWS : [];
-
-
-
-
-
-  countEl.textContent = `${allNews.length}条`;
-
-
-
-
-
+  if (container) container.innerHTML = "";
+  countEl.textContent = allNews.length + "条";
   renderNews(allNews.slice(0, 5));
 
 
