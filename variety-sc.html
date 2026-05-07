@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>原油 (SC) - 投资框架</title>
+<title> () - 投资框架</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0f1419;color:#e7e9ea;min-height:100vh;font-size:15px}
@@ -68,7 +68,32 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* VIX 波动率区域 */
 .<!-- 品种研报 -->
-
+{% if variety_reports %}
+<div class="card" style="margin-bottom:16px">
+  <div class="card-hdr">📊 品种相关研报 ()</div>
+  <div class="card-body">
+    {% for r in variety_reports[:10] %}
+    <div style="border-bottom:1px solid #1e242b;padding:10px 0{% if not loop.last %}{% endif %}">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="background:;color:#fff;font-size:10px;padding:2px 6px;border-radius:3px;font-weight:600"></span>
+        <span style="color:#8899a6;font-size:11px"></span>
+      </div>
+      <div style="font-size:13px;font-weight:600;color:#e7e9ea;margin-bottom:4px"></div>
+      {% if r.summary %}
+      <div style="font-size:12px;color:#8899a6;line-height:1.5">{% if r.summary|length > 200 %}...{% endif %}</div>
+      {% endif %}
+      {% if r.bullets %}
+      <div style="margin-top:6px">
+        {% for b in r.bullets[:3] %}
+        <div style="font-size:11px;color:#b0b8c1;padding:2px 0">→ </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
 
 vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:16px}
 .vix-hdr{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between;align-items:center}
@@ -137,46 +162,64 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
 <div class="hero">
   <div class="hero-top">
     <div>
-      <div class="hero-name">原油 <span style="font-size:14px;color:#8899a6">(SC)</span></div>
+      <div class="hero-name"> <span style="font-size:14px;color:#8899a6">()</span></div>
       <div class="hero-code">单位： · 更新：</div>
     </div>
-    <div class="hero-dir dir-neu">📊</div>
+    <div class="hero-dir dir-"></div>
   </div>
 
-  <div class="hero-price">675.40</div>
-  <div class="hero-chg up">
-    ▲
-    3.22%
+  <div class="hero-price"></div>
+  <div class="hero-chg {% if price.get('change',0) >= 0 %}up{% else %}down{% endif %}">
+    {% if price.get('change',0) >= 0 %}▲{% else %}▼{% endif %}
+    %
   </div>
-  <div class="hero-date">20260430</div>
+  <div class="hero-date"></div>
 
-  
+  {% if price.get('oi') %}
   <div class="hero-oi">
-    持仓量 <strong>0.1万手</strong>
-    
-    <span class="oi-change down">
-      ▼0.1%
+    持仓量 <strong>万手</strong>
+    {% if price.get('oi_change') %}
+    <span class="oi-change {% if price.get('oi_change',0) > 0 %}up{% else %}down{% endif %}">
+      %
     </span>
-    
+    {% endif %}
   </div>
-  
+  {% endif %}
 
-  
+  {% if frame.get('key_levels') %}
+  <div class="key-levels">
+    <div class="key-levels-title">📌 关键价位</div>
+    <div class="levels-grid">
+      {% for level_price, level_label, level_type in frame.get('key_levels', []) %}
+      <div class="level-item ">
+        <div class="level-price"></div>
+        <div class="level-label"></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 </div>
 
-
+{% if frame.get('reversal') %}
+<div class="reversal">
+  <strong>⚠️ 反转信号：</strong>
+</div>
+{% endif %}
 
 <div class="signal-section">
   <div class="section-hdr2">✅ 做多信号</div>
   <div class="card">
     <div class="card-body">
       <ul class="signal-list">
-        
-        
-          
-            
-          
-        
+        {% set sigs = frame.get('signal_long', '') %}
+        {% if sigs is string %}
+          {% for sig in sigs.split('+') %}
+            {% if sig.strip() %}<li class="signal-long"></li>{% endif %}
+          {% endfor %}
+        {% else %}
+          {% for sig in sigs %}<li class="signal-long"></li>{% endfor %}
+        {% endif %}
       </ul>
     </div>
   </div>
@@ -187,60 +230,77 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
   <div class="card">
     <div class="card-body">
       <ul class="signal-list">
-        
-        
-          
-            
-          
-        
+        {% set sigs = frame.get('signal_short', '') %}
+        {% if sigs is string %}
+          {% for sig in sigs.split('+') %}
+            {% if sig.strip() %}<li class="signal-short"></li>{% endif %}
+          {% endfor %}
+        {% else %}
+          {% for sig in sigs %}<li class="signal-short"></li>{% endfor %}
+        {% endif %}
       </ul>
     </div>
   </div>
 </div>
 
+{% if frame.get('macro') %}
+<div class="signal-section">
+  <div class="section-hdr2">📊 三层框架</div>
+  <div class="card">
+    <div class="card-hdr">宏观层</div>
+    <div class="card-body" style="font-size:12px;color:#b0b8c1;line-height:1.8">
+      <div>核心指标：</div>
+      <div>当前判断：<strong style="color:#fff"></strong></div>
+      <div>观察点：</div>
+    </div>
+  </div>
+  {% if frame.get('supply') %}
+  <div class="card">
+    <div class="card-hdr">供需层</div>
+    <div class="card-body" style="font-size:12px;color:#b0b8c1;line-height:1.8">
+      <div>核心指标：</div>
+      <div>当前判断：<strong style="color:#fff"></strong></div>
+      <div>观察点：</div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
 
+{% if frame.get('news') and frame.news | length > 0 %}
+<div class="signal-section">
+  <div class="section-hdr2">📰 最新消息</div>
+  <div class="card">
+    <div class="card-body">
+      {% for item in frame.news %}
+      <div class="news-item">
+        <div class="news-item-title">• </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
 
-
-
-
+{% if frame.get('reports') and frame.reports | length > 0 %}
 <div class="signal-section">
   <div class="section-hdr2">📝 外资研报</div>
-  
+  {% for rpt in frame.reports %}
   <div class="report-item">
     <div class="report-hdr">
-      <span class="report-inst">摩根士丹利</span>
-      <span class="report-date">2026-04-26</span>
+      <span class="report-inst"></span>
+      <span class="report-date"></span>
     </div>
-    <div class="report-title">China Inc Resilient But Not Immune to Oil Shock</div>
-    <div class="report-summary">摩根士丹利中国32个行业分析师调查显示：66-70%的行业表示成本冲击和产量干扰小于全球同行，显示供应链韧性。出口收益集中在煤炭、金属、化工和绿色科技领域。但国内消费需求疲弱，工资传导有限，整体再通胀动力不足。政策倾向于供给侧安全而非消费刺激。摩根士丹力预测A股/港股年底前有5-10%上行空间，受益于全球能源冲击中的相对优势。</div>
-    <div class="report-bull bull-bullish">Bullish</div>
+    <div class="report-title"></div>
+    <div class="report-summary"></div>
+    <div class="report-bull {% if 'Bull' in rpt.bull %}bull-bullish{% elif 'Bear' in rpt.bull %}bull-bearish{% else %}bull-neutral{% endif %}"></div>
   </div>
-  
-  <div class="report-item">
-    <div class="report-hdr">
-      <span class="report-inst">南华研究</span>
-      <span class="report-date">2026-04-30</span>
-    </div>
-    <div class="report-title">期货早参 | 不降息，原油的焦虑，工业品的压力</div>
-    <div class="report-summary">南华研究晨间期货分析：美联储维持利率3.5%-3.75%不变，年内第三次按兵不动，6月暂无降息可能。贵金属延续调整，原油近强远弱结构化。关注OECD库存下探至历史低位对原油的支撑。</div>
-    <div class="report-bull bull-neutral">Neutral</div>
-  </div>
-  
-  <div class="report-item">
-    <div class="report-hdr">
-      <span class="report-inst">高盛</span>
-      <span class="report-date">2026-04-28</span>
-    </div>
-    <div class="report-title">原油：资本支出新周期开启，2026年供需缺口3mb/d</div>
-    <div class="report-summary">高盛：2026年全球供需缺口约3百万桶/天，Q2缺口高达9.6百万桶/天。布伦特Q2-Q4预测$90-$100/桶。全年capex上行周期开启，五大Buy标的：Halliburton、ConocoPhillips、Valero、Diamondback、Cenovus。炼油毛利Gulf Coast同比+95%。</div>
-    <div class="report-bull bull-bullish">Bullish</div>
-  </div>
-  
+  {% endfor %}
 </div>
-
+{% endif %}
 
 <!-- VIX 波动率 + 期权策略推荐 -->
-
+{% if vix_data %}
 <div class="vix-section">
   <div class="vix-hdr">
     <span>🌊 波动率 & 期权策略</span>
@@ -249,244 +309,54 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
   <div class="vix-body">
     <div class="vix-gauge">
       <div>
-        <div class="vix-value" style="color:#F85149">80.8%</div>
-        <div class="vix-label">高波动率</div>
+        <div class="vix-value" style="color:"></div>
+        <div class="vix-label"></div>
       </div>
       <div style="flex:1">
         <div class="vix-bar-wrap">
-          <div class="vix-bar" style="width:161.52%;background:#F85149"></div>
+          <div class="vix-bar" style="width:%;background:"></div>
         </div>
         <div class="vix-scale"><span>0%</span><span>低波</span><span>20%</span><span>中波</span><span>35%</span><span>高波</span><span>50%+</span></div>
       </div>
     </div>
 
-    
+    {% if vix_data.get('warnings') %}
     <div class="warnings-section">
-      
-      <div class="warning-item warn">⚠️ 高波动率环境：期权买方时间价值损耗快（Θ每天流失），注意Theta风险</div>
-      
-      <div class="warning-item warn">⚠️ 波动率可能均值回归：买入期权后若波动率下降，即使方向正确也可能亏钱</div>
-      
-      <div class="warning-item info">💡 建议：可考虑熊市/牛市价差策略（策略6/11），降低vega风险</div>
-      
+      {% for w in vix_data.get('warnings', []) %}
+      <div class="warning-item "></div>
+      {% endfor %}
     </div>
-    
+    {% endif %}
 
     <div style="font-size:11px;color:#8899a6;margin:12px 0 8px 0">📋 推荐策略（根据VIX水平筛选）</div>
     <div class="strategy-grid">
-      
-      <div class="strategy-card volatility">
-        <div class="strategy-num">策略 #21 🌊 波动率</div>
-        <div class="strategy-name">买入铁秃鹰 (Long Iron Condor)</div>
-        <div class="strategy-desc">预期宽幅波动，做多波动率，保守版本</div>
+      {% for s in vix_data.get('strategies', [])[:6] %}
+      <div class="strategy-card ">
+        <div class="strategy-num">策略 # </div>
+        <div class="strategy-name"></div>
+        <div class="strategy-desc"></div>
         <div class="strategy-meta">
-          <span class="strategy-risk 中">🟡 中风险</span>
-          <span class="strategy-greeks">Δ中性 Θ-- ν++</span>
-          <span class="strategy-score">⭐⭐⭐</span>
+          <span class="strategy-risk "> 风险</span>
+          <span class="strategy-greeks"></span>
+          <span class="strategy-score"></span>
         </div>
       </div>
-      
-      <div class="strategy-card bullish">
-        <div class="strategy-num">策略 #1 📈 看涨</div>
-        <div class="strategy-name">买入看涨期权 (Long Call)</div>
-        <div class="strategy-desc">强烈看多，杠杆做多</div>
-        <div class="strategy-meta">
-          <span class="strategy-risk 高">🔴 高风险</span>
-          <span class="strategy-greeks">Δ+ Θ- ν+</span>
-          <span class="strategy-score">⭐⭐⭐</span>
-        </div>
-      </div>
-      
-      <div class="strategy-card bearish">
-        <div class="strategy-num">策略 #2 📉 看跌</div>
-        <div class="strategy-name">买入看跌期权 (Long Put)</div>
-        <div class="strategy-desc">强烈看空，对冲下行</div>
-        <div class="strategy-meta">
-          <span class="strategy-risk 高">🔴 高风险</span>
-          <span class="strategy-greeks">Δ- Θ- ν+</span>
-          <span class="strategy-score">⭐⭐⭐</span>
-        </div>
-      </div>
-      
-      <div class="strategy-card volatility">
-        <div class="strategy-num">策略 #19 🌊 波动率</div>
-        <div class="strategy-name">买入跨式 (Long Straddle)</div>
-        <div class="strategy-desc">预期大幅波动不管方向，VIX低位最佳</div>
-        <div class="strategy-meta">
-          <span class="strategy-risk 高">🔴 高风险</span>
-          <span class="strategy-greeks">Δ中性 Θ-- ν++</span>
-          <span class="strategy-score">⭐⭐⭐</span>
-        </div>
-      </div>
-      
-      <div class="strategy-card volatility">
-        <div class="strategy-num">策略 #20 🌊 波动率</div>
-        <div class="strategy-name">买入宽跨式 (Long Strangle)</div>
-        <div class="strategy-desc">预期大幅波动但方向不明，比Straddle成本低</div>
-        <div class="strategy-meta">
-          <span class="strategy-risk 高">🔴 高风险</span>
-          <span class="strategy-greeks">Δ中性 Θ-- ν++</span>
-          <span class="strategy-score">⭐⭐⭐</span>
-        </div>
-      </div>
-      
+      {% endfor %}
     </div>
     <div class="vix-footer">数据基于20日历史波动率计算 · Tushare · 策略来源: CBOE 25条期权策略</div>
   </div>
 </div>
-
+{% endif %}
 
 <!-- 笔记 + 快速跳转 -->
 <div class="note-section">
   <div class="note-main">
     <div class="all-cats">
-      
-      
-      <a href="/variety/CU" class="cat-link">CU</a>
-      
-      
-      
-      <a href="/variety/AL" class="cat-link">AL</a>
-      
-      
-      
-      <a href="/variety/NI" class="cat-link">NI</a>
-      
-      
-      
-      <a href="/variety/AU" class="cat-link">AU</a>
-      
-      
-      
-      <a href="/variety/AG" class="cat-link">AG</a>
-      
-      
-      
-      <a href="/variety/ZN" class="cat-link">ZN</a>
-      
-      
-      
-      <a href="/variety/LC" class="cat-link">LC</a>
-      
-      
-      
-      <a href="/variety/I" class="cat-link">I</a>
-      
-      
-      
-      <a href="/variety/RB" class="cat-link">RB</a>
-      
-      
-      
-      <a href="/variety/HC" class="cat-link">HC</a>
-      
-      
-      
-      <a href="/variety/JM" class="cat-link">JM</a>
-      
-      
-      
-      <a href="/variety/SM" class="cat-link">SM</a>
-      
-      
-      
-      
-      
-      <a href="/variety/MA" class="cat-link">MA</a>
-      
-      
-      
-      <a href="/variety/TA" class="cat-link">TA</a>
-      
-      
-      
-      <a href="/variety/EB" class="cat-link">EB</a>
-      
-      
-      
-      <a href="/variety/RU" class="cat-link">RU</a>
-      
-      
-      
-      <a href="/variety/P" class="cat-link">P</a>
-      
-      
-      
-      <a href="/variety/Y" class="cat-link">Y</a>
-      
-      
-      
-      <a href="/variety/M" class="cat-link">M</a>
-      
-      
-      
-      <a href="/variety/LH" class="cat-link">LH</a>
-      
-      
-      
-      <a href="/variety/CF" class="cat-link">CF</a>
-      
-      
-      
-      <a href="/variety/SR" class="cat-link">SR</a>
-      
-      
-      
-      <a href="/variety/SA" class="cat-link">SA</a>
-      
-      
-      
-      <a href="/variety/IF" class="cat-link">IF</a>
-      
-      
-      
-      <a href="/variety/IM" class="cat-link">IM</a>
-      
-      
-      
-      <a href="/variety/PX" class="cat-link">PX</a>
-      
-      
-      
-      <a href="/variety/AO" class="cat-link">AO</a>
-      
-      
-      
-      <a href="/variety/PP" class="cat-link">PP</a>
-      
-      
-      
-      <a href="/variety/L" class="cat-link">L</a>
-      
-      
-      
-      <a href="/variety/V" class="cat-link">V</a>
-      
-      
-      
-      <a href="/variety/EG" class="cat-link">EG</a>
-      
-      
-      
-      <a href="/variety/RM" class="cat-link">RM</a>
-      
-      
-      
-      <a href="/variety/SF" class="cat-link">SF</a>
-      
-      
-      
-      <a href="/variety/ZC" class="cat-link">ZC</a>
-      
-      
-      
-      <a href="/variety/AP" class="cat-link">AP</a>
-      
-      
-      
-      <a href="/variety/PB" class="cat-link">PB</a>
-      
-      
+      {% for c in all_codes %}
+      {% if c != code %}
+      <a href="/variety/" class="cat-link"></a>
+      {% endif %}
+      {% endfor %}
     </div>
   </div>
   <div class="note-sidebar">
@@ -504,7 +374,7 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
 </div>
 
 <script>
-const CODE = 'SC';
+const CODE = '';
 
 async function loadNote() {
   try {
