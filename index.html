@@ -1091,7 +1091,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 
 
-<div class="reports-section" id="reportsContainer">
+<div class="reports-section" id="reportsContainer" style="display:none">
 
 
 
@@ -1197,13 +1197,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 
 
-const FRAMES = {"CU":{"name":"沪铜","direction":"✅ 偏多","position":"✅ 偏多","update_date":"2026-05-06"},"AL":{"name":"沪铝","direction":"✅ 偏多","position":"✅ 偏多","update_date":"2026-05-06"},"NI":{"name":"沪镍","direction":"📊 观望","position":"📊 观望","update_date":"2026-05-06"},"AU":{"name":"沪金","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"AG":{"name":"沪银","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"LC":{"name":"碳酸锂","direction":"🏆 聚焦品种 · 偏多","position":"🏆 聚焦","update_date":"2026-05-06"},"I":{"name":"铁矿石","direction":"📊 震荡","position":"📊 震荡","update_date":"2026-05-06"},"RB":{"name":"螺纹钢","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"HC":{"name":"热卷","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"JM":{"name":"焦煤","direction":"✅ 震荡偏强","position":"✅ 持仓","update_date":"2026-05-06"},"SM":{"name":"锰硅","direction":"🏆 聚焦品种 · 震荡偏强","position":"🏆 聚焦","update_date":"2026-05-06"},"SC":{"name":"原油","direction":"📊 震荡","position":"📊 震荡","update_date":"2026-05-06"},"MA":{"name":"甲醇","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"TA":{"name":"PTA","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"EB":{"name":"苯乙烯","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"RU":{"name":"天然橡胶","direction":"📊 反弹","position":"📊 反弹","update_date":"2026-05-06"},"P":{"name":"棕榈油","direction":"📊 观望","position":"📊 观望","update_date":"2026-05-06"},"M":{"name":"豆粕","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"CF":{"name":"棉花","direction":"📊 震荡","position":"📊 震荡","update_date":"2026-05-06"},"SR":{"name":"白糖","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"SA":{"name":"纯碱","direction":"📊 成本","position":"📊 成本","update_date":"2026-05-06"},"IF":{"name":"沪深300","direction":"📊 观望","position":"📊 观望","update_date":"2026-05-06"},"IM":{"name":"中证1000","direction":"📊 观望","position":"📊 观望","update_date":"2026-05-06"},"AO":{"name":"氧化铝","direction":"📊 观望","position":"📊 观望","update_date":"2026-05-06"}};
+const FRAMES = {"CU":{"name":"沪铜","direction":"✅ 偏多","position":"✅ 偏多","update_date":"2026-05-06"},"AL":{"name":"沪铝","direction":"✅ 偏多","position":"✅ 偏多","update_date":"2026-05-06"},"NI":{"name":"沪镍","direction":"📊 观望","position":"📊 观望","update_date":"2026-05-06"},"AU":{"name":"沪金","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"AG":{"name":"沪银","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"LC":{"name":"碳酸锂","direction":"🏆 聚焦品种 · 偏多","position":"🏆 聚焦","update_date":"2026-05-06"},"I":{"name":"铁矿石","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"RB":{"name":"螺纹钢","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"HC":{"name":"热卷","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"JM":{"name":"焦煤","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"SM":{"name":"锰硅","direction":"✅ 偏多","position":"✅ 偏多","update_date":"2026-05-06"},"SC":{"name":"原油","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"MA":{"name":"甲醇","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"TA":{"name":"PTA","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"EB":{"name":"苯乙烯","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"RU":{"name":"天然橡胶","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"P":{"name":"棕榈油","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"M":{"name":"豆粕","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"LH":{"name":"生猪","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"CF":{"name":"棉花","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"SR":{"name":"白糖","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"SA":{"name":"纯碱","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"IF":{"name":"沪深300","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"IM":{"name":"中证1000","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"AO":{"name":"氧化铝","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"ZN":{"name":"沪锌","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"PB":{"name":"沪铅","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"J":{"name":"焦炭","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"Y":{"name":"豆油","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"RM":{"name":"菜粕","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"SF":{"name":"硅铁","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"AP":{"name":"苹果","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"FG":{"name":"玻璃","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"BU":{"name":"沥青","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"PP":{"name":"聚丙烯","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"V":{"name":"PVC","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"L":{"name":"塑料","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"EG":{"name":"乙二醇","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"ZC":{"name":"动力煤","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"WR":{"name":"线材","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"PX":{"name":"PX","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"IH":{"name":"上证50","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"},"IC":{"name":"中证500","direction":"📊 偏多","position":"📊 偏多","update_date":"2026-05-06"}};
 
 
 
 
 
-const PRICES = {"CU":{"price":102620.0,"change":1.63,"oi":41795,"date":"20260506","oi_change":-11.9,"name":"CU","ts_code":"","month":"","oi_chg":0},"AL":{"price":24660.0,"change":1.02,"oi":36470,"date":"20260506","oi_change":-9.8,"name":"AL","ts_code":"","month":"","oi_chg":0},"NI":{"price":154180.0,"change":4.11,"oi":15048,"date":"20260506","oi_change":-3.0,"name":"NI","ts_code":"","month":"","oi_chg":0},"AU":{"price":1026.16,"change":1.7,"oi":510,"date":"20260506","oi_change":-9.4,"name":"AU","ts_code":"","month":"","oi_chg":0},"AG":{"price":18839.0,"change":4.66,"oi":4768,"date":"20260506","oi_change":-7.9,"name":"AG","ts_code":"","month":"","oi_chg":0},"AO":{"price":2659.0,"change":1.88,"oi":5535,"date":"20260506","oi_change":-28.9,"name":"AO","ts_code":"","month":"","oi_chg":0},"LC":{"price":199400.0,"change":5.46,"oi":511071,"date":"20260506","oi_change":4.2,"name":"LC","ts_code":"","month":"","oi_chg":0},"I":{"price":845.5,"change":3.05,"oi":3733,"date":"20260506","oi_change":-17.2,"name":"I","ts_code":"","month":"","oi_chg":0},"RB":{"price":3169.0,"change":0.22,"oi":11130,"date":"20260506","oi_change":-29.0,"name":"RB","ts_code":"","month":"","oi_chg":0},"HC":{"price":3470.0,"change":1.14,"oi":46800,"date":"20260506","oi_change":-2.8,"name":"HC","ts_code":"","month":"","oi_chg":0},"JM":{"price":1166.5,"change":1.52,"oi":6970,"date":"20260506","oi_change":-12.8,"name":"JM","ts_code":"","month":"","oi_chg":0},"SM":{"price":6030.0,"change":0.13,"oi":30259,"date":"20260506","oi_change":-1.8,"name":"SM","ts_code":"","month":"","oi_chg":0},"J":{"price":1759.0,"change":3.68,"oi":781,"date":"20260506","oi_change":-1.5,"name":"J","ts_code":"","month":"","oi_chg":0},"MA":{"price":3250.0,"change":1.37,"oi":3985,"date":"20260506","oi_change":-54.1,"name":"MA","ts_code":"","month":"","oi_chg":0},"TA":{"price":6960.0,"change":1.07,"oi":99815,"date":"20260506","oi_change":-7.0,"name":"TA","ts_code":"","month":"","oi_chg":0},"EB":{"price":9938.0,"change":-3.03,"oi":3238,"date":"20260506","oi_change":-3.9,"name":"EB","ts_code":"","month":"","oi_chg":0},"RU":{"price":17655.0,"change":1.41,"oi":2850,"date":"20260506","oi_change":-17.6,"name":"RU","ts_code":"","month":"","oi_chg":0},"P":{"price":9580.0,"change":0.59,"oi":2726,"date":"20260506","oi_change":-5.1,"name":"P","ts_code":"","month":"","oi_chg":0},"M":{"price":2820.0,"change":-0.32,"oi":8019,"date":"20260506","oi_change":-0.1,"name":"M","ts_code":"","month":"","oi_chg":0},"LH":{"price":9600.0,"change":2.13,"oi":615,"date":"20260506","oi_change":-80.8,"name":"LH","ts_code":"","month":"","oi_chg":0},"CF":{"price":16590.0,"change":0.76,"oi":73432,"date":"20260506","oi_change":-9.0,"name":"CF","ts_code":"","month":"","oi_chg":0},"SR":{"price":5342.0,"change":0.55,"oi":6883,"date":"20260506","oi_change":-4.9,"name":"SR","ts_code":"","month":"","oi_chg":0},"RM":{"price":2240.0,"change":-0.58,"oi":3442,"date":"20260506","oi_change":0.6,"name":"RM","ts_code":"","month":"","oi_chg":0},"Y":{"price":8609.0,"change":0.07,"oi":3417,"date":"20260506","oi_change":-0.1,"name":"Y","ts_code":"","month":"","oi_chg":0},"AP":{"price":7553.0,"change":-0.68,"oi":105968,"date":"20260506","oi_change":-3.3,"name":"AP","ts_code":"","month":"","oi_chg":0},"SA":{"price":1186.0,"change":1.28,"oi":5168,"date":"20260506","oi_change":-38.3,"name":"SA","ts_code":"","month":"","oi_chg":0},"FG":{"price":930.0,"change":1.53,"oi":4624,"date":"20260506","oi_change":-43.4,"name":"FG","ts_code":"","month":"","oi_chg":0},"PB":{"price":16905.0,"change":1.87,"oi":5370,"date":"20260506","oi_change":-8.4,"name":"PB","ts_code":"","month":"","oi_chg":0},"ZN":{"price":24195.0,"change":2.74,"oi":6500,"date":"20260506","oi_change":-20.1,"name":"ZN","ts_code":"","month":"","oi_chg":0},"WR":{"price":3380.0,"change":1.26,"oi":0,"date":"20260506","oi_change":0,"name":"WR","ts_code":"","month":"","oi_chg":0},"IF":{"price":4867.4,"change":1.38,"oi":39560,"date":"20260506","oi_change":11.5,"name":"IF","ts_code":"","month":"","oi_chg":0},"IM":{"price":8543.6,"change":2.08,"oi":67902,"date":"20260506","oi_change":9.7,"name":"IM","ts_code":"","month":"","oi_chg":0},"IH":{"price":3019.2,"change":1.24,"oi":15064,"date":"20260506","oi_change":7.8,"name":"IH","ts_code":"","month":"","oi_chg":0},"IC":{"price":8570.4,"change":2.73,"oi":44920,"date":"20260506","oi_change":9.5,"name":"IC","ts_code":"","month":"","oi_chg":0},"SC":{"price":675.4,"change":3.22,"oi":1481,"date":"20260430","oi_change":-0.1,"name":"SC","ts_code":"","month":"","oi_chg":0},"BU":{"price":4109.0,"change":0.86,"oi":209900,"date":"20260423","oi_change":2.6,"name":"BU","ts_code":"","month":"","oi_chg":0},"PP":{"price":8349.0,"change":0.82,"oi":397318,"date":"20260423","oi_change":0.2,"name":"PP","ts_code":"","month":"","oi_chg":0},"V":{"price":5189.0,"change":0.29,"oi":925421,"date":"20260423","oi_change":2.9,"name":"V","ts_code":"","month":"","oi_chg":0},"L":{"price":8145.0,"change":0.79,"oi":346165,"date":"20260423","oi_change":2.3,"name":"L","ts_code":"","month":"","oi_chg":0},"EG":{"price":4842.0,"change":0.39,"oi":268029,"date":"20260423","oi_change":4.2,"name":"EG","ts_code":"","month":"","oi_chg":0},"SF":{"price":5794.0,"change":0.79,"oi":223462,"date":"20260423","oi_change":-0.4,"name":"SF","ts_code":"","month":"","oi_chg":0},"ZC":{"price":801.4,"change":0.0,"oi":0,"date":"20260423","oi_change":0.0,"name":"ZC","ts_code":"","month":"","oi_chg":0},"PX":{"price":9838.0,"change":1.33,"oi":206202,"date":"20260428","oi_change":0,"name":"PX","ts_code":"PX2607.ZCE","month":"2607","oi_chg":0}};
+const PRICES = {"CU":{"price":102620.0,"change":1.63,"date":"20260506","oi":41795,"oi_chg":-4972,"oi_change":-11.9,"name":"沪铜"},"AL":{"price":24660.0,"change":1.02,"date":"20260506","oi":36470,"oi_chg":-3586,"oi_change":-9.8,"name":"沪铝"},"NI":{"price":154180.0,"change":4.11,"date":"20260506","oi":15048,"oi_chg":-445,"oi_change":-3.0,"name":"沪镍"},"AU":{"price":1026.16,"change":1.7,"date":"20260506","oi":510,"oi_chg":-48,"oi_change":-9.4,"name":"沪金"},"AG":{"price":18839.0,"change":4.66,"date":"20260506","oi":4768,"oi_chg":-376,"oi_change":-7.9,"name":"沪银"},"AO":{"price":2659.0,"change":1.88,"date":"20260506","oi":5535,"oi_chg":-1597,"oi_change":-28.9,"name":"氧化铝"},"LC":{"price":199400.0,"change":5.46,"date":"20260506","oi":511071,"oi_chg":21281,"oi_change":4.2,"name":"碳酸锂"},"I":{"price":845.5,"change":3.05,"date":"20260506","oi":3733,"oi_chg":-642,"oi_change":-17.2,"name":"铁矿石"},"RB":{"price":3169.0,"change":0.22,"date":"20260506","oi":11130,"oi_chg":-3233,"oi_change":-29.0,"name":"螺纹钢"},"HC":{"price":3470.0,"change":1.14,"date":"20260506","oi":46800,"oi_chg":-1300,"oi_change":-2.8,"name":"热卷"},"JM":{"price":1166.5,"change":1.52,"date":"20260506","oi":6970,"oi_chg":-892,"oi_change":-12.8,"name":"焦煤"},"SM":{"price":6030.0,"change":0.13,"date":"20260506","oi":30259,"oi_chg":-542,"oi_change":-1.8,"name":"锰硅"},"J":{"price":1759.0,"change":3.68,"date":"20260506","oi":781,"oi_chg":-12,"oi_change":-1.5,"name":"焦炭"},"MA":{"price":3250.0,"change":1.37,"date":"20260506","oi":3985,"oi_chg":-2155,"oi_change":-54.1,"name":"甲醇"},"TA":{"price":6960.0,"change":1.07,"date":"20260506","oi":99815,"oi_chg":-6978,"oi_change":-7.0,"name":"PTA"},"EB":{"price":9938.0,"change":-3.03,"date":"20260506","oi":3238,"oi_chg":-126,"oi_change":-3.9,"name":"苯乙烯"},"RU":{"price":17655.0,"change":1.41,"date":"20260506","oi":2850,"oi_chg":-502,"oi_change":-17.6,"name":"天然橡胶"},"P":{"price":9580.0,"change":0.59,"date":"20260506","oi":2726,"oi_chg":-139,"oi_change":-5.1,"name":"棕榈油"},"M":{"price":2820.0,"change":-0.32,"date":"20260506","oi":8019,"oi_chg":-5,"oi_change":-0.1,"name":"豆粕"},"LH":{"price":9600.0,"change":2.13,"date":"20260506","oi":615,"oi_chg":-497,"oi_change":-80.8,"name":"生猪"},"CF":{"price":16590.0,"change":0.76,"date":"20260506","oi":73432,"oi_chg":-6615,"oi_change":-9.0,"name":"棉花"},"SR":{"price":5342.0,"change":0.55,"date":"20260506","oi":6883,"oi_chg":-335,"oi_change":-4.9,"name":"白糖"},"RM":{"price":2240.0,"change":-0.58,"date":"20260506","oi":3442,"oi_chg":22,"oi_change":0.6,"name":"菜粕"},"Y":{"price":8609.0,"change":0.07,"date":"20260506","oi":3417,"oi_chg":-5,"oi_change":-0.1,"name":"豆油"},"AP":{"price":7553.0,"change":-0.68,"date":"20260506","oi":105968,"oi_chg":-3459,"oi_change":-3.3,"name":"苹果"},"SA":{"price":1186.0,"change":1.28,"date":"20260506","oi":5168,"oi_chg":-1978,"oi_change":-38.3,"name":"纯碱"},"FG":{"price":930.0,"change":1.53,"date":"20260506","oi":4624,"oi_chg":-2008,"oi_change":-43.4,"name":"玻璃"},"PB":{"price":16905.0,"change":1.87,"date":"20260506","oi":5370,"oi_chg":-450,"oi_change":-8.4,"name":"铅"},"ZN":{"price":24195.0,"change":2.74,"date":"20260506","oi":6500,"oi_chg":-1306,"oi_change":-20.1,"name":"锌"},"WR":{"price":3380.0,"change":1.26,"date":"20260506","oi":0,"oi_chg":-32,"oi_change":0,"name":"线材"},"IF":{"price":4867.4,"change":1.38,"date":"20260506","oi":39560,"oi_chg":4534,"oi_change":11.5,"name":"沪深300"},"IM":{"price":8543.6,"change":2.08,"date":"20260506","oi":67902,"oi_chg":6571,"oi_change":9.7,"name":"中证1000"},"IH":{"price":3019.2,"change":1.24,"date":"20260506","oi":15064,"oi_chg":1173,"oi_change":7.8,"name":"上证50"},"IC":{"price":8570.4,"change":2.73,"date":"20260506","oi":44920,"oi_chg":4287,"oi_change":9.5,"name":"中证500"},"SC":{"price":675.4,"change":3.22,"date":"20260430","oi":1481,"oi_chg":-2,"oi_change":-0.1,"name":"原油"},"BU":{"price":4109.0,"change":0.86,"date":"20260423","oi":209900,"oi_chg":5278,"oi_change":2.6,"name":"沥青"},"PP":{"price":8349.0,"change":0.82,"date":"20260423","oi":397318,"oi_chg":741,"oi_change":0.2,"name":"聚丙烯"},"V":{"price":5189.0,"change":0.29,"date":"20260423","oi":925421,"oi_chg":26269,"oi_change":2.9,"name":"PVC"},"L":{"price":8145.0,"change":0.79,"date":"20260423","oi":346165,"oi_chg":7692,"oi_change":2.3,"name":"塑料"},"EG":{"price":4842.0,"change":0.39,"date":"20260423","oi":268029,"oi_chg":10920,"oi_change":4.2,"name":"乙二醇"},"SF":{"price":5794.0,"change":0.79,"date":"20260423","oi":223462,"oi_chg":-851,"oi_change":-0.4,"name":"硅铁"},"ZC":{"price":801.4,"change":0.0,"date":"20260423","oi":0,"oi_chg":0,"oi_change":0.0,"name":"动力煤"},"PX":{"price":9838.0,"date":"20260428","oi":206202,"oi_chg":0,"oi_change":0,"name":"PX","ts_code":"PX2607.ZCE","month":"2607","change":1.33}};
 
 const GLOBAL = {"CSI300": {"name": "沪深300", "price": 4769.3688, "change": -0.35}, "CSI500": {"name": "中证500", "price": 8247.8759, "change": -0.57}, "GEM": {"name": "创业板指", "price": 3667.7851, "change": -1.41}, "SPX": {"name": "标普500", "price": 5300, "change": 0.0}, "NDX": {"name": "纳斯达克", "price": 18500, "change": 0.0}, "DJI": {"name": "道琼斯", "price": 39000, "change": 0.0}, "VIX": {"name": "恐慌指数VIX", "price": 18.0, "change": 0.0}, "DXY": {"name": "美元指数", "price": 99.0, "change": 0.0}, "XAU": {"name": "黄金现货", "price": 2320, "change": 0.0}, "XAG": {"name": "白银现货", "price": 27.5, "change": 0.0}, "CL": {"name": "WTI原油", "price": 78, "change": 0.0}, "HSI": {"name": "恒生指数", "price": 22000, "change": 0.0}, "NKY": {"name": "日经225", "price": 38000, "change": 0.0}, "CNH": {"name": "离岸人民币", "price": 7.25, "change": 0.0}};
 
@@ -1212,7 +1212,7 @@ const REPORTS = [
     "inst": "GS",
     "date": "2026.05.07",
     "title": "【劳动节消费报告】消费增速放缓，机票高价压制需求",
-    "summary": "5月1-5日假期消费增速不及去年，消费者对价格更敏感。旅游支出增长放缓，机票价格高企抑制出行需求。服务业PMI超预期与零售疲软形成背离，企业定价能力受考验。",
+    "summary": "5月1-5日假期消费增速不及去年，消费者对价格更敏感。旅游支出增长放缓，机票价格高企抑制出行需求。服务业PMI超预期与零售疲软形成背离。",
     "bull": "Neutral",
     "bullClass": "bull-neutral",
     "instColor": "#6366f1"
@@ -1221,7 +1221,7 @@ const REPORTS = [
     "inst": "GS",
     "date": "2026.05.07",
     "title": "【航空行业】劳动节航空不及预期，票价高企压制需求",
-    "summary": "五一假期航空出行弱于预期，票价因油价传导维持高位，国内航线首当其冲。燃油成本转嫁直接压制商务出行需求，航司盈利承压。",
+    "summary": "五一假期航空出行弱于预期，票价因油价传导维持高位，燃油成本转嫁直接压制商务出行需求。",
     "bull": "Bearish",
     "bullClass": "bull-bearish",
     "instColor": "#6366f1"
@@ -1230,7 +1230,7 @@ const REPORTS = [
     "inst": "GS",
     "date": "2026.05.07",
     "title": "【旅游休闲】五一旅游需求放缓，海南免税客流下滑",
-    "summary": "五一假期境内出境旅游需求均较往年放缓，机票涨价叠加消费谨慎抑制旅游意愿。海南免税店客流下滑，高端消费降级趋势明显。",
+    "summary": "五一假期境内出境旅游需求均较往年放缓，机票涨价叠加消费谨慎抑制旅游意愿。",
     "bull": "Bearish",
     "bullClass": "bull-bearish",
     "instColor": "#6366f1"
@@ -1239,7 +1239,7 @@ const REPORTS = [
     "inst": "GS",
     "date": "2026.05.07",
     "title": "【香港零售】3月销售额下跌，珠宝化妆品领跌",
-    "summary": "香港3月零售销售额下滑，珠宝钟表、药品化妆品等主要品类均录得跌幅。居民消费疲软叠加跨境人流恢复缓慢，零售业仍面临结构性压力。",
+    "summary": "香港3月零售销售额下滑，珠宝钟表、药品化妆品等主要品类均录得跌幅。",
     "bull": "Bearish",
     "bullClass": "bull-bearish",
     "instColor": "#6366f1"
@@ -1248,7 +1248,7 @@ const REPORTS = [
     "inst": "GS",
     "date": "2026.05.07",
     "title": "【中国服务业PMI】4月52.6超预期，新订单跳升",
-    "summary": "4月非官方服务业PMI升至52.6（前值52.1），新订单从50.6跳至52.6超预期。需求韧性显现，企业能消化能源价格冲击。4月出口+12% YoY，贸易顺差约900亿美元。",
+    "summary": "4月非官方服务业PMI升至52.6，新订单从50.6跳至52.6。4月出口+12% YoY。",
     "bull": "Bullish",
     "bullClass": "bull-bullish",
     "instColor": "#6366f1"
@@ -1257,7 +1257,7 @@ const REPORTS = [
     "inst": "MS",
     "date": "2026.05.07",
     "title": "【霍尔木兹追踪#60】紧张但现降级信号，油价下行风险增大",
-    "summary": "霍尔木兹紧张局势持续但出现降级信号，美伊谈判推进中。若外交进展加速，布伦特原油面临下行风险，油轮费率低于危机水平。",
+    "summary": "霍尔木兹紧张局势持续但出现降级信号，美伊谈判推进中，油价面临下行风险。",
     "bull": "Neutral",
     "bullClass": "bull-neutral",
     "instColor": "#6366f1"
@@ -1265,8 +1265,8 @@ const REPORTS = [
   {
     "inst": "JPM",
     "date": "2026.05.07",
-    "title": "【美国能源】 MOU预期致布伦特-10%，库存继续下降",
-    "summary": "美伊 MOU框架预期令布伦特原油下跌10%，API显示原油和汽油库存继续下降。美国产量增长放缓，柴油需求坚挺，能源股机构低配。",
+    "title": "【美国能源】MOU预期致布伦特-10%，库存继续下降",
+    "summary": "美伊MOU框架预期令布伦特原油下跌10%，API显示原油和汽油库存继续下降。",
     "bull": "Bullish",
     "bullClass": "bull-bullish",
     "instColor": "#6366f1"
@@ -1275,7 +1275,7 @@ const REPORTS = [
     "inst": "GS",
     "date": "2026.05.07",
     "title": "【中国服务业PMI】4月52.6，新订单强劲，就业49.7",
-    "summary": "高盛数据显示4月中国服务业PMI升至52.6（前值52.1），新订单从50.6跳升至52.6。就业49.7仍处荣枯线下方。4月出口预测+12% YoY，贸易顺差900亿美元。",
+    "summary": "高盛数据显示4月中国服务业PMI升至52.6，新订单52.6。就业49.7仍处荣枯线下方。",
     "bull": "Bullish",
     "bullClass": "bull-bullish",
     "instColor": "#6366f1"
@@ -1284,7 +1284,7 @@ const REPORTS = [
     "inst": "ANZ",
     "date": "2026.05.06",
     "title": "【大宗商品】铝供需缺口扩大，中东生产受阻",
-    "summary": "全球铝市场面临供需缺口扩大，中东铝生产商受战争影响中断。伊朗铝厂停产，海湾地区产量下降，中国出口减少，国内价格获支撑。",
+    "summary": "全球铝市场面临供需缺口扩大，伊朗铝厂停产，中国出口减少。",
     "bull": "Bullish",
     "bullClass": "bull-bullish",
     "instColor": "#6366f1"
@@ -1293,7 +1293,7 @@ const REPORTS = [
     "inst": "DB",
     "date": "2026.05.06",
     "title": "【黄金】历史规律重现，1970s滞胀情境再现",
-    "summary": "黄金价格重现1970年代滞胀时期走势，地缘风险叠加美联储降息预期提振金价。各国央行购金需求强劲，当前回撤可视为长线布局机会。",
+    "summary": "黄金价格重现1970年代滞胀时期走势，地缘风险叠加美联储降息预期提振金价。",
     "bull": "Bullish",
     "bullClass": "bull-bullish",
     "instColor": "#6366f1"
@@ -1302,7 +1302,7 @@ const REPORTS = [
     "inst": "DB",
     "date": "2026.05.06",
     "title": "【阿联酋】能源金融双枢纽地位凸显",
-    "summary": "阿联酋在能源和金融领域地位上升，伊朗冲突扰乱传统航线，UAE成为替代枢纽。UAE铝贸流向变化，该地区在供应链重构中受益。",
+    "summary": "阿联酋在能源和金融领域地位上升，UAE成为替代枢纽，供应链重构中受益。",
     "bull": "Bullish",
     "bullClass": "bull-bullish",
     "instColor": "#6366f1"
@@ -1311,7 +1311,7 @@ const REPORTS = [
     "inst": "MS",
     "date": "2026.05.06",
     "title": "【中美峰会】5月14-15日按计划举行，温和进展为主",
-    "summary": "特朗普-习近平峰会预计5月14-15日举行，两国有动力展示贸易进展。市场预期有限突破，非战略性商品关税可能下调，全面协议概率低。",
+    "summary": "特朗普-习近平峰会预计5月14-15日举行，市场预期有限突破。",
     "bull": "Neutral",
     "bullClass": "bull-neutral",
     "instColor": "#6366f1"
@@ -1403,40 +1403,192 @@ const CATEGORIES = [
 
 
 function renderTicker() {
-  const track = document.getElementById('tickerTrack');
-  if (!track) return;
 
-  // 只显示增仓前3 + 减仓前3
-  const entries = Object.entries(PRICES).filter(([_, p]) => p && typeof p.oi_change === 'number');
-  const up = entries.filter(([_, p]) => p.oi_change > 0).sort((a, b) => b[1].oi_change - a[1].oi_change).slice(0, 3);
-  const down = entries.filter(([_, p]) => p.oi_change < 0).sort((a, b) => a[1].oi_change - b[1].oi_change).slice(0, 3);
-  const alerts = [...up, ...down];
+
+
+
+
+  const track = document.getElementById('tickerTrack');
+
+
+
+
+
+  const alerts = Object.entries(PRICES).filter(([code, p]) => {
+
+
+
+
+
+    return p.oi_change && Math.abs(p.oi_change) >= 10;
+
+
+
+
+
+  }).sort((a, b) => Math.abs(b[1].oi_change) - Math.abs(a[1].oi_change));
+
+
+
+
+
+
+
+
+
+
 
   if (alerts.length === 0) {
-    track.innerHTML = '<div class="ticker-empty">暂无持仓异动数据</div>';
+
+
+
+
+
+    track.innerHTML = '<div class="ticker-empty">今日无显著持仓异动（±10%以上）</div>';
+
+
+
+
+
     return;
+
+
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
+  // 去重翻倍实现无缝滚动
+
+
+
+
 
   const items = [...alerts, ...alerts];
+
+
+
+
+
   track.innerHTML = items.map(([code, p]) => {
+
+
+
+
+
     const f = FRAMES[code] || {};
+
+
+
+
+
     const dir = p.oi_change > 0 ? 'up' : 'down';
+
+
+
+
+
     const arrow = p.oi_change > 0 ? '▲' : '▼';
-    const label = f.name || code;
-    return '<div class="ticker-item ' + dir + '">' + label + ' ' + arrow + ' ' + Math.abs(p.oi_change).toFixed(1) + '%</div>';
+
+
+
+
+
+    return `<div class="ticker-item ${dir}">
+
+
+
+
+
+      ${f.name || code}(${code}) ${arrow}${Math.abs(p.oi_change).toFixed(1)}%
+
+
+
+
+
+    </div>`;
+
+
+
+
+
   }).join('');
 
+
+
+
+
+
+
+
+
+
+
+  // 滚动动画
+
+
+
+
+
   let pos = 0;
-  const itemWidth = 120;
+
+
+
+
+
+  const itemWidth = 160;
+
+
+
+
+
   const totalWidth = items.length * itemWidth;
+
+
+
+
+
   function scroll() {
-    pos -= 0.4;
+
+
+
+
+
+    pos -= 0.5;
+
+
+
+
+
     if (Math.abs(pos) >= totalWidth / 2) pos = 0;
-    track.style.transform = 'translateX(' + pos + 'px)';
+
+
+
+
+
+    track.style.transform = `translateX(${pos}px)`;
+
+
+
+
+
     requestAnimationFrame(scroll);
+
+
+
+
+
   }
-  scroll();
-}
 
 
 
@@ -2038,7 +2190,11 @@ function renderReports() {
 
 
   container.innerHTML = html;
-  container.style.display = '';
+
+
+
+
+
   if (countEl) countEl.textContent = `（${REPORTS.length}篇）`;
 
 
@@ -2652,8 +2808,17 @@ async function loadNews() {
 
 
   allNews = (NEWS && NEWS.length > 0) ? NEWS : [];
-  if (container) container.innerHTML = "";
-  countEl.textContent = allNews.length + "条";
+
+
+
+
+
+  countEl.textContent = `${allNews.length}条`;
+
+
+
+
+
   renderNews(allNews.slice(0, 5));
 
 
