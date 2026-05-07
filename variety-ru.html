@@ -75,7 +75,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     
     <div style="border-bottom:1px solid #1e242b;padding:10px 0">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <span style="background:#6366f1;color:#fff;font-size:10px;padding:2px 6px;border-radius:3px;font-weight:600">MS</span>
+        <span style="background:;color:#fff;font-size:10px;padding:2px 6px;border-radius:3px;font-weight:600">MS</span>
         <span style="color:#8899a6;font-size:11px">2026.05.06</span>
       </div>
       <div style="font-size:13px;font-weight:600;color:#e7e9ea;margin-bottom:4px">Trump-Xi峰会：5月14-15日按计划推进，温和成果</div>
@@ -87,7 +87,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     
     <div style="border-bottom:1px solid #1e242b;padding:10px 0">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-        <span style="background:#6366f1;color:#fff;font-size:10px;padding:2px 6px;border-radius:3px;font-weight:600"></span>
+        <span style="background:;color:#fff;font-size:10px;padding:2px 6px;border-radius:3px;font-weight:600"></span>
         <span style="color:#8899a6;font-size:11px">2026.05.06</span>
       </div>
       <div style="font-size:13px;font-weight:600;color:#e7e9ea;margin-bottom:4px">Scaling the AI Infrastructure; Initiate Range Intelligent at Buy, Athub at</div>
@@ -163,7 +163,7 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
 </head>
 <body>
 <div class="container">
-<a href="/" class="back">← 返回首页</a>
+<a href="index.html" class="back">← 返回首页</a>
 
 <div class="hero">
   <div class="hero-top">
@@ -235,31 +235,112 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
 
 
 
+
+<!-- PCR 板块 -->
+
+
+
 <!-- VIX 波动率 + 期权策略推荐 -->
 
 <div class="vix-section">
   <div class="vix-hdr">
     <span>🌊 波动率 & 期权策略</span>
-    <span style="font-weight:normal;color:#6b7280">HV更新: 2026-05-06 08:00</span>
+    <span style="font-weight:normal;color:#6b7280">HV更新: 2026-04-30 01:36</span>
   </div>
   <div class="vix-body">
     <div class="vix-gauge">
       <div>
-        <div class="vix-value" style="color:#fbbf24">N/A</div>
-        <div class="vix-label">中等波动率</div>
+        <div class="vix-value" style="color:#3FB950">15.4%</div>
+        <div class="vix-label">低波动率</div>
       </div>
       <div style="flex:1">
         <div class="vix-bar-wrap">
-          <div class="vix-bar" style="width:50.0%;background:#fbbf24"></div>
+          <div class="vix-bar" style="width:30.740000000000002%;background:#3FB950"></div>
         </div>
         <div class="vix-scale"><span>0%</span><span>低波</span><span>20%</span><span>中波</span><span>35%</span><span>高波</span><span>50%+</span></div>
       </div>
     </div>
 
     
+    <div class="warnings-section">
+      
+      <div class="warning-item info">💡 低波动率环境：卖方策略（策略3/16）收益较好，适合收入导向</div>
+      
+      <div class="warning-item warn">⚠️ 警惕黑天鹅：止损线要适当放宽，避免被日常波动扫出</div>
+      
+      <div class="warning-item info">💡 建议：可构建Iron Condor（策略16）或Bull Put Spread（策略7）</div>
+      
+    </div>
+    
 
     <div style="font-size:11px;color:#8899a6;margin:12px 0 8px 0">📋 推荐策略（根据VIX水平筛选）</div>
     <div class="strategy-grid">
+      
+      <div class="strategy-card arbitrage">
+        <div class="strategy-num">策略 #24 🎯 套利</div>
+        <div class="strategy-name">Box Spread</div>
+        <div class="strategy-desc">理论无风险，类远期合约，相当于无风险利率</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 极低">🟢 极低风险</span>
+          <span class="strategy-greeks">理论无风险</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card neutral">
+        <div class="strategy-num">策略 #5 ⚖️ 中性</div>
+        <div class="strategy-name">备兑股票保护圈 (Protective Collar)</div>
+        <div class="strategy-desc">低成本对冲，牺牲上行空间</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 低">🟢 低风险</span>
+          <span class="strategy-greeks">Δ中性 Θ中性 ν中性</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card neutral">
+        <div class="strategy-num">策略 #18 ⚖️ 中性</div>
+        <div class="strategy-name">卖出蝶式 (Short Butterfly)</div>
+        <div class="strategy-desc">预期明显方向移动，有限风险</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 低">🟢 低风险</span>
+          <span class="strategy-greeks">Δ依方向 Θ+ ν中性</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card arbitrage">
+        <div class="strategy-num">策略 #23 🎯 套利</div>
+        <div class="strategy-name">Reverse Conversion</div>
+        <div class="strategy-desc">看跌期权IV>看涨期权IV时的套利机会</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 低">🟢 低风险</span>
+          <span class="strategy-greeks">Δ中性 Θ中性 ν中性</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card neutral">
+        <div class="strategy-num">策略 #3 ⚖️ 中性</div>
+        <div class="strategy-name">卖出备兑看涨 (Covered Call)</div>
+        <div class="strategy-desc">持有股票，温和看多，收取权利金</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 中">🟡 中风险</span>
+          <span class="strategy-greeks">Δ中性 Θ+ ν-</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
+      
+      <div class="strategy-card neutral">
+        <div class="strategy-num">策略 #9 ⚖️ 中性</div>
+        <div class="strategy-name">看涨日历价差 (Bull Calendar Spread)</div>
+        <div class="strategy-desc">预期短期横盘，利用时间价值差异</div>
+        <div class="strategy-meta">
+          <span class="strategy-risk 中">🟡 中风险</span>
+          <span class="strategy-greeks">Θ中性 ν+</span>
+          <span class="strategy-score">⭐⭐⭐</span>
+        </div>
+      </div>
       
     </div>
     <div class="vix-footer">数据基于20日历史波动率计算 · Tushare · 策略来源: CBOE 25条期权策略</div>
@@ -273,101 +354,101 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
     <div class="all-cats">
       
       
-      <a href="/variety/CU" class="cat-link">CU</a>
+      <a href="variety-cu.html" class="cat-link">CU</a>
       
       
       
-      <a href="/variety/AL" class="cat-link">AL</a>
+      <a href="variety-al.html" class="cat-link">AL</a>
       
       
       
-      <a href="/variety/NI" class="cat-link">NI</a>
+      <a href="variety-ni.html" class="cat-link">NI</a>
       
       
       
-      <a href="/variety/AU" class="cat-link">AU</a>
+      <a href="variety-au.html" class="cat-link">AU</a>
       
       
       
-      <a href="/variety/AG" class="cat-link">AG</a>
+      <a href="variety-ag.html" class="cat-link">AG</a>
       
       
       
-      <a href="/variety/LC" class="cat-link">LC</a>
+      <a href="variety-lc.html" class="cat-link">LC</a>
       
       
       
-      <a href="/variety/I" class="cat-link">I</a>
+      <a href="variety-i.html" class="cat-link">I</a>
       
       
       
-      <a href="/variety/RB" class="cat-link">RB</a>
+      <a href="variety-rb.html" class="cat-link">RB</a>
       
       
       
-      <a href="/variety/HC" class="cat-link">HC</a>
+      <a href="variety-hc.html" class="cat-link">HC</a>
       
       
       
-      <a href="/variety/JM" class="cat-link">JM</a>
+      <a href="variety-jm.html" class="cat-link">JM</a>
       
       
       
-      <a href="/variety/SM" class="cat-link">SM</a>
+      <a href="variety-sm.html" class="cat-link">SM</a>
       
       
       
-      <a href="/variety/SC" class="cat-link">SC</a>
+      <a href="variety-sc.html" class="cat-link">SC</a>
       
       
       
-      <a href="/variety/MA" class="cat-link">MA</a>
+      <a href="variety-ma.html" class="cat-link">MA</a>
       
       
       
-      <a href="/variety/TA" class="cat-link">TA</a>
+      <a href="variety-ta.html" class="cat-link">TA</a>
       
       
       
-      <a href="/variety/EB" class="cat-link">EB</a>
+      <a href="variety-eb.html" class="cat-link">EB</a>
       
       
       
       
       
-      <a href="/variety/P" class="cat-link">P</a>
+      <a href="variety-p.html" class="cat-link">P</a>
       
       
       
-      <a href="/variety/M" class="cat-link">M</a>
+      <a href="variety-m.html" class="cat-link">M</a>
       
       
       
-      <a href="/variety/LH" class="cat-link">LH</a>
+      <a href="variety-lh.html" class="cat-link">LH</a>
       
       
       
-      <a href="/variety/CF" class="cat-link">CF</a>
+      <a href="variety-cf.html" class="cat-link">CF</a>
       
       
       
-      <a href="/variety/SR" class="cat-link">SR</a>
+      <a href="variety-sr.html" class="cat-link">SR</a>
       
       
       
-      <a href="/variety/SA" class="cat-link">SA</a>
+      <a href="variety-sa.html" class="cat-link">SA</a>
       
       
       
-      <a href="/variety/IF" class="cat-link">IF</a>
+      <a href="variety-if.html" class="cat-link">IF</a>
       
       
       
-      <a href="/variety/IM" class="cat-link">IM</a>
+      <a href="variety-im.html" class="cat-link">IM</a>
       
       
       
-      <a href="/variety/AO" class="cat-link">AO</a>
+      <a href="variety-ao.html" class="cat-link">AO</a>
       
       
     </div>
