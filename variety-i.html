@@ -67,7 +67,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .bull-bearish{color:#ef5350}
 
 /* VIX 波动率区域 */
-.vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:16px}
+.<!-- 品种研报 -->
+
+
+vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:16px}
 .vix-hdr{background:#1e242b;padding:10px 14px;font-size:12px;font-weight:600;border-bottom:1px solid #2f3336;display:flex;justify-content:space-between;align-items:center}
 .vix-body{padding:14px}
 .vix-gauge{display:flex;align-items:center;gap:16px;margin-bottom:14px}
@@ -140,16 +143,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="hero-dir dir-neu">📊</div>
   </div>
 
-  <div class="hero-price">780.50</div>
-  <div class="hero-chg down">
-    ▼
-    0.90%
+  <div class="hero-price">845.50</div>
+  <div class="hero-chg up">
+    ▲
+    3.05%
   </div>
-  <div class="hero-date">20260428</div>
+  <div class="hero-date">20260506</div>
 
   
   <div class="hero-oi">
-    持仓量 <strong>58.3万手</strong>
+    持仓量 <strong>0.4万手</strong>
+    
+    <span class="oi-change down">
+      ▼17.2%
+    </span>
     
   </div>
   
@@ -301,48 +308,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       
     </div>
     <div class="vix-footer">数据基于20日历史波动率计算 · Tushare · 策略来源: CBOE 25条期权策略</div>
-  </div>
-</div>
-
-
-<!-- PCR 期权持仓分析 -->
-
-<div class="vix-section" style="margin-top:16px">
-  <div class="vix-hdr">
-    <span>📊 期权PCR & 波动率</span>
-    <span style="font-weight:normal;color:#6b7280">更新: 20260424</span>
-  </div>
-  <div class="vix-body">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px">
-      <div style="text-align:center;padding:12px;background:#1e242b;border-radius:8px">
-        <div style="font-size:11px;color:#8899a6;margin-bottom:6px">PCR (成交量)</div>
-        <div style="font-size:26px;font-weight:700;color:#fbbf24">0.8498</div>
-        <div style="font-size:11px;margin-top:4px;color:#fbbf24">🟡中性</div>
-      </div>
-      <div style="text-align:center;padding:12px;background:#1e242b;border-radius:8px">
-        <div style="font-size:11px;color:#8899a6;margin-bottom:6px">HV (20日波动率)</div>
-        <div style="font-size:26px;font-weight:700;color:#fbbf24">中等波动(22.13%)</div>
-        <div style="font-size:11px;margin-top:4px;color:#6b7280">正常</div>
-      </div>
-    </div>
-
-    
-    <div style="display:flex;justify-content:space-between;font-size:12px;color:#8899a6;margin-bottom:10px;padding:0 4px">
-      <span>PCR持仓量: <strong style="color:#fff">1.7869</strong></span>
-      <span>总成交量: <strong style="color:#fff">3165</strong> 手</span>
-      <span>到期月份: <strong style="color:#fff">2607</strong></span>
-    </div>
-    
-
-    <div style="font-size:11px;color:#6b7280;margin-top:8px;padding:8px 10px;background:#1e242b;border-radius:6px;line-height:1.7">
-      <strong style="color:#8899a6">📖 PCR解读：</strong>PCR = 看跌成交量 / 看涨成交量<br>
-      <span style="color:#34d399">PCR &lt; 0.6</span> 偏多头 | 
-      <span style="color:#fbbf24">PCR 0.6-0.8</span> 中性偏多 | 
-      <span style="color:#fbbf24">PCR 0.8-1.0</span> 中性 | 
-      <span style="color:#f97316">PCR 1.0-1.2</span> 略偏空 | 
-      <span style="color:#ef5350">PCR &gt; 1.2</span> 偏空<br>
-      <strong style="color:#8899a6">HV解读：</strong>HV &gt; 40% 高波动买方不利 | HV 15-25% 适中 | HV &lt; 10% 低波动卖方占优
-    </div>
   </div>
 </div>
 
