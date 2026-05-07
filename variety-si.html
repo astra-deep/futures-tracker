@@ -15,7 +15,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .hero-name{font-size:22px;font-weight:700;color:#fff}
 .hero-code{color:#8899a6;font-size:12px;margin-top:2px}
 .hero-dir{font-size:13px;font-weight:600;padding:5px 12px;border-radius:6px}
-.dir-neu{background:rgba(239,83,80,0.15);color:#ef5350}
+.dir-up{background:rgba(239,83,80,0.15);color:#ef5350}
 .dir-down{background:rgba(38,166,154,0.15);color:#26a69a}
 .dir-neu{background:rgba(251,191,36,0.15);color:#fbbf24}
 .hero-price{font-size:32px;font-weight:700;margin-bottom:4px;color:#fff}
@@ -180,8 +180,8 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
 <div class="hero">
   <div class="hero-top">
     <div>
-      <div class="hero-name">碳酸锂 <span style="font-size:14px;color:#8899a6">(LC)</span></div>
-      <div class="hero-code">单位：元/吨 · 更新：2026-05-06</div>
+      <div class="hero-name">工业硅 <span style="font-size:14px;color:#8899a6">(SI)</span></div>
+      <div class="hero-code">SI | 单位：元/吨 · 更新：2026-05-06</div>
     </div>
     <div class="hero-dir dir-"></div>
   </div>
@@ -209,19 +209,19 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
     <div class="key-levels-title">📌 关键价位</div>
     <div class="levels-grid">
       
-      <div class="level-item long">
-        <div class="level-price">¥80,000+</div>
+      <div class="level-item neutral">
+        <div class="level-price">¥9,000+</div>
         <div class="level-label">偏强</div>
       </div>
       
-      <div class="level-item long">
-        <div class="level-price">¥72,000-75,000</div>
-        <div class="level-label">支撑区</div>
+      <div class="level-item neutral">
+        <div class="level-price">¥8,000-9,000</div>
+        <div class="level-label">成本支撑区</div>
       </div>
       
       <div class="level-item long">
-        <div class="level-price">¥65,000以下</div>
-        <div class="level-label">长线布局区</div>
+        <div class="level-price">¥7,500以下</div>
+        <div class="level-label">深度亏损区</div>
       </div>
       
     </div>
@@ -231,7 +231,7 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
 
 
 <div class="reversal">
-  <strong>⚠️ 反转信号：</strong>价格>85,000元注意多头踩踏
+  <strong>⚠️ 反转信号：</strong>价格>9,500元注意供应恢复
 </div>
 
 
@@ -263,7 +263,7 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
         
         
           
-            <li class="signal-short">供过于求预期</li>
+            <li class="signal-short">产能过剩+成本下移</li>
           
         
       </ul>
@@ -277,8 +277,8 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
   <div class="card">
     <div class="card-hdr">宏观层</div>
     <div class="card-body" style="font-size:12px;color:#b0b8c1;line-height:1.8">
-      <div>核心指标：锂价 · 新能源车产销</div>
-      <div>当前判断：<strong style="color:#fff">澳矿成本支撑，需求旺季临近</strong></div>
+      <div>核心指标：光伏装机量 · 有机硅需求</div>
+      <div>当前判断：<strong style="color:#fff">产能过剩，价格承压</strong></div>
       <div>观察点：锂辉石价格 · 新能源车销量 · 库存去化速度</div>
     </div>
   </div>
@@ -286,9 +286,9 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
   <div class="card">
     <div class="card-hdr">供需层</div>
     <div class="card-body" style="font-size:12px;color:#b0b8c1;line-height:1.8">
-      <div>核心指标：进口量 · 盐湖产量</div>
-      <div>当前判断：<strong style="color:#fff">进口窗口收窄，供应压力缓解</strong></div>
-      <div>观察点：进口量 · 盐湖产量 · 港口库存</div>
+      <div>核心指标：新疆/云南产量 · 西南水电</div>
+      <div>当前判断：<strong style="color:#fff">开工率高位，供应宽松</strong></div>
+      <div>观察点：新疆/云南产量 · 西南水电 · 港口库存</div>
     </div>
   </div>
   
@@ -612,7 +612,7 @@ vix-section{background:#1a1f26;border-radius:10px;overflow:hidden;margin-bottom:
 </div>
 
 <script>
-const CODE = 'LC';
+const CODE = 'SI';
 
 async function loadNote() {
   try {
