@@ -1,211 +1,317 @@
 {
   "CU": {
-    "name": "沪铜",
-    "price": null,
-    "date": "20260511"
+    "price": 102260.0,
+    "change": -0.75,
+    "date": "20260428",
+    "oi": 202834,
+    "oi_change": 0,
+    "name": "CU",
+    "ts_code": "CU2606.SHF",
+    "month": "2606",
+    "oi_chg": 0
   },
   "AL": {
-    "name": "沪铝",
-    "price": null,
-    "date": "20260511"
+    "price": 24610.0,
+    "change": -1.32,
+    "date": "20260428",
+    "oi": 316372,
+    "oi_change": 0,
+    "name": "AL",
+    "ts_code": "AL2606.SHF",
+    "month": "2606",
+    "oi_chg": 0
   },
   "NI": {
-    "name": "沪镍",
-    "price": null,
-    "date": "20260511"
+    "price": 149340.0,
+    "change": 0.35,
+    "date": "20260428",
+    "oi": 180432,
+    "oi_change": 0,
+    "name": "NI",
+    "ts_code": "NI2606.SHF",
+    "month": "2606",
+    "oi_chg": 0
   },
   "AU": {
-    "name": "沪金",
-    "price": null,
-    "date": "20260511"
+    "price": 1022.1,
+    "change": -1.05,
+    "date": "20260428",
+    "oi": 166178,
+    "oi_change": 0,
+    "name": "AU",
+    "ts_code": "AU2606.SHF",
+    "month": "2606",
+    "oi_chg": 0
   },
   "AG": {
-    "name": "沪银",
-    "price": null,
-    "date": "20260511"
+    "price": 18068.0,
+    "change": -1.85,
+    "date": "20260428",
+    "oi": 198465,
+    "oi_change": 0,
+    "name": "AG",
+    "ts_code": "AG2606.SHF",
+    "month": "2606",
+    "oi_chg": 0
   },
   "AO": {
-    "name": "氧化铝",
-    "price": null,
-    "date": "20260511"
-  },
-  "LC": {
-    "name": "碳酸锂",
-    "price": null,
-    "date": "20260511"
-  },
-  "I": {
-    "name": "铁矿石",
-    "price": null,
-    "date": "20260511"
-  },
-  "RB": {
-    "name": "螺纹钢",
-    "price": null,
-    "date": "20260511"
-  },
-  "HC": {
-    "name": "热卷",
-    "price": null,
-    "date": "20260511"
-  },
-  "JM": {
-    "name": "焦煤",
-    "price": null,
-    "date": "20260511"
-  },
-  "SM": {
-    "name": "锰硅",
-    "price": null,
-    "date": "20260511"
-  },
-  "SC": {
-    "name": "原油",
-    "price": null,
-    "date": "20260511"
-  },
-  "MA": {
-    "name": "甲醇",
-    "price": null,
-    "date": "20260511"
-  },
-  "TA": {
-    "name": "PTA",
-    "price": null,
-    "date": "20260511"
-  },
-  "EB": {
-    "name": "苯乙烯",
-    "price": null,
-    "date": "20260511"
-  },
-  "RU": {
-    "name": "天然橡胶",
-    "price": null,
-    "date": "20260511"
-  },
-  "P": {
-    "name": "棕榈油",
-    "price": null,
-    "date": "20260511"
-  },
-  "M": {
-    "name": "豆粕",
-    "price": null,
-    "date": "20260511"
-  },
-  "LH": {
-    "name": "生猪",
-    "price": null,
-    "date": "20260511"
-  },
-  "CF": {
-    "name": "棉花",
-    "price": null,
-    "date": "20260511"
-  },
-  "SR": {
-    "name": "白糖",
-    "price": null,
-    "date": "20260511"
-  },
-  "SA": {
-    "name": "纯碱",
-    "price": null,
-    "date": "20260511"
-  },
-  "FG": {
-    "name": "玻璃",
-    "price": null,
-    "date": "20260511"
-  },
-  "IF": {
-    "name": "沪深300",
-    "price": null,
-    "date": "20260511"
-  },
-  "IM": {
-    "name": "中证1000",
-    "price": null,
-    "date": "20260511"
-  },
-  "ZN": {
-    "name": "沪锌",
-    "price": null,
-    "date": "20260511"
-  },
-  "Y": {
-    "name": "豆油",
-    "price": null,
-    "date": "20260511"
-  },
-  "PX": {
-    "name": "对二甲苯",
-    "price": null,
-    "date": "20260511"
-  },
-  "J": {
-    "price": 1759.0,
-    "change": 0.0,
-    "date": "20260508",
-    "oi": 631,
-    "oi_chg": -110,
-    "oi_change": -17.4,
-    "name": "焦炭"
-  },
-  "RM": {
-    "price": 2235.0,
-    "change": 0.77,
-    "date": "20260508",
-    "oi": 3219,
-    "oi_chg": 0,
-    "oi_change": 0.0,
-    "name": "菜粕"
-  },
-  "AP": {
-    "price": 7630.0,
-    "change": 0.51,
-    "date": "20260508",
-    "oi": 104670,
-    "oi_chg": -3866,
-    "oi_change": -3.7,
-    "name": "苹果"
-  },
-  "PB": {
-    "price": 16650.0,
-    "change": -0.54,
-    "date": "20260508",
-    "oi": 4965,
-    "oi_chg": -165,
-    "oi_change": -3.3,
-    "name": "铅"
-  },
-  "WR": {
-    "price": 3380.0,
-    "change": 0.0,
-    "date": "20260508",
-    "oi": 0,
+    "price": 2875.0,
+    "change": -0.21,
+    "date": "20260428",
+    "oi": 283315,
     "oi_chg": 0,
     "oi_change": 0,
-    "name": "线材"
+    "name": "氧化铝",
+    "ts_code": "AO2609.SHF",
+    "month": "2609"
   },
-  "IH": {
-    "price": 2997.6,
-    "change": -0.97,
-    "date": "20260508",
-    "oi": 12513,
-    "oi_chg": -461,
-    "oi_change": -3.7,
-    "name": "上证50"
+  "I": {
+    "price": 780.5,
+    "change": -0.9,
+    "date": "20260428",
+    "oi": 582980,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "铁矿石",
+    "ts_code": "I2609.DCE",
+    "month": "2609"
   },
-  "IC": {
-    "price": 8687.2,
-    "change": -0.02,
-    "date": "20260508",
-    "oi": 37867,
-    "oi_chg": -2199,
-    "oi_change": -5.8,
-    "name": "中证500"
+  "RB": {
+    "price": 3176.0,
+    "change": -0.63,
+    "date": "20260428",
+    "oi": 1749901,
+    "oi_change": 0,
+    "name": "RB",
+    "ts_code": "RB2610.SHF",
+    "month": "2610",
+    "oi_chg": 0
+  },
+  "HC": {
+    "price": 3378.0,
+    "change": -0.77,
+    "date": "20260428",
+    "oi": 1795580,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "热卷",
+    "ts_code": "HC2610.SHF",
+    "month": "2610"
+  },
+  "JM": {
+    "price": 1266.5,
+    "change": -0.67,
+    "date": "20260428",
+    "oi": 430584,
+    "oi_change": 0,
+    "name": "JM",
+    "ts_code": "JM2609.DCE",
+    "month": "2609",
+    "oi_chg": 0
+  },
+  "SM": {
+    "price": 6094.0,
+    "change": -1.25,
+    "date": "20260428",
+    "oi": 300927,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "锰硅",
+    "ts_code": "SM2607.ZCE",
+    "month": "2607"
+  },
+  "SC": {
+    "price": 669.3,
+    "change": 1.85,
+    "date": "20260428",
+    "oi": 39634,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "原油",
+    "ts_code": "SC2606.INE",
+    "month": "2606"
+  },
+  "MA": {
+    "price": 3020.0,
+    "change": 1.82,
+    "date": "20260428",
+    "oi": 676317,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "甲醇",
+    "ts_code": "MA2609.ZCE",
+    "month": "2609"
+  },
+  "TA": {
+    "price": 6772.0,
+    "change": 1.7,
+    "date": "20260428",
+    "oi": 1042448,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "PTA",
+    "ts_code": "TA2609.ZCE",
+    "month": "2609"
+  },
+  "EB": {
+    "price": 9881.0,
+    "change": -0.03,
+    "date": "20260428",
+    "oi": 240764,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "苯乙烯",
+    "ts_code": "EB2606.DCE",
+    "month": "2606"
+  },
+  "RU": {
+    "price": 17395.0,
+    "change": 1.01,
+    "date": "20260428",
+    "oi": 192155,
+    "oi_change": 0,
+    "name": "RU",
+    "ts_code": "RU2609.SHF",
+    "month": "2609",
+    "oi_chg": 0
+  },
+  "P": {
+    "price": 9759.0,
+    "change": -0.67,
+    "date": "20260428",
+    "oi": 463101,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "棕榈油",
+    "ts_code": "P2609.DCE",
+    "month": "2609"
+  },
+  "M": {
+    "price": 3006.0,
+    "change": 0.5,
+    "date": "20260428",
+    "oi": 2447273,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "豆粕",
+    "ts_code": "M2609.DCE",
+    "month": "2609"
+  },
+  "LH": {
+    "price": 11365.0,
+    "change": -0.36,
+    "date": "20260428",
+    "oi": 199825,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "生猪",
+    "ts_code": "LH2607.DCE",
+    "month": "2607"
+  },
+  "CF": {
+    "price": 16420.0,
+    "change": 0.31,
+    "date": "20260428",
+    "oi": 848846,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "棉花",
+    "ts_code": "CF2609.ZCE",
+    "month": "2609"
+  },
+  "SR": {
+    "price": 5409.0,
+    "change": -0.07,
+    "date": "20260428",
+    "oi": 619804,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "白糖",
+    "ts_code": "SR2609.ZCE",
+    "month": "2609"
+  },
+  "SA": {
+    "price": 1237.0,
+    "change": -1.21,
+    "date": "20260428",
+    "oi": 912404,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "纯碱",
+    "ts_code": "SA2609.ZCE",
+    "month": "2609"
+  },
+  "FG": {
+    "price": 1042.0,
+    "change": -2.57,
+    "date": "20260428",
+    "oi": 1503699,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "玻璃",
+    "ts_code": "FG2609.ZCE",
+    "month": "2609"
+  },
+  "IF": {
+    "price": 4702.4,
+    "change": -0.36,
+    "date": "20260428",
+    "oi": 136927,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "沪深300",
+    "ts_code": "IF2606.CFX",
+    "month": "2606"
+  },
+  "IM": {
+    "price": 8103.6,
+    "change": -1.38,
+    "date": "20260428",
+    "oi": 208766,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "中证1000",
+    "ts_code": "IM2606.CFX",
+    "month": "2606"
+  },
+  "ZN": {
+    "price": 23840.0,
+    "change": -2.03,
+    "date": "20260428",
+    "oi": 107614,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "沪锌",
+    "ts_code": "ZN2606.SHF",
+    "month": "2606"
+  },
+  "Y": {
+    "price": 8559.0,
+    "change": -0.08,
+    "date": "20260428",
+    "oi": 704780,
+    "oi_chg": 0,
+    "oi_change": 0,
+    "name": "豆油",
+    "ts_code": "Y2609.DCE",
+    "month": "2609"
+  },
+  "J": {
+    "price": 1848.5,
+    "change": 0.85,
+    "date": "20260427",
+    "oi": 29465.0,
+    "oi_change": 1994.0,
+    "name": "J"
+  },
+  "PB": {
+    "price": 16660.0,
+    "change": -0.51,
+    "date": "20260423",
+    "oi": 71059,
+    "oi_chg": 7227,
+    "oi_change": 11.3,
+    "name": "沪铅"
   },
   "BU": {
     "price": 4109.0,
@@ -261,6 +367,24 @@
     "oi_change": -0.4,
     "name": "硅铁"
   },
+  "AP": {
+    "price": 7667.0,
+    "change": -1.66,
+    "date": "20260423",
+    "oi": 108987,
+    "oi_chg": 19943,
+    "oi_change": 22.4,
+    "name": "苹果"
+  },
+  "RM": {
+    "price": 2381.0,
+    "change": -0.04,
+    "date": "20260423",
+    "oi": 773323,
+    "oi_chg": 3760,
+    "oi_change": 0.5,
+    "name": "菜粕"
+  },
   "ZC": {
     "price": 801.4,
     "change": 0.0,
@@ -270,16 +394,43 @@
     "oi_change": 0.0,
     "name": "动力煤"
   },
-  "SI": {
-    "price": 9080.0,
-    "change": 2.2,
-    "date": "20260507",
-    "oi": 591326,
+  "IC": {
+    "price": 8177.0,
+    "change": -0.9,
+    "date": "20260423",
+    "oi": 159238,
+    "oi_chg": 5811,
+    "oi_change": 3.8,
+    "name": "中证500"
+  },
+  "IH": {
+    "price": 2911.2,
+    "change": -0.13,
+    "date": "20260423",
+    "oi": 60680,
+    "oi_chg": 3231,
+    "oi_change": 5.6,
+    "name": "上证50"
+  },
+  "LC": {
+    "price": 178620.0,
+    "change": -2.45,
+    "date": "20260428",
+    "ts_code": "LC2609.GFE",
+    "month": "2609",
+    "oi": 453086,
+    "oi_chg": 0,
+    "oi_change": 0
+  },
+  "PX": {
+    "price": 9838.0,
+    "date": "20260428",
+    "oi": 206202,
     "oi_chg": 0,
     "oi_change": 0,
-    "name": "工业硅",
-    "close": 9080.0,
-    "settlement": 9070.0,
-    "prev_settlement": 8875.0
+    "name": "PX",
+    "ts_code": "PX2607.ZCE",
+    "month": "2607",
+    "change": 1.33
   }
 }
